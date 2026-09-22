@@ -55,7 +55,7 @@ Ao final desta seção, o aluno deverá ser capaz de:
 
 ## 📝 Observações
 
-- Cada um dos seis blocos da apresentação termina com um slide **Mão na massa**: cinco exercícios para o aluno fazer na IDE, na ordem em que o conteúdo foi apresentado. São exercícios de digitar e executar — vários pedem que o erro seja provocado de propósito antes da correção e também podem ser realizados como atividade independente.
+- A apresentação foi organizada para acompanhar os vídeos. A prática fica concentrada na lista de exercícios da seção.
 - O `Locale` aparece duas vezes com efeitos opostos: na **saída** (`printf`) e na **entrada** (`Scanner`). Vale fixar uma convenção com a turma logo no começo — o curso usa `Locale.setDefault(Locale.US)` — para não misturar vírgula e ponto entre a leitura e a impressão.
 - A falha do `nextLine()` depois de um `nextInt()` é a dúvida mais recorrente da seção. Provocar o erro ao vivo, antes de mostrar a correção, costuma fixar melhor do que apenas avisar.
 - `var` e *text blocks* aparecem apenas para reconhecimento. Os exemplos principais continuam usando declarações explícitas e strings comuns.

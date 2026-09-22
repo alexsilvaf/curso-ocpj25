@@ -56,6 +56,7 @@ Esta pasta concentra o conteúdo didático e o planejamento das seções do curs
 - Novas seções devem seguir o padrão `secao-XX-nome-da-secao`.
 - Os materiais devem seguir o padrão `AX - Título da aula.md`.
 - As apresentações devem usar o nome `apresentacao.html` e as listas devem usar `lista-de-exercicios.md`.
+- As apresentações são apoio visual para videoaulas: devem ser expositivas e não devem conter perguntas clicáveis, dinâmicas de turma ou blocos de exercícios.
 - Exercícios ficam concentrados na lista da seção. Os materiais podem conter exemplos guiados e perguntas breves de verificação, mas não blocos de “desafios”.
 - Os links para imagens e diagramas devem usar caminhos relativos.
 

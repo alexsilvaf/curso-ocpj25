@@ -97,16 +97,6 @@
   th, td { padding: 13px 16px; border-bottom: 1px solid #e4e4e4; text-align: left; vertical-align: top; }
   th { color: var(--red-dark); font-size: 20px; text-transform: uppercase; letter-spacing: .03em; }
   tr:last-child td { border-bottom: 0; }
-  .chip-row { display: flex; flex-wrap: wrap; gap: 16px; }
-  .chip {
-    padding: 16px 21px; border: 2px solid #e2d9d3; border-radius: 12px;
-    background: var(--paper-alt); color: var(--text); font-size: 23px; font-weight: 700;
-    cursor: pointer; transition: .15s ease;
-  }
-  .chip:hover { transform: translateY(-2px); border-color: var(--orange); }
-  .chip.correct { border-color: #16a34a; background: #dcfce7; color: #166534; }
-  .chip.wrong { border-color: #dc2626; background: #fee2e2; color: #991b1b; }
-  .answer { min-height: 72px; }
   .fragment { opacity: 0; transform: translateX(-8px); transition: .28s ease; }
   .fragment.visible { opacity: 1; transform: none; }
   .title, .divider, .end {
@@ -227,18 +217,6 @@
       <div class="callout fragment">Nem todo algoritmo é computacional: um computador não lava a roupa, mas pode controlar uma máquina de lavar.</div>
     </section>
 
-    <section class="slide" data-section="Bloco 1 · Verificação">
-      <p class="eyebrow">Verificação rápida</p>
-      <h2>Qual alternativa descreve um algoritmo?</h2>
-      <div class="body">
-        <div class="chip-row">
-          <button class="chip" data-correct="false" data-explain="Uma IDE é uma ferramenta de desenvolvimento, não a sequência de passos da solução.">Uma aplicação usada para escrever código</button>
-          <button class="chip" data-correct="true" data-explain="Um algoritmo organiza uma sequência finita e ordenada de instruções para uma tarefa ou problema.">Uma sequência finita e ordenada de instruções</button>
-          <button class="chip" data-correct="false" data-explain="Um programa pode representar um algoritmo, mas os dois conceitos não são sinônimos.">Qualquer programa instalado</button>
-        </div>
-        <div class="callout answer fragment">Escolha uma alternativa para conferir.</div>
-      </div>
-    </section>
 
     <section class="slide divider" data-section="Bloco 2">
       <div class="number">Bloco 2 de 5</div>
@@ -282,18 +260,6 @@
       <div class="callout fragment">Essas técnicas podem ser combinadas. O Bloco 5 mostrará os fluxos completos.</div>
     </section>
 
-    <section class="slide" data-section="Bloco 2 · Verificação">
-      <p class="eyebrow">Verificação rápida</p>
-      <h2>Qual ferramenta é obrigatória para escrever um programa?</h2>
-      <div class="body">
-        <div class="chip-row">
-          <button class="chip" data-correct="false" data-explain="Uma IDE facilita o trabalho, mas um editor de texto e as ferramentas da linguagem também podem ser usados.">Uma IDE</button>
-          <button class="chip" data-correct="true" data-explain="É necessário algum meio de escrever o código; uma IDE é apenas uma opção mais integrada.">Um editor de código ou uma IDE</button>
-          <button class="chip" data-correct="false" data-explain="A máquina virtual é exigida apenas em determinados modelos de execução.">Uma máquina virtual</button>
-        </div>
-        <div class="callout answer fragment">Escolha uma alternativa para conferir.</div>
-      </div>
-    </section>
 
     <section class="slide divider" data-section="Bloco 3">
       <div class="number">Bloco 3 de 5</div>
@@ -356,18 +322,6 @@
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 3 · Verificação">
-      <p class="eyebrow">Verificação rápida</p>
-      <h2>O programa executa, mas calcula o desconto errado. Qual é o tipo de erro?</h2>
-      <div class="body">
-        <div class="chip-row">
-          <button class="chip" data-correct="false" data-explain="O programa foi traduzido, então não se trata de um erro sintático.">Sintático</button>
-          <button class="chip" data-correct="false" data-explain="Nada indica uma falha durante a execução; o resultado apenas não corresponde ao pretendido.">De execução</button>
-          <button class="chip" data-correct="true" data-explain="O programa funciona, mas seu significado ou sua lógica está incorreto.">Semântico ou lógico</button>
-        </div>
-        <div class="callout answer fragment">Escolha uma alternativa para conferir.</div>
-      </div>
-    </section>
 
     <section class="slide divider" data-section="Bloco 4">
       <div class="number">Bloco 4 de 5</div>
@@ -415,17 +369,6 @@
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 4 · Verificação">
-      <p class="eyebrow">Verificação rápida</p>
-      <h2>Sem uma IDE, é impossível criar um programa?</h2>
-      <div class="body">
-        <div class="chip-row">
-          <button class="chip" data-correct="false" data-explain="A IDE é conveniente, mas não é um requisito obrigatório.">Sim</button>
-          <button class="chip" data-correct="true" data-explain="Um editor de texto e as ferramentas da linguagem também permitem escrever, traduzir e executar programas.">Não</button>
-        </div>
-        <div class="callout answer fragment">Escolha uma alternativa para conferir.</div>
-      </div>
-    </section>
 
     <section class="slide divider" data-section="Bloco 5">
       <div class="number">Bloco 5 de 5</div>
@@ -486,18 +429,6 @@
       <div class="callout orange fragment">Linguagens não ficam presas a uma única estratégia: diferentes implementações combinam técnicas.</div>
     </section>
 
-    <section class="slide" data-section="Bloco 5 · Verificação">
-      <p class="eyebrow">Verificação rápida</p>
-      <h2>Qual fluxo usa uma representação intermediária executada por uma máquina virtual?</h2>
-      <div class="body">
-        <div class="chip-row">
-          <button class="chip" data-correct="false" data-explain="Na representação didática compilada, o foco está na tradução anterior para objeto ou código nativo.">Compilado</button>
-          <button class="chip" data-correct="false" data-explain="A interpretação pode usar representações internas, mas essa descrição corresponde ao modelo híbrido estudado.">Interpretado</button>
-          <button class="chip" data-correct="true" data-explain="A abordagem híbrida compila para código intermediário, que é carregado por uma máquina virtual.">Híbrido</button>
-        </div>
-        <div class="callout answer fragment">Escolha uma alternativa para conferir.</div>
-      </div>
-    </section>
 
     <section class="slide" data-section="Revisão">
       <p class="eyebrow">O que deve ficar claro</p>
@@ -579,24 +510,6 @@
     card.innerHTML = '<b>' + (index + 1) + ' · ' + (slide.dataset.section || '') + '</b>' + (heading ? heading.textContent : '');
     card.addEventListener('click', function () { go(index, false); toggleOverview(false); });
     document.getElementById('overviewGrid').appendChild(card);
-  });
-
-  document.querySelectorAll('.chip').forEach(function (chip) {
-    chip.addEventListener('click', function () {
-      var slide = chip.closest('.slide');
-      slide.querySelectorAll('.chip').forEach(function (item) { item.classList.remove('correct', 'wrong'); });
-      var correct = chip.dataset.correct === 'true';
-      chip.classList.add(correct ? 'correct' : 'wrong');
-      if (!correct) {
-        var right = slide.querySelector('.chip[data-correct="true"]');
-        if (right) right.classList.add('correct');
-      }
-      var answer = slide.querySelector('.answer');
-      if (answer) answer.textContent = chip.dataset.explain || '';
-      var index = slides.indexOf(slide);
-      fragments(index).forEach(function (fragment) { fragment.classList.add('visible'); });
-      if (index === current) fragmentIndex = fragments(index).length;
-    });
   });
 
   document.addEventListener('keydown', function (event) {

@@ -224,18 +224,6 @@
   .slide--divider > *:not(.duke),
   .slide--end > *:not(.duke) { position: relative; z-index: 2; }
 
-  .chip-row { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 8px; }
-  .chip {
-    background: var(--paper-alt); border: 2px solid #e5e7eb; border-radius: 12px;
-    padding: 16px 22px; font-size: 24px; color: var(--ink-700); font-weight: 700;
-  }
-  .chip.on { border-color: var(--java-red); color: var(--java-red-dark); background: #fdf0ef; }
-  .chip[data-correct] { cursor: pointer; transition: transform .15s ease, background .2s ease, border-color .2s ease; }
-  .chip[data-correct]:hover { transform: translateY(-2px); border-color: var(--java-orange); }
-  .chip-correct { background: #dcfce7 !important; border-color: #16a34a !important; color: #166534 !important; }
-  .chip-correct::after { content: " ✓"; }
-  .chip-wrong { background: #fee2e2 !important; border-color: #dc2626 !important; color: #991b1b !important; }
-  .chip-wrong::after { content: " ✗"; }
 
   .arrow-chain { display: flex; align-items: center; justify-content: center; gap: 18px; font-size: 34px; font-weight: 700; color: var(--ink-900); flex-wrap: wrap; }
   .arrow-chain .node {
@@ -488,35 +476,9 @@ PI = 3.15;           <span class="com">// erro</span>
       <div class="callout"><span class="mono" style="font-family:Consolas,monospace">var</span> <b>não</b> torna Java dinamicamente tipada: o tipo é fixado na compilação. O curso segue com declarações explícitas.</div>
     </section>
 
-    <section class="slide" data-section="Bloco 1 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Qual destas declarações <b>não</b> compila?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="false" data-explain="Compila: o sufixo L marca o literal como long, e o _ é apenas visual.">long n = 8_100_000_000L;</div>
-          <div class="chip" data-correct="true" data-explain="Não compila: 1.75 é um literal double, e double não cabe em float sem o sufixo f — possible lossy conversion.">float f = 1.75;</div>
-          <div class="chip" data-correct="false" data-explain="Compila: o sufixo d é opcional, porque double já é o tipo padrão de um literal com ponto.">double d = 49.90;</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">Não compila: <span class="mono" style="font-family:Consolas,monospace">1.75</span> é um literal <b>double</b>, e ele não cabe em <b>float</b> sem o sufixo <span class="mono" style="font-family:Consolas,monospace">f</span>.</div>
-        </div>
-      </div>
-    </section>
 
-    <section class="slide compact" data-section="Bloco 1 · Mão na massa">
-      <div class="eyebrow">Mão na massa · Bloco 1</div>
-      <h2>Pratique na IDE: variáveis e tipos</h2>
-      <div class="slide-body top">
-        <ol class="points compact">
-          <li>Crie a classe <span class="mono" style="font-family:Consolas,monospace">Tipos</span> e declare uma variável de cada um dos <b>oito</b> primitivos, com um valor válido. Imprima todas com <span class="mono" style="font-family:Consolas,monospace">println</span>.</li>
-          <li>Escreva <span class="mono" style="font-family:Consolas,monospace">long populacao = 8100000000;</span> e <span class="mono" style="font-family:Consolas,monospace">float altura = 1.75;</span> Leia as duas mensagens de erro e conserte com os sufixos.</li>
-          <li>Declare <span class="mono" style="font-family:Consolas,monospace">int total;</span> e tente imprimir. Depois atribua um valor antes da saída e compare os resultados da compilação.</li>
-          <li>Com <span class="mono" style="font-family:Consolas,monospace">char letra = 'A';</span> imprima <span class="mono" style="font-family:Consolas,monospace">letra</span>, <span class="mono" style="font-family:Consolas,monospace">(int) letra</span> e <span class="mono" style="font-family:Consolas,monospace">letra + 1</span>. Explique por que só o primeiro mostra a letra.</li>
-          <li>Troque suas declarações por <span class="mono" style="font-family:Consolas,monospace">var</span> e marque uma delas como <span class="mono" style="font-family:Consolas,monospace">final</span>. Tente reatribuí-la e leia o erro.</li>
-        </ol>
-      </div>
-    </section>
+
+
 
     <section class="slide slide--divider" data-section="Bloco 2">
       <img class="duke" src="./duke.svg" alt="">
@@ -635,49 +597,11 @@ System.out.println((<span class="kw">double</span>) (a / b)); <span class="com">
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 2 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Quanto vale <span class="mono" style="font-family:Consolas,monospace">10 / 4</span> em Java?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="false" data-explain="Esse seria o resultado se algum dos operandos fosse decimal — mas os dois são int.">2.5</div>
-          <div class="chip" data-correct="true" data-explain="Dois operandos int produzem divisão inteira: a parte fracionária é descartada, não arredondada.">2</div>
-          <div class="chip" data-correct="false" data-explain="Java descarta a parte fracionária na divisão inteira; ele nunca arredonda para cima sozinho.">3</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">Dois operandos <span class="mono" style="font-family:Consolas,monospace">int</span> produzem divisão inteira: a parte fracionária é descartada, não arredondada.</div>
-        </div>
-      </div>
-    </section>
 
-    <section class="slide" data-section="Bloco 2 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Ache o erro</h2>
-      <div class="code-block small">
-<span class="com">// média entre duas notas</span>
-<span class="kw">int</span> nota1 = 7, nota2 = 8;
-<span class="kw">double</span> media = nota1 + nota2 / 2;
-      </div>
-      <div class="fragment" style="margin-top:22px">
-        <span class="badge badge-amber">RESPOSTA</span>
-        <div class="callout" style="margin-top:14px">Faltou o parêntese: <span class="mono" style="font-family:Consolas,monospace">nota2 / 2</span> é calculado primeiro, e o resultado é <b>11.0</b>, não <b>7.5</b>. O correto é <span class="mono" style="font-family:Consolas,monospace">(nota1 + nota2) / 2.0</span> — com o <b>2.0</b>, senão a divisão ainda seria inteira.</div>
-      </div>
-    </section>
 
-    <section class="slide compact" data-section="Bloco 2 · Mão na massa">
-      <div class="eyebrow">Mão na massa · Bloco 2</div>
-      <h2>Pratique na IDE: expressões aritméticas</h2>
-      <div class="slide-body top">
-        <ol class="points compact">
-          <li>Imprima <span class="mono" style="font-family:Consolas,monospace">10 / 3</span>, <span class="mono" style="font-family:Consolas,monospace">10.0 / 3</span>, <span class="mono" style="font-family:Consolas,monospace">10 / 3.0</span> e <span class="mono" style="font-family:Consolas,monospace">(double) (10 / 3)</span>. Explique por que o último dá 3.0.</li>
-          <li>Converta 3725 segundos em horas, minutos e segundos usando só <span class="mono" style="font-family:Consolas,monospace">/</span> e <span class="mono" style="font-family:Consolas,monospace">%</span>. A saída deve ser <span class="mono" style="font-family:Consolas,monospace">1h 2min 5s</span>.</li>
-          <li>Calcule a média de duas notas. Escreva primeiro <span class="mono" style="font-family:Consolas,monospace">n1 + n2 / 2</span>, veja o resultado errado e conserte com parênteses.</li>
-          <li>Imprima <span class="mono" style="font-family:Consolas,monospace">1 + 2 + " reais"</span> e <span class="mono" style="font-family:Consolas,monospace">"reais " + 1 + 2</span>. Anote por que os dois resultados são diferentes.</li>
-          <li>Execute <span class="mono" style="font-family:Consolas,monospace">10 / 0</span> e depois <span class="mono" style="font-family:Consolas,monospace">10.0 / 0</span>. Anote qual quebra o programa e qual imprime <span class="mono" style="font-family:Consolas,monospace">Infinity</span>.</li>
-        </ol>
-      </div>
-    </section>
+
+
+
 
     <section class="slide slide--divider" data-section="Bloco 3">
       <img class="duke" src="./duke.svg" alt="">
@@ -747,58 +671,11 @@ a = c + b;
       <div class="callout"><span class="mono" style="font-family:Consolas,monospace">c</span> vale <b>3</b>, e não 3.33: a divisão entre dois <span class="mono" style="font-family:Consolas,monospace">int</span> é inteira.</div>
     </section>
 
-    <section class="slide" data-section="Bloco 3 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Faça o teste de mesa: quanto vale <span class="mono" style="font-family:Consolas,monospace">x</span> no fim?</h2>
-      <div class="slide-body">
-        <div class="code-block small">
-<span class="kw">int</span> x = 7;
-<span class="kw">int</span> y = 2;
-<span class="kw">int</span> z = x / y;
-x = z * y;
-        </div>
-        <div class="chip-row" style="margin-top:24px">
-          <div class="chip" data-correct="false" data-explain="7 é o valor inicial, mas a última linha reatribui x. O teste de mesa serve justamente para não perder essa mudança de vista.">7</div>
-          <div class="chip" data-correct="true" data-explain="z = 7 / 2 dá 3, porque os dois são int e a divisão é inteira. Depois x = 3 * 2 = 6. O resto se perdeu na divisão e não volta.">6</div>
-          <div class="chip" data-correct="false" data-explain="8 sairia se 7 / 2 valesse 4 — mas a divisão inteira descarta a parte fracionária, não arredonda.">8</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:24px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">z = 7 / 2 dá 3, porque os dois são int e a divisão é inteira. Depois x = 3 * 2 = 6. O resto se perdeu na divisão e não volta.</div>
-        </div>
-      </div>
-    </section>
 
-    <section class="slide" data-section="Bloco 3 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Ache o erro</h2>
-      <div class="code-block small">
-<span class="com">// Média de duas notas</span>
-<span class="kw">double</span> media = (n1 + n2) / 2.0;
-<span class="kw">double</span> n1 = 7.5;
-<span class="kw">double</span> n2 = 8.0;
 
-System.out.println(media);
-      </div>
-      <div class="fragment" style="margin-top:22px">
-        <span class="badge badge-amber">RESPOSTA</span>
-        <div class="callout" style="margin-top:14px">O <b>processamento</b> veio antes da <b>entrada</b>. O programa roda de cima para baixo: <span class="mono" style="font-family:Consolas,monospace">n1</span> e <span class="mono" style="font-family:Consolas,monospace">n2</span> precisam existir e já ter valor antes de entrar na conta. A ordem é sempre <b>entrada → processamento → saída</b>.</div>
-      </div>
-    </section>
 
-    <section class="slide compact" data-section="Bloco 3 · Mão na massa">
-      <div class="eyebrow">Mão na massa · Bloco 3</div>
-      <h2>Pratique na IDE: entrada, processamento e saída</h2>
-      <div class="slide-body top">
-        <ol class="points compact">
-          <li>Escreva um programa que usa um raio fixo e mostra a área do círculo, separando as partes com os comentários <span class="mono" style="font-family:Consolas,monospace">// entrada</span>, <span class="mono" style="font-family:Consolas,monospace">// processamento</span> e <span class="mono" style="font-family:Consolas,monospace">// saída</span>.</li>
-          <li>Antes de executar, faça o teste de mesa no papel com raio 2. Depois rode e compare com o que você previu.</li>
-          <li>Mova a linha do cálculo para <b>antes</b> da declaração do raio. Leia o erro de compilação e explique por que ele acontece.</li>
-          <li>Acrescente uma segunda saída mostrando também o perímetro — sem criar uma nova entrada.</li>
-          <li>Comente a linha da saída e execute de novo. O programa ainda calcula? Explique como ele pode processar sem mostrar nada.</li>
-        </ol>
-      </div>
-    </section>
+
+
 
     <section class="slide slide--divider" data-section="Bloco 4">
       <img class="duke" src="./duke.svg" alt="">
@@ -1007,35 +884,9 @@ System.out.print(menu);
       <div class="callout">A indentação comum a todas as linhas é removida automaticamente, então o bloco fica alinhado com o código sem sujar a saída.</div>
     </section>
 
-    <section class="slide" data-section="Bloco 4 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>O que imprime <span class="mono" style="font-family:Consolas,monospace">System.out.println(1 + 2 + "3" + 4 + 5);</span>?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="true" data-explain="1 + 2 ainda é soma e dá 3. A partir da String &quot;3&quot;, tudo à direita vira concatenação: 3, 3, 4, 5.">3345</div>
-          <div class="chip" data-correct="false" data-explain="Isso exigiria que a soma acontecesse depois da String — mas a avaliação é da esquerda para a direita.">15</div>
-          <div class="chip" data-correct="false" data-explain="Só seria isso se o 1 + 2 também fosse concatenado — mas até ali não havia nenhuma String na expressão.">12345</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px"><span class="mono" style="font-family:Consolas,monospace">1 + 2</span> ainda é soma e dá <b>3</b>. A partir da String, tudo à direita vira concatenação.</div>
-        </div>
-      </div>
-    </section>
 
-    <section class="slide compact" data-section="Bloco 4 · Mão na massa">
-      <div class="eyebrow">Mão na massa · Bloco 4</div>
-      <h2>Pratique na IDE: saída de dados</h2>
-      <div class="slide-body top">
-        <ol class="points compact">
-          <li>Escreva três linhas com <span class="mono" style="font-family:Consolas,monospace">print</span> e depois as mesmas com <span class="mono" style="font-family:Consolas,monospace">println</span>. Compare o console nos dois casos.</li>
-          <li>Imprima <span class="mono" style="font-family:Consolas,monospace">"Total: " + 2 + 3</span> e <span class="mono" style="font-family:Consolas,monospace">"Total: " + (2 + 3)</span>. Explique a diferença.</li>
-          <li>Monte um único <span class="mono" style="font-family:Consolas,monospace">printf</span> usando <span class="mono" style="font-family:Consolas,monospace">%s</span>, <span class="mono" style="font-family:Consolas,monospace">%d</span>, <span class="mono" style="font-family:Consolas,monospace">%.2f</span> e <span class="mono" style="font-family:Consolas,monospace">%b</span>, passando quatro variáveis na ordem.</li>
-          <li>Monte uma tabela de três produtos com <span class="mono" style="font-family:Consolas,monospace">"%-15s %8.2f%n"</span>. Confira se as vírgulas caem todas na mesma coluna.</li>
-          <li>Acrescente <span class="mono" style="font-family:Consolas,monospace">Locale.setDefault(Locale.US)</span> na primeira linha do <span class="mono" style="font-family:Consolas,monospace">main</span> e rode a tabela de novo. Anote o que mudou.</li>
-        </ol>
-      </div>
-    </section>
+
+
 
     <section class="slide slide--divider" data-section="Bloco 5">
       <img class="duke" src="./duke.svg" alt="">
@@ -1129,22 +980,6 @@ System.out.println(p);  <span class="com">// 44</span>
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 5 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Ache o erro</h2>
-      <div class="code-block">
-<span class="kw">byte</span> a = 10;
-<span class="kw">byte</span> b = 20;
-<span class="kw">byte</span> soma = a + b;
-      </div>
-      <div class="fragment" style="margin-top:22px">
-        <span class="badge badge-amber">RESPOSTA</span>
-        <div class="callout" style="margin-top:14px"><span class="mono" style="font-family:Consolas,monospace">incompatible types: possible lossy conversion from int to byte</span> — em uma expressão aritmética, <span class="mono" style="font-family:Consolas,monospace">byte</span> é promovido a <span class="mono" style="font-family:Consolas,monospace">int</span>. O correto é <span class="mono" style="font-family:Consolas,monospace">byte soma = (byte) (a + b);</span></div>
-      </div>
-      <div class="fragment" style="margin-top:16px">
-        <div class="callout amber">A soma produz <span class="mono" style="font-family:Consolas,monospace">int</span>. O casting deixa explícita a decisão de voltar para <span class="mono" style="font-family:Consolas,monospace">byte</span>.</div>
-      </div>
-    </section>
 
     <section class="slide" data-section="Bloco 5 · Casting">
       <div class="eyebrow">O ponto do casting muda o cálculo</div>
@@ -1182,35 +1017,9 @@ System.out.println(0.1 + 0.2);          <span class="com">// 0.30000000000000004
       <div class="callout amber" style="margin-top:14px">Por enquanto, basta reconhecer que o resultado pode exibir pequenas diferenças de precisão.</div>
     </section>
 
-    <section class="slide" data-section="Bloco 5 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Quanto vale <span class="mono" style="font-family:Consolas,monospace">(int) 7.9</span>?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="false" data-explain="O casting não arredonda para o inteiro mais próximo.">8</div>
-          <div class="chip" data-correct="true" data-explain="O casting para int descarta a parte decimal.">7</div>
-          <div class="chip" data-correct="false" data-explain="O resultado do casting é um int, não um double.">7.0</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">O casting para <span class="mono" style="font-family:Consolas,monospace">int</span> descarta a parte decimal. O resultado é <b>7</b>.</div>
-        </div>
-      </div>
-    </section>
 
-    <section class="slide compact" data-section="Bloco 5 · Mão na massa">
-      <div class="eyebrow">Mão na massa · Bloco 5</div>
-      <h2>Pratique na IDE: processamento e casting</h2>
-      <div class="slide-body top">
-        <ol class="points compact">
-          <li>Com <span class="mono" style="font-family:Consolas,monospace">double nota = 7.9;</span> imprima <span class="mono" style="font-family:Consolas,monospace">(int) nota</span>. Confirme que o casting <b>trunca</b> em vez de arredondar.</li>
-          <li>Declare <span class="mono" style="font-family:Consolas,monospace">byte a = 10, b = 20;</span> e depois tente <span class="mono" style="font-family:Consolas,monospace">byte soma = a + b;</span> Leia o erro e conserte com um cast.</li>
-          <li>Atualize <span class="mono" style="font-family:Consolas,monospace">int x = 5;</span> usando apenas a forma explícita <span class="mono" style="font-family:Consolas,monospace">x = x + 1</span> e imprima o resultado.</li>
-          <li>Compare no papel os resultados de <span class="mono" style="font-family:Consolas,monospace">(double) (5 / 2)</span> e <span class="mono" style="font-family:Consolas,monospace">(double) 5 / 2</span>. Depois confirme na IDE.</li>
-          <li>Imprima <span class="mono" style="font-family:Consolas,monospace">0.1 + 0.2</span> e registre a pequena diferença de precisão exibida.</li>
-        </ol>
-      </div>
-    </section>
+
+
 
     <section class="slide slide--divider" data-section="Bloco 6">
       <img class="duke" src="./duke.svg" alt="">
@@ -1443,35 +1252,9 @@ sc.close();
       <div class="callout">O mesmo esqueleto do Bloco 3, agora com tudo o que a seção ensinou: <b>Locale</b>, <b>Scanner</b>, <b>Math</b> e <b>printf</b>.</div>
     </section>
 
-    <section class="slide" data-section="Bloco 6 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Quanto vale <span class="mono" style="font-family:Consolas,monospace">Math.round(-2.5)</span>?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="false" data-explain="Essa seria a resposta se o arredondamento fosse sempre para longe do zero — mas não é assim que Math.round funciona.">-3</div>
-          <div class="chip" data-correct="true" data-explain="Math.round(x) é definido como floor(x + 0.5): floor(-2.0) é -2. No meio do caminho, o resultado é puxado para cima.">-2</div>
-          <div class="chip" data-correct="false" data-explain="O sinal não se perde: Math.round não é Math.abs.">2</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px"><span class="mono" style="font-family:Consolas,monospace">Math.round(x)</span> é <span class="mono" style="font-family:Consolas,monospace">floor(x + 0.5)</span>: <span class="mono" style="font-family:Consolas,monospace">floor(-2.0)</span> é <b>-2</b>.</div>
-        </div>
-      </div>
-    </section>
 
-    <section class="slide compact" data-section="Bloco 6 · Mão na massa">
-      <div class="eyebrow">Mão na massa · Bloco 6</div>
-      <h2>Pratique na IDE: Scanner e Math</h2>
-      <div class="slide-body top">
-        <ol class="points compact">
-          <li>Escreva um programa que lê nome, idade e salário com <span class="mono" style="font-family:Consolas,monospace">Scanner</span> e mostra os três formatados com <span class="mono" style="font-family:Consolas,monospace">printf</span>.</li>
-          <li>Leia um inteiro com <span class="mono" style="font-family:Consolas,monospace">nextInt()</span> e logo depois um texto com <span class="mono" style="font-family:Consolas,monospace">nextLine()</span>. Provoque a falha e conserte com o <span class="mono" style="font-family:Consolas,monospace">nextLine()</span> extra.</li>
-          <li>Leia três valores digitados na <b>mesma linha</b>, separados por espaço, e mostre a soma.</li>
-          <li>Digite um decimal com vírgula e depois com ponto. Descubra qual funciona na sua máquina e force o outro com <span class="mono" style="font-family:Consolas,monospace">Locale.setDefault</span>.</li>
-          <li>Calcule a distância entre dois pontos lidos do teclado, usando <span class="mono" style="font-family:Consolas,monospace">Math.pow</span> e <span class="mono" style="font-family:Consolas,monospace">Math.sqrt</span>.</li>
-        </ol>
-      </div>
-    </section>
+
+
 
     <section class="slide" data-section="Revisão">
       <div class="eyebrow">Os cinco erros que mais aparecem</div>
@@ -1514,8 +1297,8 @@ sc.close();
 
     <section class="slide slide--end" data-section="Fim">
       <img class="duke" src="./duke.svg" alt="">
-      <h1>Perguntas?</h1>
-      <div class="subtitle">Seção 3 — Estrutura sequencial</div>
+      <h1>Próxima seção</h1>
+      <div class="subtitle">Estrutura condicional: comparações, decisões e caminhos alternativos.</div>
     </section>
 
   </div>
@@ -1612,36 +1395,6 @@ sc.close();
       if (!document.fullscreenElement) document.documentElement.requestFullscreen();
       else document.exitFullscreen();
     }
-  });
-
-  document.querySelectorAll('.chip[data-correct]').forEach(function (chip) {
-    chip.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var row = chip.closest('.chip-row');
-      row.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('chip-correct', 'chip-wrong'); });
-      var isCorrect = chip.dataset.correct === 'true';
-      if (isCorrect) {
-        chip.classList.add('chip-correct');
-      } else {
-        chip.classList.add('chip-wrong');
-        var right = row.querySelector('.chip[data-correct="true"]');
-        if (right) right.classList.add('chip-correct');
-      }
-      var slide = chip.closest('.slide');
-      var answerLabel = slide.querySelector('.js-answer-label');
-      var answerText = slide.querySelector('.js-answer-text');
-      if (answerText && chip.dataset.explain) {
-        answerText.textContent = chip.dataset.explain;
-        if (answerLabel) {
-          answerLabel.textContent = isCorrect ? 'RESPOSTA CERTA' : 'ISSO NÃO É BEM ASSIM';
-          answerLabel.className = 'badge js-answer-label ' + (isCorrect ? 'badge-amber' : 'badge-red');
-        }
-      }
-      var idx = slides.indexOf(slide);
-      var frags = fragmentsOf(idx);
-      frags.forEach(function (f) { f.classList.add('visible'); });
-      if (idx === current) fragIndex = frags.length;
-    });
   });
 
   window.addEventListener('resize', scaleStage);

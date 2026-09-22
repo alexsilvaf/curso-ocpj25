@@ -189,18 +189,6 @@
   .slide--divider > *:not(.duke),
   .slide--end > *:not(.duke) { position: relative; z-index: 2; }
 
-  .chip-row { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 8px; }
-  .chip {
-    background: var(--paper-alt); border: 2px solid #e5e7eb; border-radius: 12px;
-    padding: 16px 22px; font-size: 24px; color: var(--ink-700); font-weight: 700;
-  }
-  .chip.on { border-color: var(--java-red); color: var(--java-red-dark); background: #fdf0ef; }
-  .chip[data-correct] { cursor: pointer; transition: transform .15s ease, background .2s ease, border-color .2s ease; }
-  .chip[data-correct]:hover { transform: translateY(-2px); border-color: var(--java-orange); }
-  .chip-correct { background: #dcfce7 !important; border-color: #16a34a !important; color: #166534 !important; }
-  .chip-correct::after { content: " ✓"; }
-  .chip-wrong { background: #fee2e2 !important; border-color: #dc2626 !important; color: #991b1b !important; }
-  .chip-wrong::after { content: " ✗"; }
 
   .arrow-chain { display: flex; align-items: center; justify-content: center; gap: 18px; font-size: 34px; font-weight: 700; color: var(--ink-900); flex-wrap: wrap; }
   .arrow-chain .node {
@@ -393,52 +381,11 @@
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 1 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Por que o mesmo arquivo <span class="mono" style="font-family:Consolas,monospace">.class</span> roda em Windows, Linux e Mac sem recompilar?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="false" data-explain="Se o compilador gerasse um executável por sistema, seria a abordagem compilada — exatamente o problema de portabilidade que o Java veio resolver.">Porque o compilador gera um executável para cada sistema</div>
-          <div class="chip" data-correct="true" data-explain="O bytecode é o mesmo em qualquer lugar; quem muda é a JVM, que existe em uma versão para cada sistema. Compila uma vez, roda em qualquer JVM.">Porque o bytecode é o mesmo e a JVM é que muda</div>
-          <div class="chip" data-correct="false" data-explain="Java não é interpretado linha a linha a partir do código-fonte: há uma compilação para bytecode antes. Por isso é chamado de híbrido.">Porque o Java é interpretado linha a linha</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">O bytecode é o mesmo em qualquer lugar; quem muda é a JVM, que existe em uma versão para cada sistema. Compila uma vez, roda em qualquer JVM.</div>
-        </div>
-      </div>
-    </section>
 
-    <section class="slide" data-section="Bloco 1 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Verdadeiro ou falso: Java é apenas uma linguagem de programação.</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="false" data-explain="Só metade da história. A linguagem é uma das duas faces; sem a plataforma — API e JVM — não haveria bytecode nem portabilidade.">Verdadeiro</div>
-          <div class="chip" data-correct="true" data-explain="Falso — Java é linguagem e plataforma ao mesmo tempo: as regras da linguagem, mais a API e o ambiente de execução (a JVM).">Falso</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">Falso — Java é linguagem e plataforma ao mesmo tempo: as regras da linguagem, mais a API e o ambiente de execução (a JVM).</div>
-        </div>
-      </div>
-    </section>
 
-    <section class="slide" data-section="Bloco 1 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Você vai escrever um programa de console para rodar no seu próprio computador. Qual edição atende?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="false" data-explain="A Micro Edition é voltada a dispositivos embarcados, móveis e IoT — não é o caso de um programa de desktop.">Java ME</div>
-          <div class="chip" data-correct="true" data-explain="Java SE — a Standard Edition é o núcleo da linguagem, para desktop e servidores. É a edição usada neste curso.">Java SE</div>
-          <div class="chip" data-correct="false" data-explain="A Enterprise Edition é construída sobre o SE e existe para aplicações corporativas. Para um programa de console ela só acrescenta peso.">Java EE</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">Java SE — a Standard Edition é o núcleo da linguagem, para desktop e servidores. É a edição usada neste curso.</div>
-        </div>
-      </div>
-    </section>
+
+
+
 
     <section class="slide slide--divider" data-section="Bloco 2">
       <img class="duke" src="./duke.svg" alt="">
@@ -692,52 +639,11 @@ java --module-path mods --module com.exemplo/com.exemplo.Programa
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 2 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Qual ferramenta do JDK compila um .java em .class?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="true" data-explain="javac compila. java inicia a JVM e executa; jar empacota classes já compiladas.">javac</div>
-          <div class="chip" data-correct="false" data-explain="java inicia a JVM e executa uma classe, um .jar ou um arquivo-fonte — ele não compila nada sozinho.">java</div>
-          <div class="chip" data-correct="false" data-explain="jar empacota classes já compiladas (arquivos .class) dentro de um .jar — não faz compilação.">jar</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">javac compila. java inicia a JVM e executa; jar empacota classes já compiladas.</div>
-        </div>
-      </div>
-    </section>
 
-    <section class="slide" data-section="Bloco 2 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Verdadeiro ou falso: o Class Loader carrega todas as classes de uma vez, no início do programa.</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="false" data-explain="Se fosse assim, toda aplicação carregaria na memória de uma vez, mesmo código nunca usado — desperdiçando tempo e memória.">Verdadeiro</div>
-          <div class="chip" data-correct="true" data-explain="Falso — o Class Loader carrega cada classe sob demanda, só quando ela é necessária.">Falso</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">Falso — o Class Loader carrega cada classe sob demanda, só quando ela é necessária.</div>
-        </div>
-      </div>
-    </section>
 
-    <section class="slide" data-section="Bloco 2 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Você só precisa <em>rodar</em> um .jar nesta máquina — nunca compilar nada. Qual é o mínimo necessário?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="false" data-explain="O JDK inclui o compilador (javac) e ferramentas de desenvolvimento — é mais do que você precisa só para executar.">JDK completo</div>
-          <div class="chip" data-correct="true" data-explain="JRE — é a JVM mais as bibliotecas padrão, o mínimo para executar. Sem javac, ele não compila nada.">JRE</div>
-          <div class="chip" data-correct="false" data-explain="A JVM sozinha executa bytecode, mas sem as bibliotecas padrão, como String e System, quase nenhum programa real funciona.">Só a JVM</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">JRE — é a JVM mais as bibliotecas padrão, o mínimo para executar. Sem javac, ele não compila nada.</div>
-        </div>
-      </div>
-    </section>
+
+
+
 
     <section class="slide slide--divider" data-section="Bloco 3">
       <img class="duke" src="./duke.svg" alt="">
@@ -802,52 +708,11 @@ java --module-path mods --module com.exemplo/com.exemplo.Programa
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 3 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>De quantos em quantos meses o Java lança uma nova versão?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="false" data-explain="3 meses seria rápido demais — nem a Oracle nem os times de infraestrutura acompanhariam esse ritmo.">3 meses</div>
-          <div class="chip" data-correct="true" data-explain="6 meses — sempre em março e setembro, desde o Java 9.">6 meses</div>
-          <div class="chip" data-correct="false" data-explain="Era o ritmo antigo do Java, antes do Java 9. Hoje é mais rápido: a cada 6 meses.">12 meses</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">6 meses — sempre em março e setembro, desde o Java 9.</div>
-        </div>
-      </div>
-    </section>
 
-    <section class="slide" data-section="Bloco 3 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Um recurso que ainda está em Preview cai na prova de certificação?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="false" data-explain="Recursos em preview ainda podem mudar ou ser removidos — por isso não entram na prova.">Sim</div>
-          <div class="chip" data-correct="true" data-explain="Não — a prova cobra apenas recursos finais da versão correspondente.">Não</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">Não — a prova cobra apenas recursos finais da versão correspondente.</div>
-        </div>
-      </div>
-    </section>
 
-    <section class="slide" data-section="Bloco 3 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Sua empresa quer a mesma versão em produção pelos próximos 5 anos, com correções de segurança garantidas. Qual escolher?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="false" data-explain="Uma feature release perde suporte assim que a próxima versão sai, seis meses depois — não serve pra 5 anos de estabilidade.">Feature release</div>
-          <div class="chip" data-correct="true" data-explain="Versão LTS — recebe correções por anos. É a escolha certa para produção de longo prazo.">Versão LTS</div>
-          <div class="chip" data-correct="false" data-explain="Uma versão em preview ainda pode mudar ou ser removida — nunca é escolha para produção.">Versão em preview</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">Versão LTS — recebe correções por anos. É a escolha certa para produção de longo prazo.</div>
-        </div>
-      </div>
-    </section>
+
+
+
 
     <section class="slide slide--divider" data-section="Bloco 4">
       <img class="duke" src="./duke.svg" alt="">
@@ -915,51 +780,11 @@ java --module-path mods --module com.exemplo/com.exemplo.Programa
       <div class="callout">Distribuída como <span class="mono" style="font-family:Consolas,monospace">.jar</span> ou como imagem de runtime gerada pelo <span class="mono" style="font-family:Consolas,monospace">jlink</span>.</div>
     </section>
 
-    <section class="slide" data-section="Bloco 4 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Qual é a ordem certa, do menor para o maior agrupamento?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="true" data-explain="Classe é a menor unidade; pacotes agrupam classes, módulos agrupam pacotes, e a aplicação agrupa módulos.">classe → pacote → módulo → aplicação</div>
-          <div class="chip" data-correct="false" data-explain="Inverteu: pacote é quem agrupa classes, não o contrário — a classe vem primeiro.">pacote → classe → módulo → aplicação</div>
-          <div class="chip" data-correct="false" data-explain="Está de trás pra frente: módulo é o maior agrupamento aqui, não o menor.">módulo → pacote → classe → aplicação</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">Classe é a menor unidade; pacotes agrupam classes, módulos agrupam pacotes, e a aplicação agrupa módulos.</div>
-        </div>
-      </div>
-    </section>
 
-    <section class="slide" data-section="Bloco 4 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Um arquivo .java pode ter quantas classes public?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="false" data-explain="Um arquivo pode, sim, ter uma classe public — só não pode ter mais de uma.">0</div>
-          <div class="chip" data-correct="true" data-explain="No máximo uma — e o nome do arquivo precisa ser idêntico ao dela.">1</div>
-          <div class="chip" data-correct="false" data-explain="O compilador não aceita: no máximo uma classe public por arquivo-fonte.">Quantas quiser</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">No máximo uma — e o nome do arquivo precisa ser idêntico ao dela.</div>
-        </div>
-      </div>
-    </section>
 
-    <section class="slide" data-section="Bloco 4 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Ache o erro</h2>
-      <div class="code-block small">
-<span class="com">// Arquivo: Produto.java</span>
-<span class="kw">public</span> <span class="kw">class</span> Item { String nome; }
-<span class="kw">public</span> <span class="kw">class</span> Categoria { String descricao; }
-      </div>
-      <div class="fragment" style="margin-top:22px">
-        <span class="badge badge-amber">RESPOSTA</span>
-        <div class="callout" style="margin-top:14px">Duas classes <span class="mono" style="font-family:Consolas,monospace">public</span> no mesmo arquivo — só uma é permitida.</div>
-      </div>
-    </section>
+
+
+
 
     <section class="slide slide--divider" data-section="Bloco 5">
       <img class="duke" src="./duke.svg" alt="">
@@ -1032,55 +857,11 @@ java OlaMundo          <span class="com">// executa (sem a extensão .class)</sp
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 5 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Qual nome a JVM procura para iniciar o programa?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="false" data-explain="start não é o nome do ponto de entrada tradicional do Java.">start</div>
-          <div class="chip" data-correct="true" data-explain="main é o nome usado como ponto de entrada do programa.">main</div>
-          <div class="chip" data-correct="false" data-explain="run aparece em outros contextos, mas não inicia este programa.">run</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">A JVM procura o método chamado <span class="mono" style="font-family:Consolas,monospace">main</span>. O significado completo das outras palavras será estudado gradualmente.</div>
-        </div>
-      </div>
-    </section>
 
-    <section class="slide" data-section="Bloco 5 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Qual deve ser o nome do arquivo desta classe?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="true" data-explain="Uma classe pública chamada OlaMundo deve ficar em OlaMundo.java.">OlaMundo.java</div>
-          <div class="chip" data-correct="false" data-explain="Java diferencia maiúsculas de minúsculas, inclusive no nome da classe pública.">olamundo.java</div>
-          <div class="chip" data-correct="false" data-explain="O nome precisa coincidir com a classe pública, não com o método main.">main.java</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">O arquivo deve se chamar <b>OlaMundo.java</b>, exatamente como a classe pública.</div>
-        </div>
-      </div>
-    </section>
 
-    <section class="slide" data-section="Bloco 5 · Verificação">
-      <div class="eyebrow">Mão na massa</div>
-      <h2>Personalize o OlaMundo</h2>
-      <div class="slide-body top">
-        <ul class="points compact">
-          <li>Troque a mensagem por uma saudação de sua escolha.</li>
-          <li>Acrescente uma segunda linha com <span class="mono" style="font-family:Consolas,monospace">System.out.println</span>.</li>
-        </ul>
-        <div class="fragment" style="margin-top:26px">
-          <span class="badge badge-amber">SOLUÇÃO — dentro do main</span>
-          <div class="code-block small" style="margin-top:14px">
-System.out.println(<span class="str">"Olá, turma!"</span>);
-System.out.println(<span class="str">"Meu primeiro programa Java."</span>);
-          </div>
-        </div>
-      </div>
-    </section>
+
+
+
 
     <section class="slide slide--divider" data-section="Bloco 6">
       <img class="duke" src="./duke.svg" alt="">
@@ -1110,7 +891,6 @@ System.out.println(<span class="str">"Meu primeiro programa Java."</span>);
 <span class="kw">void</span> main() {
     IO.println(<span class="str">"Olá, mundo!"</span>);
 }
-
 
 
           </div>
@@ -1144,67 +924,11 @@ System.out.println(<span class="str">"Meu primeiro programa Java."</span>);
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 6 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Qual trecho inicia o arquivo compacto apresentado?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="true" data-explain="void main() é a forma compacta mostrada nesta aula.">void main()</div>
-          <div class="chip" data-correct="false" data-explain="public class inicia a forma tradicional, não o arquivo compacto.">public class</div>
-          <div class="chip" data-correct="false" data-explain="package organiza o código, mas não inicia a execução.">package</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">A forma compacta apresentada começa com <span class="mono" style="font-family:Consolas,monospace">void main()</span>.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide" data-section="Bloco 6 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Qual classe do Java 25 substitui, em casos simples, System.out.println?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip" data-correct="true" data-explain="java.lang.IO — importada automaticamente, com println, print e readln.">java.lang.IO</div>
-          <div class="chip" data-correct="false" data-explain="Console é outra API. A novidade apresentada nesta aula é java.lang.IO.">java.io.Console</div>
-          <div class="chip" data-correct="false" data-explain="System é usado na forma tradicional, mas a novidade apresentada nesta aula é IO.">java.lang.System</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">java.lang.IO — importada automaticamente, com println, print e readln.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide" data-section="Bloco 6 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Reescreva em arquivo-fonte compacto</h2>
-      <div class="two-col center">
-        <div>
-          <div class="col-title">Programa tradicional</div>
-          <div class="code-block small">
-<span class="kw">public</span> <span class="kw">class</span> Saudacao {
-    <span class="kw">public</span> <span class="kw">static</span> <span class="kw">void</span>
-    main(String[] args) {
-        System.out.println(
-          <span class="str">"Bem-vindo ao Java 25!"</span>);
-    }
-}
-          </div>
-        </div>
-        <div class="fragment">
-          <div class="col-title">Solução — arquivo compacto</div>
-          <div class="code-block small">
-<span class="kw">void</span> main() {
-    IO.println(<span class="str">"Bem-vindo ao Java 25!"</span>);
-}
 
 
 
-          </div>
-        </div>
-      </div>
-    </section>
+
+
 
     <section class="slide" data-section="Revisão">
       <div class="eyebrow">Fechando a Seção 2</div>
@@ -1232,8 +956,8 @@ System.out.println(<span class="str">"Meu primeiro programa Java."</span>);
 
     <section class="slide slide--end" data-section="Fim">
       <img class="duke" src="./duke.svg" alt="">
-      <h1>Perguntas?</h1>
-      <div class="subtitle">Seção 2 — Introdução à linguagem Java</div>
+      <h1>Próxima seção</h1>
+      <div class="subtitle">Estrutura sequencial: variáveis, expressões, entrada, processamento e saída.</div>
     </section>
 
   </div>
@@ -1330,36 +1054,6 @@ System.out.println(<span class="str">"Meu primeiro programa Java."</span>);
       if (!document.fullscreenElement) document.documentElement.requestFullscreen();
       else document.exitFullscreen();
     }
-  });
-
-  document.querySelectorAll('.chip[data-correct]').forEach(function (chip) {
-    chip.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var row = chip.closest('.chip-row');
-      row.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('chip-correct', 'chip-wrong'); });
-      var isCorrect = chip.dataset.correct === 'true';
-      if (isCorrect) {
-        chip.classList.add('chip-correct');
-      } else {
-        chip.classList.add('chip-wrong');
-        var right = row.querySelector('.chip[data-correct="true"]');
-        if (right) right.classList.add('chip-correct');
-      }
-      var slide = chip.closest('.slide');
-      var answerLabel = slide.querySelector('.js-answer-label');
-      var answerText = slide.querySelector('.js-answer-text');
-      if (answerText && chip.dataset.explain) {
-        answerText.textContent = chip.dataset.explain;
-        if (answerLabel) {
-          answerLabel.textContent = isCorrect ? 'RESPOSTA CERTA' : 'ISSO NÃO É BEM ASSIM';
-          answerLabel.className = 'badge js-answer-label ' + (isCorrect ? 'badge-amber' : 'badge-red');
-        }
-      }
-      var idx = slides.indexOf(slide);
-      var frags = fragmentsOf(idx);
-      frags.forEach(function (f) { f.classList.add('visible'); });
-      if (idx === current) fragIndex = frags.length;
-    });
   });
 
   window.addEventListener('resize', scaleStage);

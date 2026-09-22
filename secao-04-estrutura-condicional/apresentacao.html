@@ -224,18 +224,6 @@
   .slide--divider > *:not(.duke),
   .slide--end > *:not(.duke) { position: relative; z-index: 2; }
 
-  .chip-row { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 8px; }
-  .chip {
-    background: var(--paper-alt); border: 2px solid #e5e7eb; border-radius: 12px;
-    padding: 16px 22px; font-size: 24px; color: var(--ink-700); font-weight: 700;
-  }
-  .chip.on { border-color: var(--java-red); color: var(--java-red-dark); background: #fdf0ef; }
-  .chip[data-correct] { cursor: pointer; transition: transform .15s ease, background .2s ease, border-color .2s ease; }
-  .chip[data-correct]:hover { transform: translateY(-2px); border-color: var(--java-orange); }
-  .chip-correct { background: #dcfce7 !important; border-color: #16a34a !important; color: #166534 !important; }
-  .chip-correct::after { content: " ✓"; }
-  .chip-wrong { background: #fee2e2 !important; border-color: #dc2626 !important; color: #991b1b !important; }
-  .chip-wrong::after { content: " ✗"; }
 
   .arrow-chain { display: flex; align-items: center; justify-content: center; gap: 18px; font-size: 34px; font-weight: 700; color: var(--ink-900); flex-wrap: wrap; }
   .arrow-chain .node {
@@ -297,36 +285,6 @@
     padding: 14px 28px; color: var(--ink-900);
   }
   .formula .part { color: var(--java-red-dark); font-weight: 700; }
-
-  /* Traçador: um clique escolhe o valor e o código acende só o caminho percorrido */
-  .trace-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
-  .trace-btn {
-    font-family: Consolas, "Courier New", monospace; font-size: 22px; font-weight: 700;
-    background: var(--paper-alt); border: 2px solid #e5e7eb; border-radius: 10px;
-    padding: 8px 16px; color: var(--ink-700); cursor: pointer;
-    transition: transform .15s ease, border-color .2s ease, background .2s ease;
-  }
-  .trace-btn:hover { transform: translateY(-2px); border-color: var(--java-orange); }
-  .trace-btn.on { border-color: var(--java-red); background: #fdf0ef; color: var(--java-red-dark); }
-  .trace .tl { border-radius: 4px; transition: opacity .25s ease, background .25s ease; }
-  .trace.active .tl { opacity: .3; }
-  .trace.active .tl.is-true, .trace.active .tl.is-false,
-  .trace.active .tl.is-run, .trace.active .tl.is-pass { opacity: 1; }
-  .trace.active .tl.is-true { background: #dcfce7; }
-  .trace.active .tl.is-false { background: #fee2e2; }
-  .trace.active .tl.is-run { background: #ffe7c2; }
-  .pill {
-    display: inline-block; margin-left: 12px; padding: 0 12px; border-radius: 999px;
-    font-family: Arial, Helvetica, sans-serif; font-size: .72em; font-weight: 700;
-    line-height: 1.55; vertical-align: 2px; white-space: nowrap;
-  }
-  .pill:empty { display: none; }
-  .pill.is-true { background: #16a34a; color: #ffffff; }
-  .pill.is-false { background: #dc2626; color: #ffffff; }
-  .pill.is-skip { background: #e5e7eb; color: #6b7280; }
-  .pill.is-pass { background: #ffffff; color: #6b7280; border: 2px dashed #c7cbd1; }
-  .trace-console { min-height: 64px; }
-  .trace-console.tall { min-height: 132px; }
 
   /* Escopo: blocos desenhados como caixas aninhadas */
   .code-block.scope-demo { white-space: normal; }
@@ -422,9 +380,9 @@ System.out.println(idade &lt; 18);     <span class="com">// false</span>
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 1 · Pergunta e resposta">
+    <section class="slide" data-section="Bloco 1 · Expressão e resultado">
       <div class="eyebrow">Leia a expressão em voz alta</div>
-      <h2>Separe a pergunta da resposta</h2>
+      <h2>Da expressão ao resultado booleano</h2>
       <div class="slide-body">
         <table class="deck-table">
           <tr><th class="mono">Expressão</th><th>Pergunta feita</th><th>Resposta</th></tr>
@@ -565,52 +523,6 @@ System.out.println(resposta == <span class="str">"sim"</span>);   <span class="c
       <div class="callout amber">A comparação de conteúdo fica para quando o curso aprofundar objetos. Nesta seção, as decisões usam números, <code>char</code> e <code>boolean</code>.</div>
     </section>
 
-    <section class="slide compact" data-section="Bloco 1 · Teste rápido">
-      <div class="eyebrow">Preveja antes de revelar</div>
-      <h2>Teste rápido com <code>int x = 8;</code> e <code>int y = 3;</code></h2>
-      <div class="slide-body top">
-        <table class="deck-table" style="max-width:720px">
-          <tr><th class="mono">Expressão</th><th class="mono">Resultado</th></tr>
-          <tr><td class="mono">x > y</td><td class="mono"><span class="fragment v-true">true</span></td></tr>
-          <tr><td class="mono">x &lt;= 8</td><td class="mono"><span class="fragment v-true">true</span></td></tr>
-          <tr><td class="mono">x == y</td><td class="mono"><span class="fragment v-false">false</span></td></tr>
-          <tr><td class="mono">x != y</td><td class="mono"><span class="fragment v-true">true</span></td></tr>
-          <tr><td class="mono">x % 2 == 0</td><td class="mono"><span class="fragment v-true">true</span></td></tr>
-          <tr><td class="mono">y % 2 != 0</td><td class="mono"><span class="fragment v-true">true</span></td></tr>
-        </table>
-        <div class="callout fragment">Avaliar cada expressão isoladamente, no papel, é o primeiro passo do teste de mesa — antes de a condição ir parar dentro de um <code>if</code>.</div>
-      </div>
-    </section>
-
-    <section class="slide" data-section="Bloco 1 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Qual condição reconhece <b>qualquer</b> número ímpar, inclusive negativo?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip mono" data-correct="false" data-explain="Falha nos negativos: em Java, o resto tem o sinal do dividendo. -7 % 2 vale -1, e -1 == 1 é false — o -7 seria tratado como par.">n % 2 == 1</div>
-          <div class="chip mono" data-correct="true" data-explain="O resto de um ímpar é 1 ou -1, mas nunca 0. Perguntar se ele é diferente de zero funciona para positivos e negativos.">n % 2 != 0</div>
-          <div class="chip mono" data-correct="false" data-explain="n / 2 é a divisão inteira, não o resto: 4 / 2 vale 2, que é diferente de zero — e 4 é par.">n / 2 != 0</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">O resto de um ímpar é <code>1</code> ou <code>-1</code>, mas nunca <code>0</code>. Em Java, o resto tem o sinal do dividendo: <code>-7 % 2</code> vale <code>-1</code>, e por isso <code>n % 2 == 1</code> falha nos negativos.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide compact" data-section="Bloco 1 · Mão na massa">
-      <div class="eyebrow">Mão na massa · Bloco 1</div>
-      <h2>Pratique na IDE: expressões comparativas</h2>
-      <div class="slide-body top">
-        <ol class="points compact">
-          <li>Guarde em <code>boolean maiorDeIdade</code> o resultado de <code>idade >= 18</code> e imprima para as idades 17, 18 e 19.</li>
-          <li>Com <code>int quantidade</code> declarada, escreva <code>boolean temDez = quantidade = 10;</code> Leia o erro e corrija trocando <code>=</code> por <code>==</code>.</li>
-          <li>Imprima <code>10 == 10.0</code>, <code>'A' &lt; 'B'</code> e <code>'a' > 'Z'</code>. Depois imprima <code>(int) 'a'</code> e <code>(int) 'Z'</code> para conferir os códigos.</li>
-          <li>Imprima <code>0.1 + 0.2 == 0.3</code>. Em seguida, refaça a comparação com <code>Math.abs(...) &lt; 0.000001</code>.</li>
-          <li>Teste <code>n % 2 == 1</code> e <code>n % 2 != 0</code> com 7, -7 e 0. Anote qual das duas acerta todos os casos.</li>
-        </ol>
-      </div>
-    </section>
 
     <section class="slide slide--divider" data-section="Bloco 2">
       <img class="duke" src="./duke.svg" alt="">
@@ -772,28 +684,26 @@ System.out.println(resposta == <span class="str">"sim"</span>);   <span class="c
     <section class="slide compact" data-section="Bloco 2 · Curto-circuito">
       <div class="eyebrow">Quando o resultado já está decidido</div>
       <h2>Curto-circuito: o <code>&amp;&amp;</code> para assim que pode</h2>
-      <div class="two-col wide-left trace">
+      <div class="two-col wide-left">
         <div>
           <div class="code-block small">
-<span class="kw">int</span> divisor = <span data-f="div">0</span>;
+<span class="kw">int</span> divisor = 0;
 
-<span class="kw">boolean</span> podeDividir = <span class="tl" data-k="p1">divisor != 0</span><span class="pill" data-k="p1" data-f="p1"></span>
-                   &amp;&amp; <span class="tl" data-k="p2">10 / divisor > 2</span>;<span class="pill" data-k="p2" data-f="p2"></span>
+<span class="kw">boolean</span> podeDividir = divisor != 0
+                   &amp;&amp; 10 / divisor > 2;
 
-System.out.println(podeDividir);
+System.out.println(podeDividir); <span class="com">// false</span>
           </div>
-          <div class="col-title" style="margin-top:18px">Saída</div>
-          <div class="code-block small trace-console" data-f="out"><span class="com">escolha um divisor ao lado</span></div>
         </div>
         <div>
-          <div class="col-title">Escolha o divisor</div>
-          <div class="trace-row">
-            <button type="button" class="trace-btn" data-state='{"p1":"false","p2":"skip"}' data-fill='{"div":"0","p1":"false","p2":"não avaliada","out":"false","why":"A 1ª parte já é false, e false &amp;&amp; qualquer coisa dá false. O Java nem avalia a 2ª parte: a divisão por zero nunca acontece."}'>0</button>
-            <button type="button" class="trace-btn" data-state='{"p1":"true","p2":"true"}' data-fill='{"div":"2","p1":"true","p2":"true","out":"true","why":"A 1ª parte é true, então o resultado depende da 2ª: 10 / 2 é 5, e 5 > 2 é true."}'>2</button>
-            <button type="button" class="trace-btn" data-state='{"p1":"true","p2":"false"}' data-fill='{"div":"5","p1":"true","p2":"false","out":"false","why":"As duas partes são avaliadas: 10 / 5 é 2, e 2 > 2 é false."}'>5</button>
-          </div>
-          <div class="callout amber" data-f="why">Preveja o resultado antes de clicar.</div>
-          <div class="callout">No <code>||</code> é igual, ao contrário: se a 1ª parte é <code>true</code>, o resultado já é <code>true</code> e a 2ª não é avaliada.</div>
+          <table class="deck-table">
+            <tr><th>Etapa</th><th>Resultado</th></tr>
+            <tr><td><code>divisor != 0</code></td><td><code>false</code></td></tr>
+            <tr><td><code>10 / divisor > 2</code></td><td>não é avaliada</td></tr>
+            <tr><td>expressão completa</td><td><code>false</code></td></tr>
+          </table>
+          <div class="callout amber">A divisão por zero não acontece porque a primeira condição já tornou o <code>&amp;&amp;</code> falso.</div>
+          <div class="callout">No <code>||</code>, se a primeira parte for <code>true</code>, a segunda também não será avaliada.</div>
         </div>
       </div>
     </section>
@@ -895,35 +805,6 @@ System.out.println(podeDividir);
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 2 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Quanto vale <code>true || false &amp;&amp; false</code>?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip mono" data-correct="true" data-explain="O &amp;&amp; tem precedência maior que o ||: a expressão é true || (false &amp;&amp; false). Como o lado esquerdo do || já é true, o resultado é true — e o curto-circuito nem avalia o resto.">true</div>
-          <div class="chip mono" data-correct="false" data-explain="Esse seria o resultado lendo da esquerda para a direita: (true || false) &amp;&amp; false. Mas o &amp;&amp; é avaliado antes do ||.">false</div>
-          <div class="chip" data-correct="false" data-explain="Compila: todos os operandos são boolean, e &amp;&amp; e || aceitam boolean.">Não compila</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">O <code>&amp;&amp;</code> vem antes do <code>||</code>: a expressão é <code>true || (false &amp;&amp; false)</code>. O lado esquerdo do <code>||</code> já é <code>true</code>, então o resultado é <code>true</code>.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide compact" data-section="Bloco 2 · Mão na massa">
-      <div class="eyebrow">Mão na massa · Bloco 2</div>
-      <h2>Pratique na IDE: expressões lógicas</h2>
-      <div class="slide-body top">
-        <ol class="points compact">
-          <li>Imprima as quatro combinações de <code>true</code> e <code>false</code> com <code>&amp;&amp;</code> e com <code>||</code>. Monte as duas tabelas-verdade no caderno.</li>
-          <li>Escreva <code>boolean notaValida</code> para uma nota de 0 a 10 e teste com -1, 0, 10 e 11.</li>
-          <li>Tente escrever <code>0 &lt;= nota &lt;= 10</code>. Leia o erro e reescreva a condição com <code>&amp;&amp;</code>.</li>
-          <li>Com <code>int divisor = 0;</code>, avalie <code>divisor != 0 &amp;&amp; 10 / divisor > 2</code>. Depois inverta a ordem das partes e, por fim, troque <code>&amp;&amp;</code> por <code>&amp;</code>. Anote quando aparece a <code>ArithmeticException</code>.</li>
-          <li>Escreva "fora do intervalo de 18 a 65" com <code>!(...)</code> e sem <code>!</code>. Confira as duas versões com 17, 18, 65 e 66.</li>
-        </ol>
-      </div>
-    </section>
 
     <section class="slide slide--divider" data-section="Bloco 3">
       <img class="duke" src="./duke.svg" alt="">
@@ -1001,33 +882,32 @@ System.out.printf(<span class="str">"Saldo: %.2f%n"</span>, saldo);
     <section class="slide compact" data-section="Bloco 3 · else if">
       <div class="eyebrow">De cima para baixo, o primeiro true vence</div>
       <h2>Encadeamento com <code>else if</code></h2>
-      <div class="two-col wide-left trace">
+      <div class="two-col wide-left">
         <div>
           <div class="code-block small">
-<span class="kw">double</span> nota = <span data-f="nota">7.5</span>;
+<span class="kw">double</span> nota = 7.5;
 
-<span class="tl" data-k="c1"><span class="kw">if</span> (nota >= 9.0) {</span><span class="pill" data-k="c1" data-f="c1"></span>
-    <span class="tl" data-k="b1">System.out.println(<span class="str">"Conceito A"</span>);</span>
-<span class="tl" data-k="c2">} <span class="kw">else if</span> (nota >= 7.0) {</span><span class="pill" data-k="c2" data-f="c2"></span>
-    <span class="tl" data-k="b2">System.out.println(<span class="str">"Conceito B"</span>);</span>
-<span class="tl" data-k="c3">} <span class="kw">else if</span> (nota >= 6.0) {</span><span class="pill" data-k="c3" data-f="c3"></span>
-    <span class="tl" data-k="b3">System.out.println(<span class="str">"Conceito C"</span>);</span>
-<span class="tl" data-k="c4">} <span class="kw">else</span> {</span>
-    <span class="tl" data-k="b4">System.out.println(<span class="str">"Conceito D"</span>);</span>
-<span class="tl">}</span>
+<span class="kw">if</span> (nota >= 9.0) {
+    System.out.println(<span class="str">"Conceito A"</span>);
+} <span class="kw">else if</span> (nota >= 7.0) {
+    System.out.println(<span class="str">"Conceito B"</span>);
+} <span class="kw">else if</span> (nota >= 6.0) {
+    System.out.println(<span class="str">"Conceito C"</span>);
+} <span class="kw">else</span> {
+    System.out.println(<span class="str">"Conceito D"</span>);
+}
           </div>
         </div>
         <div>
-          <div class="col-title">Escolha a nota</div>
-          <div class="trace-row">
-            <button type="button" class="trace-btn" data-state='{"c1":"true","b1":"run","c2":"skip","c3":"skip"}' data-fill='{"nota":"9.5","c1":"true","c2":"não avaliada","c3":"não avaliada","out":"Conceito A","why":"9.5 >= 9.0 é true: o primeiro bloco executa e o resto da cadeia é pulado. As outras condições também seriam true, mas nem chegam a ser testadas."}'>9.5</button>
-            <button type="button" class="trace-btn" data-state='{"c1":"false","c2":"true","b2":"run","c3":"skip"}' data-fill='{"nota":"7.5","c1":"false","c2":"true","c3":"não avaliada","out":"Conceito B","why":"A primeira condição é false, a segunda é true. O último else if nem é avaliado."}'>7.5</button>
-            <button type="button" class="trace-btn" data-state='{"c1":"false","c2":"false","c3":"true","b3":"run"}' data-fill='{"nota":"6.0","c1":"false","c2":"false","c3":"true","out":"Conceito C","why":"6.0 >= 6.0 é true: o limite entra. Todo teste de mesa precisa passar pelo valor exato do limite."}'>6.0</button>
-            <button type="button" class="trace-btn" data-state='{"c1":"false","c2":"false","c3":"false","c4":"run","b4":"run"}' data-fill='{"nota":"4.0","c1":"false","c2":"false","c3":"false","out":"Conceito D","why":"Todas as condições são false: sobra o else, que não tem condição nenhuma."}'>4.0</button>
-          </div>
-          <div class="col-title">Saída</div>
-          <div class="code-block small trace-console" data-f="out"><span class="com">escolha uma nota</span></div>
-          <div class="callout amber" data-f="why">Preveja a saída antes de clicar.</div>
+          <table class="deck-table">
+            <tr><th>Condição</th><th>Resultado</th></tr>
+            <tr><td><code>nota >= 9.0</code></td><td><code>false</code></td></tr>
+            <tr><td><code>nota >= 7.0</code></td><td><code>true</code></td></tr>
+            <tr><td><code>nota >= 6.0</code></td><td>não é avaliada</td></tr>
+          </table>
+          <div class="col-title" style="margin-top:18px">Saída</div>
+          <div class="code-block small">Conceito B</div>
+          <div class="callout amber">A cadeia para na primeira condição verdadeira.</div>
         </div>
       </div>
     </section>
@@ -1204,75 +1084,6 @@ System.out.println(x + <span class="str">" "</span> + y);
       <div class="callout fragment">O bloco do <code>else</code> não executa, então não aparece na tabela: o teste de mesa registra <b>somente</b> o caminho percorrido.</div>
     </section>
 
-    <section class="slide compact" data-section="Bloco 3 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>O que este trecho imprime?</h2>
-      <div class="two-col center">
-        <div>
-          <div class="code-block small">
-<span class="kw">int</span> x = 3;
-
-<span class="kw">if</span> (x > 10); {
-    System.out.println(<span class="str">"Maior que 10"</span>);
-}
-          </div>
-        </div>
-        <div>
-          <div class="chip-row">
-            <div class="chip" data-correct="false" data-explain="Parece que nada, porque 3 > 10 é false. Mas o ; logo depois da condição encerrou o if: o bloco de baixo não pertence mais a ele.">Nada</div>
-            <div class="chip" data-correct="true" data-explain="O ; depois da condição é uma instrução vazia — é ela que o if controla. O bloco entre chaves vem depois, é independente e executa sempre.">Maior que 10</div>
-            <div class="chip" data-correct="false" data-explain="Compila: um ; sozinho é uma instrução válida (vazia), e um bloco { } solto também é permitido.">Não compila</div>
-          </div>
-          <div class="fragment js-answer" style="margin-top:28px">
-            <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-            <div class="callout js-answer-text" style="margin-top:14px">O <code>;</code> depois da condição é uma instrução vazia, e é ela que o <code>if</code> controla. O bloco entre chaves é independente e executa sempre: imprime <b>Maior que 10</b>.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide compact" data-section="Bloco 3 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>E este, o que imprime?</h2>
-      <div class="two-col center">
-        <div>
-          <div class="code-block small">
-<span class="kw">int</span> x = 5;
-
-<span class="kw">if</span> (x > 10)
-    <span class="kw">if</span> (x > 20)
-        System.out.println(<span class="str">"A"</span>);
-<span class="kw">else</span>
-    System.out.println(<span class="str">"B"</span>);
-          </div>
-        </div>
-        <div>
-          <div class="chip-row">
-            <div class="chip" data-correct="false" data-explain="A indentação sugere que o else é do primeiro if — mas o compilador ignora a indentação.">B</div>
-            <div class="chip" data-correct="true" data-explain="O else pertence ao if sem else mais próximo: o de dentro. Como x > 10 é false, o if de fora pula tudo, inclusive esse else.">Nada</div>
-            <div class="chip" data-correct="false" data-explain="Para imprimir A, x precisaria ser maior que 20.">A</div>
-          </div>
-          <div class="fragment js-answer" style="margin-top:28px">
-            <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-            <div class="callout js-answer-text" style="margin-top:14px">O <code>else</code> pertence ao <code>if</code> sem <code>else</code> mais próximo — o de dentro. Como <code>x > 10</code> é <code>false</code>, nada é impresso. Com chaves, a dúvida nem existiria.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide compact" data-section="Bloco 3 · Mão na massa">
-      <div class="eyebrow">Mão na massa · Bloco 3</div>
-      <h2>Pratique na IDE: if, else if e else</h2>
-      <div class="slide-body top">
-        <ol class="points compact">
-          <li>Leia uma nota e imprima "Aprovado" ou "Reprovado". Teste com 5.9, 6.0 e 6.1.</li>
-          <li>Classifique a nota nos conceitos A, B, C e D com <code>else if</code>. Depois coloque <code>nota >= 6.0</code> como primeira condição e descubra qual conceito deixa de aparecer.</li>
-          <li>Escreva o programa do sinal e da paridade e teste com 7, -4 e 0.</li>
-          <li>Escreva um <code>if</code> sem chaves com duas linhas indentadas embaixo. Execute com a condição falsa e explique a saída.</li>
-          <li>Faça no papel o teste de mesa do trecho com <code>x = 10</code> e <code>y = 4</code>. Repita com <code>x = 3</code> e <code>y = 8</code> e confira executando.</li>
-        </ol>
-      </div>
-    </section>
 
     <section class="slide slide--divider" data-section="Bloco 4">
       <img class="duke" src="./duke.svg" alt="">
@@ -1434,44 +1245,6 @@ sc.close();
       <div class="callout">O <code>saldo -= saque</code> só é alcançado depois que a condição confirma que o valor é <b>positivo</b> e <b>cabe</b> no saldo.</div>
     </section>
 
-    <section class="slide compact" data-section="Bloco 4 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>O que este trecho imprime?</h2>
-      <div class="two-col center">
-        <div>
-          <div class="code-block">
-<span class="kw">byte</span> b = 10;
-b *= 30;
-System.out.println(b);
-          </div>
-        </div>
-        <div>
-          <div class="chip-row">
-            <div class="chip mono" data-correct="false" data-explain="300 não cabe em um byte, que vai só até 127. O resultado precisa voltar para byte — e alguma coisa se perde no caminho.">300</div>
-            <div class="chip mono" data-correct="true" data-explain="b *= 30 equivale a b = (byte) (b * 30). O produto é 300, e o casting para byte descarta os bits que não cabem: sobra 44, o mesmo caso da Seção 3.">44</div>
-            <div class="chip" data-correct="false" data-explain="Compila: a forma cumulativa inclui o casting para o tipo da variável. Quem não compilaria é b = b * 30.">Não compila</div>
-          </div>
-          <div class="fragment js-answer" style="margin-top:28px">
-            <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-            <div class="callout js-answer-text" style="margin-top:14px"><code>b *= 30</code> equivale a <code>b = (byte) (b * 30)</code>. O produto é 300, e o casting para <code>byte</code> descarta os bits que não cabem: sobra <b>44</b>.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide compact" data-section="Bloco 4 · Mão na massa">
-      <div class="eyebrow">Mão na massa · Bloco 4</div>
-      <h2>Pratique na IDE: atribuição cumulativa</h2>
-      <div class="slide-body top">
-        <ol class="points compact">
-          <li>Parta de <code>double saldo = 1000.0;</code> e aplique um depósito, um saque e um acréscimo de 1% com <code>+=</code>, <code>-=</code> e <code>*=</code>, imprimindo o saldo depois de cada passo.</li>
-          <li>Com <code>short quantidade = 5;</code>, escreva <code>quantidade = quantidade + 1;</code> Leia o erro, troque por <code>quantidade += 1;</code> e explique por que agora compila.</li>
-          <li>Com <code>byte valor = 127;</code>, execute <code>valor += 1;</code> e imprima. Explique o resultado negativo.</li>
-          <li>Com <code>int x = 5;</code>, execute <code>int y = x++;</code> e depois <code>int z = ++x;</code> Imprima <code>x</code>, <code>y</code> e <code>z</code> e explique cada valor.</li>
-          <li>Escreva o programa do saque e teste um valor válido, um maior que o saldo e um negativo.</li>
-        </ol>
-      </div>
-    </section>
 
     <section class="slide slide--divider" data-section="Bloco 5">
       <img class="duke" src="./duke.svg" alt="">
@@ -1537,32 +1310,28 @@ System.out.println(b);
     <section class="slide compact" data-section="Bloco 5 · Fall-through">
       <div class="eyebrow">O case marca onde começa, não onde termina</div>
       <h2>Sem <code>break</code>, a execução continua</h2>
-      <div class="two-col wide-left trace">
+      <div class="two-col wide-left">
         <div>
           <div class="code-block small">
-<span class="kw">int</span> opcao = <span data-f="op">1</span>;
+<span class="kw">int</span> opcao = 1;
 
 <span class="kw">switch</span> (opcao) {
-    <span class="tl" data-k="l1"><span class="kw">case</span> 1:</span><span class="pill" data-k="l1" data-f="l1"></span>
-        <span class="tl" data-k="s1">System.out.println(<span class="str">"Cadastrar"</span>);</span>
-    <span class="tl" data-k="l2"><span class="kw">case</span> 2:</span><span class="pill" data-k="l2" data-f="l2"></span>
-        <span class="tl" data-k="s2">System.out.println(<span class="str">"Consultar"</span>);</span>
-    <span class="tl" data-k="l3"><span class="kw">default</span>:</span><span class="pill" data-k="l3" data-f="l3"></span>
-        <span class="tl" data-k="s3">System.out.println(<span class="str">"Sair"</span>);</span>
+    <span class="kw">case</span> 1:
+        System.out.println(<span class="str">"Cadastrar"</span>);
+    <span class="kw">case</span> 2:
+        System.out.println(<span class="str">"Consultar"</span>);
+    <span class="kw">default</span>:
+        System.out.println(<span class="str">"Sair"</span>);
 }
           </div>
-          <div class="callout">Esse comportamento se chama <i>fall-through</i>. Enquanto o conteúdo é novo, termine cada alternativa com <code>break</code>.</div>
         </div>
         <div>
-          <div class="col-title">Escolha a opção</div>
-          <div class="trace-row">
-            <button type="button" class="trace-btn" data-state='{"l1":"true","s1":"run","l2":"pass","s2":"run","l3":"pass","s3":"run"}' data-fill='{"op":"1","l1":"começa aqui","l2":"passa direto","l3":"passa direto","out":"Cadastrar\nConsultar\nSair","why":"A execução começa no case 1 e, sem break, atravessa os rótulos seguintes até o fim do switch: as três linhas são impressas."}'>1</button>
-            <button type="button" class="trace-btn" data-state='{"l2":"true","s2":"run","l3":"pass","s3":"run"}' data-fill='{"op":"2","l2":"começa aqui","l3":"passa direto","out":"Consultar\nSair","why":"Começa no case 2 e continua pelo default. O case 1 nem entra na história."}'>2</button>
-            <button type="button" class="trace-btn" data-state='{"l3":"true","s3":"run"}' data-fill='{"op":"9","l3":"começa aqui","out":"Sair","why":"Nenhum case vale 9: a execução começa no default."}'>9</button>
-          </div>
           <div class="col-title">Saída</div>
-          <div class="code-block small trace-console tall" data-f="out"><span class="com">escolha uma opção</span></div>
-          <div class="callout amber" data-f="why">Preveja a saída antes de clicar.</div>
+          <div class="code-block small">Cadastrar
+Consultar
+Sair</div>
+          <div class="callout amber">A execução começa no <code>case 1</code> e atravessa os rótulos seguintes porque não existe <code>break</code>.</div>
+          <div class="callout">Esse comportamento se chama <i>fall-through</i>.</div>
         </div>
       </div>
     </section>
@@ -1702,52 +1471,6 @@ Dobro: 14.0
       </div>
     </section>
 
-    <section class="slide compact" data-section="Bloco 5 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>O que é impresso com <code>opcao = 5</code>?</h2>
-      <div class="two-col center">
-        <div>
-          <div class="code-block small">
-<span class="kw">switch</span> (opcao) {
-    <span class="kw">case</span> 1:
-        System.out.print(<span class="str">"A"</span>);
-    <span class="kw">default</span>:
-        System.out.print(<span class="str">"D"</span>);
-    <span class="kw">case</span> 2:
-        System.out.print(<span class="str">"B"</span>);
-        <span class="kw">break</span>;
-    <span class="kw">case</span> 3:
-        System.out.print(<span class="str">"C"</span>);
-}
-          </div>
-        </div>
-        <div>
-          <div class="chip-row">
-            <div class="chip mono" data-correct="false" data-explain="O default está certo — nenhum case vale 5. Mas ele não tem break, e a execução continua no case 2.">D</div>
-            <div class="chip mono" data-correct="true" data-explain="Nenhum case vale 5, então a execução começa no default, onde quer que ele esteja. Sem break, cai no case 2, imprime B e para no break.">DB</div>
-            <div class="chip mono" data-correct="false" data-explain="O break do case 2 encerra o switch antes de chegar ao case 3.">DBC</div>
-          </div>
-          <div class="fragment js-answer" style="margin-top:28px">
-            <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-            <div class="callout js-answer-text" style="margin-top:14px">Nenhum <code>case</code> vale 5: a execução começa no <code>default</code>, onde quer que ele esteja. Sem <code>break</code>, ela cai no <code>case 2</code>, imprime <b>B</b> e para no <code>break</code>. Saída: <b>DB</b>.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide compact" data-section="Bloco 5 · Mão na massa">
-      <div class="eyebrow">Mão na massa · Bloco 5</div>
-      <h2>Pratique na IDE: switch-case</h2>
-      <div class="slide-body top">
-        <ol class="points compact">
-          <li>Escreva o <code>switch</code> dos dias da semana, de 1 a 7, com <code>default</code> para valores inválidos.</li>
-          <li>Remova todos os <code>break</code> e execute com <code>dia = 2</code>. Anote o que foi impresso e explique.</li>
-          <li>Agrupe os meses de 1 a 12 em trimestres usando casos sem instruções.</li>
-          <li>Tente escrever <code>case nota >= 6.0:</code> e leia o erro. Resolva o mesmo problema com <code>if-else</code>.</li>
-          <li>Monte o menu com as opções de soma e dobro. Depois reescreva o mesmo <code>switch</code> com a sintaxe de setas.</li>
-        </ol>
-      </div>
-    </section>
 
     <section class="slide slide--divider" data-section="Bloco 6">
       <img class="duke" src="./duke.svg" alt="">
@@ -1895,7 +1618,7 @@ String conceito;
     </section>
 
     <section class="slide" data-section="Bloco 6 · Teste de mesa">
-      <div class="eyebrow">Preveja cada linha antes de revelar</div>
+      <div class="eyebrow">Acompanhando os valores</div>
       <h2>Teste de mesa com o ternário</h2>
       <div class="two-col center">
         <div>
@@ -1922,35 +1645,6 @@ String conceito;
       <div class="callout fragment">Com <code>quantidade = 10</code>, a condição seria <code>true</code>: preço 4.50 e total 45.00. O 10 entra, porque o operador é <code>>=</code>.</div>
     </section>
 
-    <section class="slide" data-section="Bloco 6 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Qual destas linhas <b>não</b> compila?</h2>
-      <div class="slide-body">
-        <div class="chip-row">
-          <div class="chip mono" data-correct="false" data-explain="Compila: com um lado int e outro double, o ternário produz double, e o 10 vira 10.0.">double v = true ? 10 : 2.5;</div>
-          <div class="chip mono" data-correct="true" data-explain="Não compila: com um lado int e outro double, o ternário produz double — e double não cabe em int sem casting. Não importa que a condição seja true.">int v = true ? 10 : 2.5;</div>
-          <div class="chip mono" data-correct="false" data-explain="Compila: os dois lados são String, e o resultado vai para uma String.">String s = 3 > 2 ? "sim" : "nao";</div>
-        </div>
-        <div class="fragment js-answer" style="margin-top:34px">
-          <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-          <div class="callout js-answer-text" style="margin-top:14px">Com um lado <code>int</code> e outro <code>double</code>, o ternário produz <code>double</code> — e <code>double</code> não cabe em <code>int</code> sem casting. O tipo é decidido na compilação: não importa que a condição seja <code>true</code>.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide compact" data-section="Bloco 6 · Mão na massa">
-      <div class="eyebrow">Mão na massa · Bloco 6</div>
-      <h2>Pratique na IDE: o operador ternário</h2>
-      <div class="slide-body top">
-        <ol class="points compact">
-          <li>Reescreva com ternário o <code>if-else</code> que escolhe entre "Aprovado" e "Reprovado". Compare as duas versões.</li>
-          <li>Imprima direto no <code>println</code> se um número é "Par" ou "Impar", usando o ternário.</li>
-          <li>Escreva <code>int erro = true ? 10 : 2.5;</code> Leia a mensagem e corrija o tipo da variável.</li>
-          <li>Com <code>int divisor = 0;</code>, calcule <code>divisor != 0 ? 10 / divisor : 0</code> e confirme que não há exceção.</li>
-          <li>Escreva a classificação em A, B e C com ternário aninhado e depois com <code>else if</code>. Qual das duas você prefere ler?</li>
-        </ol>
-      </div>
-    </section>
 
     <section class="slide slide--divider" data-section="Bloco 7">
       <img class="duke" src="./duke.svg" alt="">
@@ -2138,84 +1832,6 @@ System.out.printf(<span class="str">"Novo salario: %.2f%n"</span>, novoSalario);
       </div>
     </section>
 
-    <section class="slide compact" data-section="Bloco 7 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>O que acontece?</h2>
-      <div class="two-col center">
-        <div>
-          <div class="code-block small">
-<span class="kw">int</span> x = 3;
-<span class="kw">int</span> resultado;
-
-<span class="kw">if</span> (x > 0) {
-    resultado = 1;
-}
-
-System.out.println(resultado);
-          </div>
-        </div>
-        <div>
-          <div class="chip-row">
-            <div class="chip" data-correct="false" data-explain="O compilador não olha o valor de x: ele considera também o caminho em que x > 0 é false, e nesse caminho resultado nunca recebe valor.">Imprime 1</div>
-            <div class="chip" data-correct="false" data-explain="Variável local não recebe valor automático — a Seção 3 já avisou. Não existe um 0 implícito aqui.">Imprime 0</div>
-            <div class="chip" data-correct="true" data-explain="Existe um caminho — a condição falsa — em que resultado não recebe valor. O compilador acusa: variable resultado might not have been initialized.">Não compila</div>
-          </div>
-          <div class="fragment js-answer" style="margin-top:28px">
-            <span class="badge badge-amber js-answer-label">RESPOSTA</span>
-            <div class="callout js-answer-text" style="margin-top:14px">Não compila. Existe um caminho — a condição falsa — em que <code>resultado</code> não recebe valor, e o compilador analisa a estrutura, não o valor de <code>x</code>.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide compact" data-section="Bloco 7 · Verificação">
-      <div class="eyebrow">Verificação rápida</div>
-      <h2>Ache o erro</h2>
-      <div class="two-col">
-        <div>
-          <div class="code-block small">
-<span class="kw">double</span> nota = 8.0;
-
-<span class="kw">if</span> (nota >= 6.0) {
-    String situacao = <span class="str">"Aprovado"</span>;
-} <span class="kw">else</span> {
-    String situacao = <span class="str">"Reprovado"</span>;
-}
-
-System.out.println(situacao);
-          </div>
-        </div>
-        <div>
-          <div class="fragment">
-            <span class="badge badge-amber">RESPOSTA</span>
-            <div class="callout" style="margin-top:14px"><code>situacao</code> só existe dentro de cada bloco. Depois do <code>if-else</code>, o nome já saiu de escopo: <code>situacao cannot be resolved to a variable</code>.</div>
-          </div>
-          <div class="fragment" style="margin-top:16px">
-            <div class="col-title">Uma correção possível</div>
-            <div class="code-block small">
-String situacao =
-    nota >= 6.0 ? <span class="str">"Aprovado"</span> : <span class="str">"Reprovado"</span>;
-
-System.out.println(situacao);
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide compact" data-section="Bloco 7 · Mão na massa">
-      <div class="eyebrow">Mão na massa · Bloco 7</div>
-      <h2>Pratique na IDE: escopo e inicialização</h2>
-      <div class="slide-body top">
-        <ol class="points compact">
-          <li>Declare uma variável dentro de um <code>if</code> e tente usá-la depois do bloco. Leia o erro e corrija movendo a declaração para antes do <code>if</code>.</li>
-          <li>Dentro de um <code>if</code>, redeclare uma variável do <code>main</code> com o mesmo nome. Depois troque a declaração por uma simples atribuição.</li>
-          <li>Declare <code>String categoria;</code>, atribua valor só dentro de um <code>if</code> e tente imprimir. Corrija de duas formas: com <code>else</code> e com um valor inicial.</li>
-          <li>Declare <code>int valor</code> em dois <code>case</code> de um <code>switch</code>, primeiro sem chaves extras e depois com chaves. Compare as mensagens.</li>
-          <li>Escreva o reajuste de salário, faça o teste de mesa para 1500, 2000, 4000 e 8000 e depois apague o <code>else</code> final para ver o erro de inicialização.</li>
-        </ol>
-      </div>
-    </section>
 
     <section class="slide compact" data-section="Revisão">
       <div class="eyebrow">Os erros que mais aparecem</div>
@@ -2275,8 +1891,8 @@ System.out.println(situacao);
 
     <section class="slide slide--end" data-section="Fim">
       <img class="duke" src="./duke.svg" alt="">
-      <h1>Perguntas?</h1>
-      <div class="subtitle">Seção 4 — Estrutura condicional</div>
+      <h1>Próxima seção</h1>
+      <div class="subtitle">Estruturas repetitivas: executar instruções enquanto uma condição permitir.</div>
     </section>
 
   </div>
@@ -2365,8 +1981,6 @@ System.out.println(situacao);
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') { toggleOverview(); return; }
     if (document.getElementById('overview').classList.contains('active')) return;
-    // Espaço e Enter sobre um botão do traçador acionam o botão, não a navegação
-    if (e.target.closest && e.target.closest('button') && (e.key === ' ' || e.key === 'Enter')) return;
     if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); next(); }
     else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
     else if (e.key === 'Home') { goTo(0, 'start'); }
@@ -2375,59 +1989,6 @@ System.out.println(situacao);
       if (!document.fullscreenElement) document.documentElement.requestFullscreen();
       else document.exitFullscreen();
     }
-  });
-
-  document.querySelectorAll('.chip[data-correct]').forEach(function (chip) {
-    chip.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var row = chip.closest('.chip-row');
-      row.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('chip-correct', 'chip-wrong'); });
-      var isCorrect = chip.dataset.correct === 'true';
-      if (isCorrect) {
-        chip.classList.add('chip-correct');
-      } else {
-        chip.classList.add('chip-wrong');
-        var right = row.querySelector('.chip[data-correct="true"]');
-        if (right) right.classList.add('chip-correct');
-      }
-      var slide = chip.closest('.slide');
-      var answerLabel = slide.querySelector('.js-answer-label');
-      var answerText = slide.querySelector('.js-answer-text');
-      if (answerText && chip.dataset.explain) {
-        answerText.textContent = chip.dataset.explain;
-        if (answerLabel) {
-          answerLabel.textContent = isCorrect ? 'RESPOSTA CERTA' : 'ISSO NÃO É BEM ASSIM';
-          answerLabel.className = 'badge js-answer-label ' + (isCorrect ? 'badge-amber' : 'badge-red');
-        }
-      }
-      var idx = slides.indexOf(slide);
-      var frags = fragmentsOf(idx);
-      frags.forEach(function (f) { f.classList.add('visible'); });
-      if (idx === current) fragIndex = frags.length;
-    });
-  });
-
-  // Traçadores: cada botão diz o estado de cada trecho (data-state) e o texto a preencher (data-fill)
-  document.querySelectorAll('.trace').forEach(function (trace) {
-    var buttons = Array.prototype.slice.call(trace.querySelectorAll('.trace-btn'));
-    buttons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var state = JSON.parse(btn.getAttribute('data-state') || '{}');
-        var fill = JSON.parse(btn.getAttribute('data-fill') || '{}');
-        buttons.forEach(function (b) { b.classList.toggle('on', b === btn); });
-        trace.classList.add('active');
-        trace.querySelectorAll('[data-k]').forEach(function (el) {
-          el.classList.remove('is-true', 'is-false', 'is-run', 'is-skip', 'is-pass');
-          var s = state[el.getAttribute('data-k')];
-          if (s) el.classList.add('is-' + s);
-        });
-        trace.querySelectorAll('[data-f]').forEach(function (el) {
-          var v = fill[el.getAttribute('data-f')];
-          el.textContent = v === undefined ? '' : v;
-        });
-        btn.blur();
-      });
-    });
   });
 
   window.addEventListener('resize', scaleStage);

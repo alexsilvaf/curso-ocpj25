@@ -58,8 +58,8 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - A ordem dos materiais é intencional: uma condição simples aparece antes de combinações lógicas, e ambas aparecem antes do primeiro `if`.
 - Todos os exemplos usam apenas conteúdos das Seções 1 a 3 e o tópico que está sendo introduzido. Não são necessários arrays, coleções, métodos próprios, exceções nem orientação a objetos.
 - O material usa chaves mesmo quando o bloco tem uma única instrução. Isso reduz erros durante a aprendizagem e facilita a inclusão de novas linhas.
-- Cada um dos sete blocos da apresentação termina com um slide **Mão na massa**: cinco exercícios para fazer na IDE, na ordem em que o conteúdo foi apresentado. Vários pedem que o erro seja provocado de propósito antes da correção e também podem ser realizados como atividade independente.
-- Três slides têm um **traçador**: ao clicar em um valor, o código acende só o caminho percorrido — o curto-circuito do `&&` (Bloco 2), a cadeia de `else if` (Bloco 3) e o *fall-through* do `switch` (Bloco 5). Vale pedir à turma que preveja o resultado antes do clique.
+- A apresentação foi organizada para acompanhar os vídeos. A prática fica concentrada na lista de exercícios da seção.
+- Os exemplos de curto-circuito, cadeia de `else if` e *fall-through* são apresentados como explicações estáticas, adequadas à narração do vídeo.
 - Operadores cumulativos, incremento e decremento e a comparação de valores `double` são apresentados aqui pela primeira vez; a Seção 3 mantém todas as atualizações na forma explícita.
 - A comparação de textos por conteúdo ainda não é necessária nos exemplos centrais. O material explica apenas por que `==` não deve ser usado para esse fim e adia o aprofundamento em objetos.
 - A prática da seção está reunida em [lista-de-exercicios.md](./lista-de-exercicios.md) e pode ser complementada por atividades avaliativas na plataforma do curso.
