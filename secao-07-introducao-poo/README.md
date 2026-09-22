@@ -2,9 +2,9 @@
 
 <sub>📚 [Documentação](../README.md) › Seção 7</sub>
 
-| 🎓 Aulas do curso | 🎬 Aulas de referência | 🖥️ Slides |
-| :---: | :---: | :---: |
-| 64 a 75 | 69 a 80 | — |
+| 🎓 Aulas do curso | 🎬 Aulas de referência |
+| :---: | :---: |
+| 64 a 75 | 69 a 80 |
 
 ## 🎯 Objetivos
 
@@ -28,6 +28,7 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - **A6** · [Problema de exemplo: estoque de produtos](./A6%20-%20Problema%20de%20exemplo%20estoque%20de%20produtos.md)
 - **A7** · [Membros estáticos e membros de instância](./A7%20-%20Membros%20estaticos%20e%20membros%20de%20instancia.md)
 - **A8** · [A certificação OCP Java SE 25 e esta seção](./A8%20-%20A%20certificacao%20OCP%20Java%20SE%2025.md)
+- **Prática** · [Lista de exercícios](./lista-de-exercicios.md)
 
 ## 🗓️ Planejamento das aulas
 

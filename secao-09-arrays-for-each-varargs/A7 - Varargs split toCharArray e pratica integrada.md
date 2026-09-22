@@ -177,13 +177,6 @@ public class Program {
 }
 ```
 
-## Desafios compatíveis com a seção
-
-1. Altere o programa para receber três notas.
-2. Crie `smallest(int... values)`; para uma chamada vazia, devolva `0`.
-3. Crie `count(char target, String text)` usando `toCharArray`.
-4. Explique a diferença entre chamar `average()` e `average((double[]) null)`.
-
 ---
 
 <div align="center">

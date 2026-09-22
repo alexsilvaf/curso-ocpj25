@@ -13,46 +13,50 @@
 Esta pasta concentra o conteúdo didático e o planejamento das seções do curso de Programação Orientada a Objetos com Java.
 
 > [!TIP]
-> **Como ler:** comece pela página da seção, que reúne objetivos, materiais e planejamento. Cada material termina com links para o anterior e o próximo, formando uma trilha contínua do primeiro ao último assunto. No GitHub, o botão de sumário no topo de cada arquivo lista todos os tópicos da página.
+> **Como ler:** comece pela Seção 0 e avance na ordem. A página de cada seção reúne objetivos, materiais, apresentação e uma lista própria de exercícios. Cada material termina com links para o anterior e o próximo, formando uma trilha contínua. No GitHub, o botão de sumário no topo de cada arquivo lista todos os tópicos da página.
 
 ## 🗺️ Seções
 
-| Seção | Tema | Aulas do curso | Situação | Slides |
-| :---: | --- | :---: | :---: | :---: |
-| **1** | [Conceitos de programação](secao-01-conceitos-programacao/README.md) | 1 a 7 | ✅ apresentada | — |
-| **2** | [Introdução à linguagem Java](secao-02-introducao-java/README.md) | 8 a 20 | ✅ apresentada | 🖥️ [slides](secao-02-introducao-java/apresentacao.html) |
-| **3** | [Estrutura sequencial](secao-03-estrutura-sequencial/README.md) | 21 a 32 | ✅ apresentada | 🖥️ [slides](secao-03-estrutura-sequencial/apresentacao.html) |
-| **4** | [Estrutura condicional](secao-04-estrutura-condicional/README.md) | 33 a 43 | 📝 preparada | 🖥️ [slides](secao-04-estrutura-condicional/apresentacao.html) |
-| **5** | [Estruturas repetitivas](secao-05-estruturas-repetitivas/README.md) | 44 a 57 | 📝 preparada | — |
-| **6** | [Outros tópicos básicos sobre Java](secao-06-outros-topicos-basicos/README.md) | 58 a 63 | 📝 preparada | — |
-| **7** | [Introdução à Programação Orientada a Objetos](secao-07-introducao-poo/README.md) | 64 a 75 | 📝 preparada | — |
-| **8** | [Construtores, palavra `this`, sobrecarga e encapsulamento](secao-08-construtores-this-sobrecarga-encapsulamento/README.md) | 76 a 83 | 📝 preparada | — |
-| **9** | [Arrays, `for-each`, `var` e varargs](secao-09-arrays-for-each-varargs/README.md) | continuação | 📝 preparada | — |
-| **10** | [Herança, sobrescrita e polimorfismo](secao-10-heranca-sobrescrita-polimorfismo/README.md) | continuação | 📝 preparada | — |
-| **11** | [Classes abstratas, interfaces e `Object`](secao-11-classes-abstratas-interfaces-object/README.md) | continuação | 🗓️ planejada | — |
-| **12** | [Exceções e try-with-resources](secao-12-excecoes-try-with-resources/README.md) | continuação | 🗓️ planejada | — |
-| **13** | [Enums, records, sealed, classes aninhadas e patterns](secao-13-enums-records-sealed-classes-aninhadas-patterns/README.md) | continuação | 🗓️ planejada | — |
-| **14** | [Wrappers, `StringBuilder`, text blocks e Date/Time](secao-14-wrappers-stringbuilder-text-blocks-date-time/README.md) | continuação | 🗓️ planejada | — |
-| **15** | [Collections, ordenação e generics](secao-15-collections-ordenacao-generics/README.md) | continuação | 🗓️ planejada | — |
-| **16** | [Lambdas, interfaces funcionais e method references](secao-16-lambdas-interfaces-funcionais-method-references/README.md) | continuação | 🗓️ planejada | — |
-| **17** | [Streams, Collectors e Gatherers](secao-17-streams-collectors-gatherers/README.md) | continuação | 🗓️ planejada | — |
-| **18** | [I/O, NIO.2 e serialização](secao-18-io-nio-serializacao/README.md) | continuação | 🗓️ planejada | — |
-| **19** | [JPMS, JARs, ferramentas e execução](secao-19-jpms-jars-jdeps-jlink-deployment/README.md) | continuação | 🗓️ planejada | — |
-| **20** | [Concorrência, virtual threads e scoped values](secao-20-concorrencia-virtual-threads-scoped-values/README.md) | continuação | 🗓️ planejada | — |
-| **21** | [Localização, revisão e simulados OCPJ25](secao-21-localizacao-revisao-simulados/README.md) | continuação | 🗓️ planejada | — |
+| Seção | Tema | Aulas do curso | Situação |
+| :---: | --- | :---: | :---: |
+| **0** | [Introdução ao curso](secao-00-introducao-ao-curso/README.md) | antes da trilha técnica | 📝 preparada |
+| **1** | [Conceitos de programação](secao-01-conceitos-programacao/README.md) | 1 a 7 | ✅ apresentada |
+| **2** | [Introdução à linguagem Java](secao-02-introducao-java/README.md) | 8 a 20 | ✅ apresentada |
+| **3** | [Estrutura sequencial](secao-03-estrutura-sequencial/README.md) | 21 a 32 | ✅ apresentada |
+| **4** | [Estrutura condicional](secao-04-estrutura-condicional/README.md) | 33 a 43 | 📝 preparada |
+| **5** | [Estruturas repetitivas](secao-05-estruturas-repetitivas/README.md) | 44 a 57 | 📝 preparada |
+| **6** | [Outros tópicos básicos sobre Java](secao-06-outros-topicos-basicos/README.md) | 58 a 63 | 📝 preparada |
+| **7** | [Introdução à Programação Orientada a Objetos](secao-07-introducao-poo/README.md) | 64 a 75 | 📝 preparada |
+| **8** | [Construtores, palavra `this`, sobrecarga e encapsulamento](secao-08-construtores-this-sobrecarga-encapsulamento/README.md) | 76 a 83 | 📝 preparada |
+| **9** | [Arrays, `for-each`, `var` e varargs](secao-09-arrays-for-each-varargs/README.md) | continuação | 📝 preparada |
+| **10** | [Herança, sobrescrita e polimorfismo](secao-10-heranca-sobrescrita-polimorfismo/README.md) | continuação | 📝 preparada |
+| **11** | [Classes abstratas, interfaces e `Object`](secao-11-classes-abstratas-interfaces-object/README.md) | continuação | 🗓️ planejada |
+| **12** | [Exceções e try-with-resources](secao-12-excecoes-try-with-resources/README.md) | continuação | 🗓️ planejada |
+| **13** | [Enums, records, sealed, classes aninhadas e patterns](secao-13-enums-records-sealed-classes-aninhadas-patterns/README.md) | continuação | 🗓️ planejada |
+| **14** | [Wrappers, `StringBuilder`, text blocks e Date/Time](secao-14-wrappers-stringbuilder-text-blocks-date-time/README.md) | continuação | 🗓️ planejada |
+| **15** | [Collections, ordenação e generics](secao-15-collections-ordenacao-generics/README.md) | continuação | 🗓️ planejada |
+| **16** | [Lambdas, interfaces funcionais e method references](secao-16-lambdas-interfaces-funcionais-method-references/README.md) | continuação | 🗓️ planejada |
+| **17** | [Streams, Collectors e Gatherers](secao-17-streams-collectors-gatherers/README.md) | continuação | 🗓️ planejada |
+| **18** | [I/O, NIO.2 e serialização](secao-18-io-nio-serializacao/README.md) | continuação | 🗓️ planejada |
+| **19** | [JPMS, JARs, ferramentas e execução](secao-19-jpms-jars-jdeps-jlink-deployment/README.md) | continuação | 🗓️ planejada |
+| **20** | [Concorrência, virtual threads e scoped values](secao-20-concorrencia-virtual-threads-scoped-values/README.md) | continuação | 🗓️ planejada |
+| **21** | [Localização, revisão e simulados OCPJ25](secao-21-localizacao-revisao-simulados/README.md) | continuação | 🗓️ planejada |
 
 ## 📂 Organização
 
 - Cada diretório `secao-XX` representa uma seção do curso.
 - O `README.md` de cada seção reúne objetivos, conteúdos e um percurso sugerido sem estimativa de duração.
 - Os arquivos `A1`, `A2`, `A3` e seguintes são o próprio material didático utilizado durante a aula.
+- Toda seção possui uma apresentação em `apresentacao.html` e uma lista independente em `lista-de-exercicios.md` quando seu desenvolvimento é concluído.
 - Diagramas e imagens ficam no mesmo diretório do documento que os utiliza.
-- Os exercícios e as atividades avaliativas são disponibilizados no Estudante360 e não são mantidos neste repositório.
+- As listas de exercícios fazem parte do próprio curso e são mantidas neste repositório. Atividades avaliativas podem ser publicadas separadamente na plataforma do curso.
 
 ## ✍️ Convenções
 
 - Novas seções devem seguir o padrão `secao-XX-nome-da-secao`.
 - Os materiais devem seguir o padrão `AX - Título da aula.md`.
+- As apresentações devem usar o nome `apresentacao.html` e as listas devem usar `lista-de-exercicios.md`.
+- Exercícios ficam concentrados na lista da seção. Os materiais podem conter exemplos guiados e perguntas breves de verificação, mas não blocos de “desafios”.
 - Os links para imagens e diagramas devem usar caminhos relativos.
 
 <a name="cobertura-ocpj25"></a>
@@ -118,10 +122,11 @@ Resumo em português dos objetivos oficiais do 1Z0-831. O texto vigente fica na 
 
 ### 🧱 Estrutura planejada do curso
 
-A estrutura atual prevê **21 seções**, em ordem de pré-requisitos: cada seção usa apenas o que as anteriores já ensinaram.
+A estrutura atual prevê **22 seções**, contando a Seção 0, em ordem de pré-requisitos: cada seção usa apenas o que as anteriores já ensinaram.
 
 | Seção | Conteúdo principal | Situação |
 | --- | --- | --- |
+| 00 | Introdução ao curso e orientações de estudo | 📝 **preparado** |
 | 01 | Conceitos de programação | ✅ **apresentado** |
 | 02 | Introdução ao Java | ✅ **apresentado** |
 | 03 | Estrutura sequencial | ✅ **apresentado** |
@@ -144,7 +149,7 @@ A estrutura atual prevê **21 seções**, em ordem de pré-requisitos: cada seç
 | 20 | Concorrência, virtual threads e scoped values | 🗓️ **planejado** |
 | 21 | Localização, revisão integrada e simulados OCPJ25 | 🗓️ **planejado** |
 
-> A divisão em 21 seções é uma organização didática do curso. Ela não representa uma divisão oficial do exame em 21 domínios.
+> A divisão em 22 seções é uma organização didática do curso. Ela não representa uma divisão oficial do exame em 22 domínios.
 
 ### 🔭 Detalhamento das seções avançadas
 
@@ -598,7 +603,7 @@ O curso só poderá afirmar que cobre toda a OCPJ25 quando:
 ### 📍 Estado atual
 
 > [!IMPORTANT]
-> No estado atual, as Seções **1 a 3** já foram apresentadas em aula, as Seções **4 a 10** possuem material didático preparado e as Seções **11 a 21** permanecem planejadas.
+> No estado atual, a Seção **0** e as Seções **4 a 10** possuem material didático preparado, as Seções **1 a 3** já foram apresentadas em aula e as Seções **11 a 21** permanecem planejadas.
 >
 > As Seções **11 a 21** já possuem roteiros iniciais e referências de cobertura, mas ainda deverão ser desenvolvidas gradualmente no mesmo modelo das seções anteriores.
 >

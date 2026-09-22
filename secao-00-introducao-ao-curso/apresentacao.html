@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seção 0 — Introdução ao curso</title>
+<style>
+  :root {
+    --red: #e12523;
+    --red-dark: #8f1614;
+    --red-deep: #5c0d0c;
+    --orange: #f89820;
+    --orange-soft: #ffe0b8;
+    --ink: #1a1a1a;
+    --text: #3d3d3d;
+    --muted: #6b6b6b;
+    --paper: #fff;
+    --paper-alt: #fbf8f5;
+    --green: #26734d;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    width: 100%; height: 100%; margin: 0; overflow: hidden;
+    font-family: Arial, "Helvetica Neue", sans-serif;
+    background: radial-gradient(ellipse at 50% 0%, #3a1a16 0%, #1c0f0e 62%);
+  }
+  .deck { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .stage {
+    position: relative; width: 1280px; height: 720px; flex: 0 0 auto;
+    background: var(--paper); overflow: hidden; border-radius: 7px;
+    box-shadow: 0 22px 65px rgba(0,0,0,.48); transform-origin: center;
+  }
+  .slide {
+    position: absolute; inset: 0; display: none; flex-direction: column;
+    padding: 62px 82px 54px;
+  }
+  .slide.active { display: flex; animation: enter .3s ease-out; }
+  .slide::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 0; height: 7px;
+    background: linear-gradient(90deg, var(--red), var(--orange));
+  }
+  @keyframes enter { from { opacity: 0; transform: translateY(7px); } }
+  .eyebrow {
+    margin: 0 0 11px; color: var(--red); font-weight: 700; font-size: 21px;
+    text-transform: uppercase; letter-spacing: .06em;
+  }
+  h1 { margin: 0; color: var(--ink); font-size: 58px; line-height: 1.08; }
+  h2 { margin: 0 0 20px; color: var(--ink); font-size: 42px; line-height: 1.12; }
+  p { margin: 0; }
+  .body { flex: 1; display: flex; flex-direction: column; justify-content: center; min-height: 0; }
+  .lead { color: var(--text); font-size: 31px; line-height: 1.42; }
+  .sub { color: var(--muted); font-size: 23px; line-height: 1.4; }
+  .points { list-style: none; margin: 0; padding: 0; color: var(--text); font-size: 28px; }
+  .points li { position: relative; padding-left: 38px; margin: 0 0 18px; line-height: 1.34; }
+  .points li::before { content: "▸"; position: absolute; left: 0; color: var(--orange); }
+  .points.compact { font-size: 24px; }
+  .points.compact li { margin-bottom: 12px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: stretch; }
+  .card {
+    border: 2px solid #eadfd8; border-radius: 15px; padding: 25px 28px;
+    background: var(--paper-alt);
+  }
+  .card h3 { margin: 0 0 12px; color: var(--red-dark); font-size: 26px; }
+  .card p { color: var(--text); font-size: 23px; line-height: 1.4; }
+  .card.good { border-color: #9bc9af; background: #f0faf4; }
+  .card.good h3 { color: var(--green); }
+  .quote {
+    border-left: 8px solid var(--orange); background: #fff6e9; border-radius: 9px;
+    padding: 30px 38px; color: #562f04; font-size: 38px; line-height: 1.3; font-weight: 700;
+  }
+  .cycle { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .step {
+    position: relative; min-height: 128px; padding: 20px 18px; border-radius: 13px;
+    background: var(--paper-alt); border: 1px solid #e7ddd7; color: var(--text);
+    font-size: 20px; line-height: 1.3;
+  }
+  .step b { display: block; margin-bottom: 7px; color: var(--red-dark); font-size: 22px; }
+  .step-num {
+    display: inline-flex; width: 30px; height: 30px; margin-bottom: 10px; align-items: center;
+    justify-content: center; border-radius: 50%; color: #4d2c02; background: var(--orange);
+    font-size: 17px; font-weight: 700;
+  }
+  .check { display: grid; grid-template-columns: 52px 1fr; gap: 16px; align-items: center; margin-bottom: 16px; }
+  .check span:first-child {
+    display: flex; width: 46px; height: 46px; align-items: center; justify-content: center;
+    border-radius: 50%; background: #fce8e7; color: var(--red-dark); font-weight: 700; font-size: 23px;
+  }
+  .check span:last-child { color: var(--text); font-size: 25px; line-height: 1.3; }
+  .flow { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .flow .node {
+    padding: 19px 23px; border: 2px solid #eadfd8; border-radius: 12px;
+    background: var(--paper-alt); color: var(--ink); font-size: 23px; font-weight: 700;
+  }
+  .flow .arrow { color: var(--red); font-size: 35px; }
+  .callout {
+    margin-top: 22px; padding: 16px 22px; border-left: 6px solid var(--red);
+    background: #fdf0ef; color: #6b1512; border-radius: 6px; font-size: 22px; line-height: 1.35;
+  }
+  .fragment { opacity: 0; transform: translateX(-8px); transition: .28s ease; }
+  .fragment.visible { opacity: 1; transform: none; }
+  .title, .end {
+    justify-content: center; color: #fff;
+    background: linear-gradient(145deg, var(--red-deep), var(--red-dark) 48%, var(--red));
+  }
+  .title::before, .end::before { display: none; }
+  .title .kicker { color: var(--orange); font-size: 25px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+  .title h1, .end h1 { color: #fff; max-width: 900px; margin: 13px 0 19px; }
+  .title .subtitle, .end .subtitle { color: var(--orange-soft); font-size: 29px; line-height: 1.38; max-width: 870px; }
+  .end { align-items: center; text-align: center; }
+  .end .quote { max-width: 950px; color: #fff; background: rgba(255,255,255,.08); border-left-color: var(--orange); }
+  .footer { margin-top: 15px; color: var(--muted); font-size: 17px; display: flex; justify-content: space-between; }
+  .hud { position: fixed; right: 22px; bottom: 15px; z-index: 20; color: #b89a90; font-size: 14px; }
+  .hint { position: fixed; left: 22px; bottom: 15px; z-index: 20; color: #8a6f66; font-size: 13px; }
+  .progress { position: fixed; left: 0; bottom: 0; width: 100%; height: 4px; background: rgba(255,255,255,.08); z-index: 20; }
+  .progress div { height: 100%; background: linear-gradient(90deg, var(--red), var(--orange)); transition: width .2s; }
+  .overview { position: fixed; inset: 0; display: none; z-index: 30; padding: 42px; overflow-y: auto; background: rgba(28,15,14,.98); }
+  .overview.active { display: block; }
+  .overview-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1400px; margin: 0 auto; }
+  .overview-card { min-height: 100px; padding: 15px; color: #ead8d2; background: #321b18; border: 2px solid #52302a; border-radius: 9px; cursor: pointer; }
+  .overview-card b { display: block; margin-bottom: 9px; color: var(--orange); }
+</style>
+</head>
+<body>
+<main class="deck">
+  <div class="stage" id="stage">
+    <section class="slide title active" data-section="Abertura">
+      <div class="kicker">Seção 0</div>
+      <h1>Como aprender neste curso</h1>
+      <p class="subtitle">Uma apresentação sobre prática autônoma, erros, revisão e evidências reais de aprendizagem.</p>
+    </section>
+
+    <section class="slide" data-section="Proposta">
+      <p class="eyebrow">Antes do primeiro código</p>
+      <h2>O curso é uma trilha progressiva</h2>
+      <div class="body">
+        <ul class="points">
+          <li class="fragment">Cada seção parte dos conhecimentos ensinados anteriormente.</li>
+          <li class="fragment">Os exemplos introduzem uma ideia antes de exigir seu uso.</li>
+          <li class="fragment">Os exercícios devem ser resolvidos apenas com os recursos já estudados.</li>
+          <li class="fragment">A certificação é o destino; os fundamentos formam o caminho.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="slide" data-section="Entendimento">
+      <p class="eyebrow">A regra principal</p>
+      <div class="body">
+        <div class="quote">Você apenas entendeu de verdade quando consegue explicar e reproduzir sozinho.</div>
+        <p class="sub" style="margin-top:24px">A sensação de familiaridade durante a explicação ainda não é uma evidência suficiente.</p>
+      </div>
+    </section>
+
+    <section class="slide" data-section="Reconhecer × produzir">
+      <p class="eyebrow">Não confunda as duas experiências</p>
+      <h2>Reconhecer é diferente de produzir</h2>
+      <div class="body two">
+        <div class="card">
+          <h3>“Entendi vendo”</h3>
+          <p>O raciocínio já está organizado na tela. Você acompanha decisões que outra pessoa tomou.</p>
+        </div>
+        <div class="card good fragment">
+          <h3>“Consigo fazer”</h3>
+          <p>Você recupera o conceito, escolhe os passos, escreve, testa, corrige e explica sem receber a solução pronta.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-section="Prática">
+      <p class="eyebrow">Participação ativa</p>
+      <h2>Ver alguém praticar não substitui a sua prática</h2>
+      <div class="body">
+        <ul class="points">
+          <li class="fragment">Assistir ajuda a observar um modelo de raciocínio.</li>
+          <li class="fragment">Copiar ajuda a notar a sintaxe no primeiro contato.</li>
+          <li class="fragment">Aprender exige tomar decisões sem receber cada passo.</li>
+          <li class="fragment">Prática útil inclui previsão, tentativa, erro, correção e explicação.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="slide" data-section="Ciclo de estudo">
+      <p class="eyebrow">Um processo repetível</p>
+      <h2>O ciclo de estudo</h2>
+      <div class="body">
+        <div class="cycle">
+          <div class="step fragment"><span class="step-num">1</span><b>Compreenda</b>Qual problema o conceito resolve?</div>
+          <div class="step fragment"><span class="step-num">2</span><b>Preveja</b>O que acontecerá antes de executar?</div>
+          <div class="step fragment"><span class="step-num">3</span><b>Execute</b>Compare o resultado com sua previsão.</div>
+          <div class="step fragment"><span class="step-num">4</span><b>Reproduza</b>Feche o exemplo e refaça sem copiar.</div>
+          <div class="step fragment"><span class="step-num">5</span><b>Modifique</b>Mude regras e antecipe o novo resultado.</div>
+          <div class="step fragment"><span class="step-num">6</span><b>Explique</b>Justifique cada decisão com suas palavras.</div>
+          <div class="step fragment"><span class="step-num">7</span><b>Exercite</b>Resolva a lista com o material fechado.</div>
+          <div class="step fragment"><span class="step-num">8</span><b>Revise</b>Volte ao ponto exato em que houve dúvida.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-section="Previsão">
+      <p class="eyebrow">Antes de apertar Run</p>
+      <h2>Faça uma previsão</h2>
+      <div class="body">
+        <div class="check fragment"><span>?</span><span>O código compila?</span></div>
+        <div class="check fragment"><span>→</span><span>Qual será a saída e em que ordem?</span></div>
+        <div class="check fragment"><span>=</span><span>Quais valores mudam durante a execução?</span></div>
+        <div class="check fragment"><span>!</span><span>Onde e por que pode acontecer um erro?</span></div>
+        <div class="callout fragment">Uma previsão incorreta não é fracasso: ela localiza a diferença entre o seu modelo mental e o comportamento real.</div>
+      </div>
+    </section>
+
+    <section class="slide" data-section="Reprodução">
+      <p class="eyebrow">Depois do exemplo guiado</p>
+      <h2>Feche o material e recomece</h2>
+      <div class="body">
+        <div class="flow">
+          <span class="node fragment">acompanhar</span><span class="arrow fragment">→</span>
+          <span class="node fragment">fechar</span><span class="arrow fragment">→</span>
+          <span class="node fragment">reproduzir</span><span class="arrow fragment">→</span>
+          <span class="node fragment">comparar</span><span class="arrow fragment">→</span>
+          <span class="node fragment">explicar</span>
+        </div>
+        <div class="callout fragment">Se travar, consulte apenas o conceito necessário. Depois feche novamente e retome sem copiar.</div>
+      </div>
+    </section>
+
+    <section class="slide" data-section="Erros">
+      <p class="eyebrow">Diagnóstico</p>
+      <h2>O erro também faz parte do exercício</h2>
+      <div class="body two">
+        <div class="card">
+          <h3>Evite</h3>
+          <p>Trocar várias partes ao acaso até o programa aparentemente funcionar.</p>
+        </div>
+        <div class="card good fragment">
+          <h3>Faça</h3>
+          <p>Leia a mensagem, localize a linha, crie uma hipótese, altere uma coisa e teste novamente.</p>
+        </div>
+      </div>
+      <div class="callout fragment">Corrigir sem compreender deixa a mesma dúvida pronta para reaparecer.</div>
+    </section>
+
+    <section class="slide" data-section="Listas">
+      <p class="eyebrow">Prática organizada</p>
+      <h2>Uma lista de exercícios por seção</h2>
+      <div class="body">
+        <ul class="points">
+          <li class="fragment"><b>Leitura:</b> explicar e comparar conceitos.</li>
+          <li class="fragment"><b>Previsão:</b> determinar compilação, saída ou estado.</li>
+          <li class="fragment"><b>Correção:</b> localizar e justificar um erro.</li>
+          <li class="fragment"><b>Construção:</b> escrever uma solução sem receber o código completo.</li>
+        </ul>
+        <div class="callout fragment">Os exercícios ficam concentrados na lista da seção, em vez de aparecerem como “desafios” dispersos pelo conteúdo.</div>
+      </div>
+    </section>
+
+    <section class="slide" data-section="Registro">
+      <p class="eyebrow">Seja honesto com a evidência</p>
+      <h2>Classifique cada resposta</h2>
+      <div class="body two">
+        <div class="card good fragment"><h3>Sem apoio</h3><p>Resolvi e consigo explicar cada decisão.</p></div>
+        <div class="card fragment"><h3>Após consulta</h3><p>Consegui depois de rever o material; preciso refazer.</p></div>
+        <div class="card fragment"><h3>Não resolvida</h3><p>Localizei a dúvida, mas ainda não construí a solução.</p></div>
+        <div class="card good fragment"><h3>Refeita</h3><p>Voltei com o material fechado e consegui reproduzir.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" data-section="Avanço">
+      <p class="eyebrow">Critério, não relógio</p>
+      <h2>Quando avançar?</h2>
+      <div class="body">
+        <ul class="points compact">
+          <li class="fragment">Você explica os objetivos da seção com suas palavras.</li>
+          <li class="fragment">Você reproduz os exemplos essenciais sem copiar.</li>
+          <li class="fragment">Você resolve a maior parte da lista sem ajuda.</li>
+          <li class="fragment">Você justifica respostas e erros de compilação.</li>
+          <li class="fragment">Você sabe quais pontos ainda precisam de revisão.</li>
+        </ul>
+        <div class="callout fragment">O curso não define uma duração para aprender. A evidência de domínio orienta o avanço.</div>
+      </div>
+    </section>
+
+    <section class="slide" data-section="Certificação">
+      <p class="eyebrow">OCP Java SE 25</p>
+      <h2>Java primeiro, certificação depois</h2>
+      <div class="body">
+        <div class="flow">
+          <span class="node fragment">fundamentos</span><span class="arrow fragment">→</span>
+          <span class="node fragment">programação</span><span class="arrow fragment">→</span>
+          <span class="node fragment">integração</span><span class="arrow fragment">→</span>
+          <span class="node fragment">nível OCPJ25</span>
+        </div>
+        <p class="lead fragment" style="margin-top:36px">A prova exige precisão, mas precisão sem fundamentos vira memorização frágil.</p>
+      </div>
+    </section>
+
+    <section class="slide end" data-section="Compromisso">
+      <h1>Seu compromisso de estudo</h1>
+      <div class="quote">Vou explicar, prever e reproduzir sem olhar. Quando eu errar, vou localizar a dúvida e refazer a atividade.</div>
+      <p class="subtitle" style="margin-top:30px">Agora, comece pela lista desta seção e siga para os conceitos de programação.</p>
+    </section>
+  </div>
+</main>
+
+<div class="hint">← → ou Espaço · Esc visão geral · F tela cheia</div>
+<div class="hud"><span id="sectionName"></span> · <span id="counter"></span></div>
+<div class="progress"><div id="progressFill"></div></div>
+<div class="overview" id="overview"><div class="overview-grid" id="overviewGrid"></div></div>
+
+<script>
+(function () {
+  var stage = document.getElementById('stage');
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var current = 0;
+  var fragmentIndex = 0;
+
+  function fragments(index) {
+    return Array.prototype.slice.call(slides[index].querySelectorAll('.fragment'));
+  }
+
+  function render() {
+    slides.forEach(function (slide, index) { slide.classList.toggle('active', index === current); });
+    fragments(current).forEach(function (fragment, index) {
+      fragment.classList.toggle('visible', index < fragmentIndex);
+    });
+    document.getElementById('counter').textContent = (current + 1) + ' / ' + slides.length;
+    document.getElementById('sectionName').textContent = slides[current].dataset.section || '';
+    document.getElementById('progressFill').style.width = ((current + 1) / slides.length * 100) + '%';
+    history.replaceState(null, '', '#/' + (current + 1));
+  }
+
+  function go(index, fragmentsAtEnd) {
+    current = Math.max(0, Math.min(slides.length - 1, index));
+    fragmentIndex = fragmentsAtEnd ? fragments(current).length : 0;
+    render();
+  }
+
+  function next() {
+    if (fragmentIndex < fragments(current).length) { fragmentIndex++; render(); return; }
+    if (current < slides.length - 1) go(current + 1, false);
+  }
+
+  function previous() {
+    if (fragmentIndex > 0) { fragmentIndex--; render(); return; }
+    if (current > 0) go(current - 1, true);
+  }
+
+  function scale() {
+    var padding = 105;
+    stage.style.transform = 'scale(' + Math.min((innerWidth - padding) / 1280, (innerHeight - padding) / 720) + ')';
+  }
+
+  function toggleOverview(force) {
+    var overview = document.getElementById('overview');
+    var show = typeof force === 'boolean' ? force : !overview.classList.contains('active');
+    overview.classList.toggle('active', show);
+  }
+
+  slides.forEach(function (slide, index) {
+    var heading = slide.querySelector('h1, h2');
+    var card = document.createElement('div');
+    card.className = 'overview-card';
+    card.innerHTML = '<b>' + (index + 1) + ' · ' + (slide.dataset.section || '') + '</b>' + (heading ? heading.textContent : '');
+    card.addEventListener('click', function () { go(index, false); toggleOverview(false); });
+    document.getElementById('overviewGrid').appendChild(card);
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') { toggleOverview(); return; }
+    if (document.getElementById('overview').classList.contains('active')) return;
+    if (event.key === 'ArrowRight' || event.key === ' ' || event.key === 'PageDown') { event.preventDefault(); next(); }
+    else if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); previous(); }
+    else if (event.key === 'Home') go(0, false);
+    else if (event.key === 'End') go(slides.length - 1, false);
+    else if (event.key === 'f' || event.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+
+  addEventListener('resize', scale);
+  scale();
+  var hash = location.hash.match(/#\/(\d+)/);
+  if (hash) go(parseInt(hash[1], 10) - 1, false); else render();
+})();
+</script>
+</body>
+</html>

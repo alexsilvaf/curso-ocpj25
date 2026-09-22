@@ -14,6 +14,7 @@
 ## 📚 Material
 
 - [Guia gradual da seção](./A1%20-%20Guia%20gradual%20de%20IO%20NIO2%20e%20serializacao.md)
+- [Lista de exercícios](./lista-de-exercicios.md)
 - Referência detalhada: [OCPJ21, capítulo 12](../ocpj21-book/ch12.md)
 
 ---

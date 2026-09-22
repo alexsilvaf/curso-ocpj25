@@ -13,6 +13,7 @@
 ## 📚 Material
 
 - [Guia gradual da seção](./A1%20-%20Guia%20gradual%20de%20abstracao%20interfaces%20e%20Object.md)
+- [Lista de exercícios](./lista-de-exercicios.md)
 - [OCPJ21, capítulo 2 — Abstract Classes e Interfaces](../ocpj21-book/ch02.md#abstract-classes)
 - [OCPJ21, capítulo 1 — `Object`](../ocpj21-book/ch01.md#extending-from-javalangobject)
 

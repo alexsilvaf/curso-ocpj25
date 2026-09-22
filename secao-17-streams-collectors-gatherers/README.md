@@ -14,6 +14,7 @@
 ## 📚 Material
 
 - [Guia gradual da seção](./A1%20-%20Guia%20gradual%20de%20streams%20collectors%20e%20gatherers.md)
+- [Lista de exercícios](./lista-de-exercicios.md)
 - [OCPJ21, capítulo 9 — Streams](../ocpj21-book/ch09.md)
 - [OCPJ21, capítulo 10 — Parallel Streams](../ocpj21-book/ch10.md#parallel-streams)
 

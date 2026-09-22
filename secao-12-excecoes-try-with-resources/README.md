@@ -13,6 +13,7 @@
 ## 📚 Material
 
 - [Guia gradual da seção](./A1%20-%20Guia%20gradual%20de%20excecoes.md)
+- [Lista de exercícios](./lista-de-exercicios.md)
 - Referência detalhada e questões: [OCPJ21, capítulo 7](../ocpj21-book/ch07.md)
 
 ---

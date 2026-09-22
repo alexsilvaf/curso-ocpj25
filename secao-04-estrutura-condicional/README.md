@@ -2,9 +2,9 @@
 
 <sub>📚 [Documentação](../README.md) › Seção 4</sub>
 
-| 🎓 Aulas do curso | 🎬 Aulas de referência | 🖥️ Slides |
-| :---: | :---: | :---: |
-| 33 a 43 | 38 a 48 | [abrir](./apresentacao.html) |
+| 🎓 Aulas do curso | 🎬 Aulas de referência |
+| :---: | :---: |
+| 33 a 43 | 38 a 48 |
 
 ## 🎯 Objetivos
 
@@ -38,6 +38,7 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - **A6** · [Expressão condicional ternária](./A6%20-%20Expressao%20condicional%20ternaria.md)
 - **A7** · [Escopo e inicialização](./A7%20-%20Escopo%20e%20inicializacao.md)
 - **A8** · [A certificação OCP Java SE 25 e esta seção](./A8%20-%20A%20certificacao%20OCP%20Java%20SE%2025.md)
+- **Prática** · [Lista de exercícios](./lista-de-exercicios.md)
 
 ## 🧭 Percurso sugerido
 
@@ -50,7 +51,7 @@ Ao final desta seção, o aluno deverá ser capaz de:
 | `switch-case` | Reescrever uma escolha de dia da semana, primeiro com `if-else` e depois com `switch` |
 | Operador ternário | Substituir somente decisões simples que produzem um valor |
 | Escopo e inicialização | Provocar erros de variável fora do bloco e de variável possivelmente não inicializada, depois corrigi-los |
-| Revisão e prática | Comparar as alternativas, fazer um teste de mesa final e resolver os exercícios do Estudante360 |
+| Revisão e prática | Comparar as alternativas, fazer um teste de mesa final e resolver a lista de exercícios da seção |
 
 ## 📝 Observações
 
@@ -61,7 +62,7 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - Três slides têm um **traçador**: ao clicar em um valor, o código acende só o caminho percorrido — o curto-circuito do `&&` (Bloco 2), a cadeia de `else if` (Bloco 3) e o *fall-through* do `switch` (Bloco 5). Vale pedir à turma que preveja o resultado antes do clique.
 - Operadores cumulativos, incremento e decremento e a comparação de valores `double` são apresentados aqui pela primeira vez; a Seção 3 mantém todas as atualizações na forma explícita.
 - A comparação de textos por conteúdo ainda não é necessária nos exemplos centrais. O material explica apenas por que `==` não deve ser usado para esse fim e adia o aprofundamento em objetos.
-- Os exercícios para iniciantes das aulas 38 e 39 ficam no Estudante360 e não são versionados neste repositório.
+- A prática da seção está reunida em [lista-de-exercicios.md](./lista-de-exercicios.md) e pode ser complementada por atividades avaliativas na plataforma do curso.
 
 ---
 

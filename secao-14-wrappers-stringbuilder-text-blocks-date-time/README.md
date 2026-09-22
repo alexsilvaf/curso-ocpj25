@@ -13,6 +13,7 @@
 ## 📚 Material
 
 - [Guia gradual da seção](./A1%20-%20Guia%20gradual%20de%20wrappers%20texto%20e%20tempo.md)
+- [Lista de exercícios](./lista-de-exercicios.md)
 - [OCPJ21, capítulo 4 — Data e texto](../ocpj21-book/ch04.md)
 - [OCPJ21, capítulo 11 — Date/Time API](../ocpj21-book/ch11.md)
 

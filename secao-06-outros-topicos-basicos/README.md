@@ -2,9 +2,9 @@
 
 <sub>📚 [Documentação](../README.md) › Seção 6</sub>
 
-| 🎓 Aulas do curso | 🎬 Aulas de referência | 🖥️ Slides |
-| :---: | :---: | :---: |
-| 58 a 63 | 63 a 68 | — |
+| 🎓 Aulas do curso | 🎬 Aulas de referência |
+| :---: | :---: |
+| 58 a 63 | 63 a 68 |
 
 ## 🎯 Objetivos
 
@@ -31,6 +31,7 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - **A6** · [Parâmetros, retorno e passagem de valores](./A6%20-%20Parametros%20retorno%20e%20passagem%20de%20valores.md)
 - **A7** · [Prática integrada](./A7%20-%20Pratica%20integrada.md)
 - **A8** · [A certificação OCP Java SE 25 e esta seção](./A8%20-%20A%20certificacao%20OCP%20Java%20SE%2025.md)
+- **Prática** · [Lista de exercícios](./lista-de-exercicios.md)
 
 ## 🧭 Percurso sugerido
 

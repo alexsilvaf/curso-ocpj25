@@ -2,9 +2,9 @@
 
 <sub>📚 [Documentação](../README.md) › Seção 3</sub>
 
-| 🎓 Aulas do curso | 🎬 Aulas de referência | 🖥️ Slides |
-| :---: | :---: | :---: |
-| 21 a 32 | 26 a 37 | [abrir](./apresentacao.html) |
+| 🎓 Aulas do curso | 🎬 Aulas de referência |
+| :---: | :---: |
+| 21 a 32 | 26 a 37 |
 
 ## 🎯 Objetivos
 
@@ -38,6 +38,7 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - **A6** · [Entrada de dados em Java](./A6%20-%20Entrada%20de%20dados%20em%20Java.md)
 - **A7** · [Funções matemáticas em Java](./A7%20-%20Funcoes%20matematicas%20em%20Java.md)
 - **A8** · [A certificação OCP Java SE 25 e esta seção](./A8%20-%20A%20certificacao%20OCP%20Java%20SE%2025.md)
+- **Prática** · [Lista de exercícios](./lista-de-exercicios.md)
 
 ## 🧭 Percurso sugerido
 
@@ -60,7 +61,7 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - `var` e *text blocks* aparecem apenas para reconhecimento. Os exemplos principais continuam usando declarações explícitas e strings comuns.
 - Operadores cumulativos, incremento, comparações e condições foram retirados desta seção e ficam concentrados na Seção 4.
 - Arrays, separação de texto e validação condicional da entrada ficam para as seções em que esses recursos forem ensinados.
-- Os exercícios para iniciantes (aulas 31 e 32) ficam no Estudante360 e não são versionados neste repositório.
+- A prática da seção está reunida em [lista-de-exercicios.md](./lista-de-exercicios.md) e pode ser complementada por atividades avaliativas na plataforma do curso.
 
 ---
 

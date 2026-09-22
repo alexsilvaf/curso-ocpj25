@@ -2,9 +2,9 @@
 
 <sub>📚 [Documentação](../README.md) › Seção 5</sub>
 
-| 🎓 Aulas do curso | 🎬 Aulas de referência | 🖥️ Slides |
-| :---: | :---: | :---: |
-| 44 a 57 | 49 a 62 | — |
+| 🎓 Aulas do curso | 🎬 Aulas de referência |
+| :---: | :---: |
+| 44 a 57 | 49 a 62 |
 
 ## 🎯 Objetivos
 
@@ -32,6 +32,7 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - **A6** · [Estrutura repetitiva do-while](./A6%20-%20Estrutura%20repetitiva%20do-while.md)
 - **A7** · [Escolhendo a estrutura de repetição](./A7%20-%20Escolhendo%20a%20estrutura%20de%20repeticao.md)
 - **A8** · [A certificação OCP Java SE 25 e esta seção](./A8%20-%20A%20certificacao%20OCP%20Java%20SE%2025.md)
+- **Prática** · [Lista de exercícios](./lista-de-exercicios.md)
 
 ## 🧭 Percurso sugerido
 
@@ -51,7 +52,7 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - Os exemplos usam apenas conteúdos das Seções 1 a 4 e a estrutura repetitiva apresentada naquele ponto. Arrays, coleções, métodos próprios e orientação a objetos não são necessários.
 - `for-each` não aparece nesta seção porque depende de arrays ou coleções, assuntos posteriores.
 - Laços aninhados são mostrados apenas depois que o aluno domina uma repetição simples e usam números, sem matrizes.
-- Os exercícios e testes de mesa das aulas 49 a 56 ficam no Estudante360 e não são versionados neste repositório.
+- Os exercícios e testes de mesa estão reunidos em [lista-de-exercicios.md](./lista-de-exercicios.md) e podem ser complementados por atividades avaliativas na plataforma do curso.
 
 ---
 

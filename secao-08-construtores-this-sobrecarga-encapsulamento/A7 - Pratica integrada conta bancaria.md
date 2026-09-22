@@ -161,12 +161,6 @@ public class Program {
 
 Esta versão permite que o saque deixe o saldo negativo, conforme a regra proposta. Não use uma coleção de contas, exceções ou persistência ainda; esses recursos serão adicionados quando seus pré-requisitos forem apresentados.
 
-## Desafios compatíveis com a seção
-
-1. Acrescente um método privado que normalize o nome do titular com `strip()`.
-2. Impedir depósito de valor não positivo já está implementado; explique por que o construtor reutiliza esse método.
-3. Preveja o saldo depois de depósito de `200.00` e saque de `50.00` em uma conta que começou zerada.
-
 ---
 
 <div align="center">

@@ -266,7 +266,7 @@
       <div class="slide-body top">
         <table class="deck-table">
           <tr><th style="width:110px">Bloco</th><th>Conteúdo</th></tr>
-          <tr><td><b>1</b></td><td>Contextualização e edições do Java</td></tr>
+          <tr><td><b>1</b></td><td>História, contextualização e edições do Java</td></tr>
           <tr><td><b>2</b></td><td>Plataforma Java SE — JDK, JRE, JVM</td></tr>
           <tr><td><b>3</b></td><td>Versões e cadência de lançamentos</td></tr>
           <tr><td><b>4</b></td><td>Estrutura de uma aplicação Java</td></tr>
@@ -279,7 +279,7 @@
     <section class="slide slide--divider" data-section="Bloco 1">
       <img class="duke" src="./duke.svg" alt="">
       <div class="div-num">BLOCO 1 DE 6</div>
-      <h1>Contextualização e edições do Java</h1>
+      <h1>História, contextualização e edições do Java</h1>
     </section>
 
     <section class="slide" data-section="Bloco 1 · Contextualização">
@@ -290,7 +290,59 @@
           <li><b>Linguagem de programação</b> — com suas próprias regras léxicas, sintáticas e semânticas.</li>
           <li><b>Plataforma de desenvolvimento e execução</b> — bibliotecas (API) mais um ambiente de execução (a JVM).</li>
         </ul>
-        <div class="callout">Criada pela Sun Microsystems em meados dos anos 1990; adquirida pela Oracle em 2010.</div>
+        <div class="callout">Java nasceu na Sun Microsystems, teve James Gosling como principal projetista e começou com outro nome: Oak.</div>
+      </div>
+    </section>
+
+    <section class="slide" data-section="Bloco 1 · História">
+      <div class="eyebrow">Sun Microsystems · início dos anos 1990</div>
+      <h2>O projeto Green e a linguagem Oak</h2>
+      <div class="slide-body">
+        <ul class="points">
+          <li><b>James Gosling</b> foi o principal projetista, trabalhando com uma equipe da Sun.</li>
+          <li>A linguagem se chamava <b>Oak</b> e foi pensada para dispositivos eletrônicos de consumo.</li>
+          <li>O objetivo era executar software em equipamentos com processadores e sistemas diferentes.</li>
+        </ul>
+        <div class="callout amber">Em 1992, o antecessor da JVM já executava programas escritos em Oak.</div>
+      </div>
+    </section>
+
+    <section class="slide" data-section="Bloco 1 · História">
+      <div class="eyebrow">Dos dispositivos para a Internet</div>
+      <h2>Oak se torna Java</h2>
+      <div class="slide-body">
+        <ul class="points">
+          <li>O mercado de dispositivos interativos ainda não estava pronto para o projeto original.</li>
+          <li>A equipe percebeu que a mesma portabilidade seria valiosa na World Wide Web.</li>
+          <li>O projeto foi redirecionado para a Internet, renomeado como <b>Java</b> e apresentado publicamente em <b>1995</b>.</li>
+        </ul>
+        <div class="callout">A Web divulgou Java; servidores e sistemas corporativos sustentaram grande parte de seu crescimento posterior.</div>
+      </div>
+    </section>
+
+    <section class="slide" data-section="Bloco 1 · História">
+      <div class="eyebrow">A crise da Sun</div>
+      <h2>Uma transformação com várias causas</h2>
+      <div class="slide-body">
+        <ul class="points compact">
+          <li>o fim da bolha das empresas ponto-com reduziu investimentos em infraestrutura;</li>
+          <li>servidores x86 mais baratos alteraram a economia do mercado;</li>
+          <li>Linux e o software de código aberto ampliaram a concorrência;</li>
+          <li>a Sun acumulou pressão financeira em seu negócio de hardware.</li>
+        </ul>
+        <div class="callout amber"><b>Não foi “culpa do Linux” isoladamente.</b> Linux foi parte de uma mudança mais ampla — e a própria Sun passou a oferecer produtos x86 compatíveis com Linux.</div>
+      </div>
+    </section>
+
+    <section class="slide" data-section="Bloco 1 · História">
+      <div class="eyebrow">Sun → Oracle</div>
+      <h2>A aquisição em dois marcos</h2>
+      <div class="slide-body">
+        <div class="kpi-row">
+          <div class="kpi"><div class="kpi-num">2009</div><div class="kpi-label">Oracle anuncia o acordo para comprar a Sun e destaca Java e Solaris.</div></div>
+          <div class="kpi"><div class="kpi-num">2010</div><div class="kpi-label">A aquisição é concluída; a Oracle assume a condução da plataforma.</div></div>
+        </div>
+        <div class="callout">Java continua evoluindo também por meio do OpenJDK, do Java Community Process, de outras empresas e da comunidade.</div>
       </div>
     </section>
 
@@ -335,14 +387,14 @@
           <tr><th>Edição</th><th>Nome</th><th>Uso</th></tr>
           <tr><td class="mono"><b>Java ME</b></td><td>Micro Edition</td><td>Dispositivos embarcados, móveis, IoT</td></tr>
           <tr><td class="mono"><b>Java SE</b></td><td>Standard Edition</td><td>O núcleo da linguagem — desktop e servidores. <b>Foco deste curso.</b></td></tr>
-          <tr><td class="mono"><b>Java EE</b></td><td>Enterprise Edition</td><td>Aplicações corporativas, construída sobre o SE</td></tr>
+          <tr><td class="mono"><b>Java EE</b></td><td>Enterprise Edition</td><td>Aplicações corporativas; hoje evolui como Jakarta EE</td></tr>
         </table>
         <div class="callout">Portável, segura e robusta, domina o mercado corporativo desde o fim dos anos 90 — e foi o padrão do Android por muitos anos.</div>
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 1 · Desafio">
-      <div class="eyebrow">Desafio rápido</div>
+    <section class="slide" data-section="Bloco 1 · Verificação">
+      <div class="eyebrow">Verificação rápida</div>
       <h2>Por que o mesmo arquivo <span class="mono" style="font-family:Consolas,monospace">.class</span> roda em Windows, Linux e Mac sem recompilar?</h2>
       <div class="slide-body">
         <div class="chip-row">
@@ -357,8 +409,8 @@
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 1 · Desafio">
-      <div class="eyebrow">Desafio rápido</div>
+    <section class="slide" data-section="Bloco 1 · Verificação">
+      <div class="eyebrow">Verificação rápida</div>
       <h2>Verdadeiro ou falso: Java é apenas uma linguagem de programação.</h2>
       <div class="slide-body">
         <div class="chip-row">
@@ -372,8 +424,8 @@
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 1 · Desafio">
-      <div class="eyebrow">Desafio rápido</div>
+    <section class="slide" data-section="Bloco 1 · Verificação">
+      <div class="eyebrow">Verificação rápida</div>
       <h2>Você vai escrever um programa de console para rodar no seu próprio computador. Qual edição atende?</h2>
       <div class="slide-body">
         <div class="chip-row">
@@ -640,8 +692,8 @@ java --module-path mods --module com.exemplo/com.exemplo.Programa
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 2 · Desafio">
-      <div class="eyebrow">Desafio rápido</div>
+    <section class="slide" data-section="Bloco 2 · Verificação">
+      <div class="eyebrow">Verificação rápida</div>
       <h2>Qual ferramenta do JDK compila um .java em .class?</h2>
       <div class="slide-body">
         <div class="chip-row">
@@ -656,8 +708,8 @@ java --module-path mods --module com.exemplo/com.exemplo.Programa
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 2 · Desafio">
-      <div class="eyebrow">Desafio rápido</div>
+    <section class="slide" data-section="Bloco 2 · Verificação">
+      <div class="eyebrow">Verificação rápida</div>
       <h2>Verdadeiro ou falso: o Class Loader carrega todas as classes de uma vez, no início do programa.</h2>
       <div class="slide-body">
         <div class="chip-row">
@@ -671,8 +723,8 @@ java --module-path mods --module com.exemplo/com.exemplo.Programa
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 2 · Desafio">
-      <div class="eyebrow">Desafio rápido</div>
+    <section class="slide" data-section="Bloco 2 · Verificação">
+      <div class="eyebrow">Verificação rápida</div>
       <h2>Você só precisa <em>rodar</em> um .jar nesta máquina — nunca compilar nada. Qual é o mínimo necessário?</h2>
       <div class="slide-body">
         <div class="chip-row">
@@ -750,8 +802,8 @@ java --module-path mods --module com.exemplo/com.exemplo.Programa
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 3 · Desafio">
-      <div class="eyebrow">Desafio rápido</div>
+    <section class="slide" data-section="Bloco 3 · Verificação">
+      <div class="eyebrow">Verificação rápida</div>
       <h2>De quantos em quantos meses o Java lança uma nova versão?</h2>
       <div class="slide-body">
         <div class="chip-row">
@@ -766,8 +818,8 @@ java --module-path mods --module com.exemplo/com.exemplo.Programa
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 3 · Desafio">
-      <div class="eyebrow">Desafio rápido</div>
+    <section class="slide" data-section="Bloco 3 · Verificação">
+      <div class="eyebrow">Verificação rápida</div>
       <h2>Um recurso que ainda está em Preview cai na prova de certificação?</h2>
       <div class="slide-body">
         <div class="chip-row">
@@ -781,8 +833,8 @@ java --module-path mods --module com.exemplo/com.exemplo.Programa
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 3 · Desafio">
-      <div class="eyebrow">Desafio rápido</div>
+    <section class="slide" data-section="Bloco 3 · Verificação">
+      <div class="eyebrow">Verificação rápida</div>
       <h2>Sua empresa quer a mesma versão em produção pelos próximos 5 anos, com correções de segurança garantidas. Qual escolher?</h2>
       <div class="slide-body">
         <div class="chip-row">
@@ -863,8 +915,8 @@ java --module-path mods --module com.exemplo/com.exemplo.Programa
       <div class="callout">Distribuída como <span class="mono" style="font-family:Consolas,monospace">.jar</span> ou como imagem de runtime gerada pelo <span class="mono" style="font-family:Consolas,monospace">jlink</span>.</div>
     </section>
 
-    <section class="slide" data-section="Bloco 4 · Desafio">
-      <div class="eyebrow">Desafio rápido</div>
+    <section class="slide" data-section="Bloco 4 · Verificação">
+      <div class="eyebrow">Verificação rápida</div>
       <h2>Qual é a ordem certa, do menor para o maior agrupamento?</h2>
       <div class="slide-body">
         <div class="chip-row">
@@ -879,8 +931,8 @@ java --module-path mods --module com.exemplo/com.exemplo.Programa
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 4 · Desafio">
-      <div class="eyebrow">Desafio rápido</div>
+    <section class="slide" data-section="Bloco 4 · Verificação">
+      <div class="eyebrow">Verificação rápida</div>
       <h2>Um arquivo .java pode ter quantas classes public?</h2>
       <div class="slide-body">
         <div class="chip-row">
@@ -895,8 +947,8 @@ java --module-path mods --module com.exemplo/com.exemplo.Programa
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 4 · Desafio">
-      <div class="eyebrow">Desafio rápido</div>
+    <section class="slide" data-section="Bloco 4 · Verificação">
+      <div class="eyebrow">Verificação rápida</div>
       <h2>Ache o erro</h2>
       <div class="code-block small">
 <span class="com">// Arquivo: Produto.java</span>
@@ -980,8 +1032,8 @@ java OlaMundo          <span class="com">// executa (sem a extensão .class)</sp
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 5 · Desafio">
-      <div class="eyebrow">Desafio rápido</div>
+    <section class="slide" data-section="Bloco 5 · Verificação">
+      <div class="eyebrow">Verificação rápida</div>
       <h2>Qual nome a JVM procura para iniciar o programa?</h2>
       <div class="slide-body">
         <div class="chip-row">
@@ -996,8 +1048,8 @@ java OlaMundo          <span class="com">// executa (sem a extensão .class)</sp
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 5 · Desafio">
-      <div class="eyebrow">Desafio rápido</div>
+    <section class="slide" data-section="Bloco 5 · Verificação">
+      <div class="eyebrow">Verificação rápida</div>
       <h2>Qual deve ser o nome do arquivo desta classe?</h2>
       <div class="slide-body">
         <div class="chip-row">
@@ -1012,7 +1064,7 @@ java OlaMundo          <span class="com">// executa (sem a extensão .class)</sp
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 5 · Desafio">
+    <section class="slide" data-section="Bloco 5 · Verificação">
       <div class="eyebrow">Mão na massa</div>
       <h2>Personalize o OlaMundo</h2>
       <div class="slide-body top">
@@ -1092,8 +1144,8 @@ System.out.println(<span class="str">"Meu primeiro programa Java."</span>);
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 6 · Desafio">
-      <div class="eyebrow">Desafio rápido</div>
+    <section class="slide" data-section="Bloco 6 · Verificação">
+      <div class="eyebrow">Verificação rápida</div>
       <h2>Qual trecho inicia o arquivo compacto apresentado?</h2>
       <div class="slide-body">
         <div class="chip-row">
@@ -1108,8 +1160,8 @@ System.out.println(<span class="str">"Meu primeiro programa Java."</span>);
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 6 · Desafio">
-      <div class="eyebrow">Desafio rápido</div>
+    <section class="slide" data-section="Bloco 6 · Verificação">
+      <div class="eyebrow">Verificação rápida</div>
       <h2>Qual classe do Java 25 substitui, em casos simples, System.out.println?</h2>
       <div class="slide-body">
         <div class="chip-row">
@@ -1124,8 +1176,8 @@ System.out.println(<span class="str">"Meu primeiro programa Java."</span>);
       </div>
     </section>
 
-    <section class="slide" data-section="Bloco 6 · Desafio">
-      <div class="eyebrow">Desafio rápido</div>
+    <section class="slide" data-section="Bloco 6 · Verificação">
+      <div class="eyebrow">Verificação rápida</div>
       <h2>Reescreva em arquivo-fonte compacto</h2>
       <div class="two-col center">
         <div>

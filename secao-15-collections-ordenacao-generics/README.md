@@ -14,6 +14,7 @@
 ## 📚 Material
 
 - [Guia gradual da seção](./A1%20-%20Guia%20gradual%20de%20collections%20e%20generics.md)
+- [Lista de exercícios](./lista-de-exercicios.md)
 - Referência detalhada: [OCPJ21, capítulo 6](../ocpj21-book/ch06.md#generics)
 
 ---

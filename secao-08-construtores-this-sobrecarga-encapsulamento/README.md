@@ -2,9 +2,9 @@
 
 <sub>📚 [Documentação](../README.md) › Seção 8</sub>
 
-| 🎓 Aulas do curso | 🎬 Aulas de referência | 🖥️ Slides |
-| :---: | :---: | :---: |
-| 76 a 83 | 81 a 88 | — |
+| 🎓 Aulas do curso | 🎬 Aulas de referência |
+| :---: | :---: |
+| 76 a 83 | 81 a 88 |
 
 ## 🎯 Objetivos
 
@@ -30,6 +30,7 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - **A6** · [Modificadores de acesso e geração pelo Eclipse](./A6%20-%20Modificadores%20de%20acesso%20e%20geracao%20pelo%20Eclipse.md)
 - **A7** · [Prática integrada: conta bancária](./A7%20-%20Pratica%20integrada%20conta%20bancaria.md)
 - **A8** · [A certificação OCP Java SE 25 e esta seção](./A8%20-%20A%20certificacao%20OCP%20Java%20SE%2025.md)
+- **Prática** · [Lista de exercícios](./lista-de-exercicios.md)
 
 ## 🗓️ Planejamento das aulas
 

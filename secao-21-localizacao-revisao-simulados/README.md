@@ -15,6 +15,7 @@
 
 - [Guia gradual de localização e revisão](./A1%20-%20Guia%20gradual%20de%20localizacao%20e%20revisao.md)
 - [Simulado integrado OCPJ25](./A2%20-%20Simulado%20integrado%20OCPJ25.md)
+- [Lista de exercícios](./lista-de-exercicios.md)
 - Referência detalhada: [OCPJ21, capítulo 14](../ocpj21-book/ch14.md)
 - Banco adicional: questões e respostas ao final de cada capítulo de [OCPJ21](../ocpj21-book/intro.md)
 

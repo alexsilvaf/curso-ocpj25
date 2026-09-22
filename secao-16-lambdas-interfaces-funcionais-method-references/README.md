@@ -14,6 +14,7 @@
 ## 📚 Material
 
 - [Guia gradual da seção](./A1%20-%20Guia%20gradual%20de%20lambdas%20e%20method%20references.md)
+- [Lista de exercícios](./lista-de-exercicios.md)
 - Referência detalhada: [OCPJ21, capítulo 8](../ocpj21-book/ch08.md)
 
 ---

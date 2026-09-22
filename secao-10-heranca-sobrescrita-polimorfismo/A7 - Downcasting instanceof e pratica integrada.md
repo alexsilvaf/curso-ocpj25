@@ -191,13 +191,6 @@ public class Program {
 
 O cálculo de `payment()` usa polimorfismo. O pattern é reservado à informação que existe somente em `Manager`.
 
-## Desafios compatíveis com a seção
-
-1. Crie `Salesperson extends Employee` com um campo `commission` e sobrescreva `payment()`.
-2. Acrescente vendedores ao array sem alterar o laço que calcula `total`.
-3. Exiba a comissão apenas quando o objeto for `Salesperson`, usando pattern matching.
-4. Explique por que um `if` que testa cada tipo para calcular o pagamento seria pior que a sobrescrita.
-
 ---
 
 <div align="center">

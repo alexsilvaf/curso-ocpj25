@@ -2,9 +2,9 @@
 
 <sub>📚 [Documentação](../README.md) › Seção 9</sub>
 
-| 🎓 Aulas do curso | 🎬 Aulas de referência | 🖥️ Slides |
-| :---: | :---: | :---: |
-| continuação | a definir | — |
+| 🎓 Aulas do curso | 🎬 Aulas de referência |
+| :---: | :---: |
+| continuação | a definir |
 
 ## 🎯 Objetivos
 
@@ -31,6 +31,7 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - **A6** · [Inferência local com `var` e variáveis sem nome](./A6%20-%20Inferencia%20local%20com%20var%20e%20variaveis%20sem%20nome.md)
 - **A7** · [Varargs, `split`, `toCharArray` e prática integrada](./A7%20-%20Varargs%20split%20toCharArray%20e%20pratica%20integrada.md)
 - **A8** · [A certificação OCP Java SE 25 e esta seção](./A8%20-%20A%20certificacao%20OCP%20Java%20SE%2025.md)
+- **Prática** · [Lista de exercícios](./lista-de-exercicios.md)
 
 ## 🗓️ Planejamento das aulas
 

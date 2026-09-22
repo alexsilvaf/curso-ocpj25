@@ -2,9 +2,9 @@
 
 <sub>📚 [Documentação](../README.md) › Seção 1</sub>
 
-| 🎓 Aulas do curso | 🎬 Aulas de referência | 🖥️ Slides |
-| :---: | :---: | :---: |
-| 1 a 7 | 6 a 12 | — |
+| 🎓 Aulas do curso | 🎬 Aulas de referência |
+| :---: | :---: |
+| 1 a 7 | 6 a 12 |
 
 ## 🎯 Objetivos
 
@@ -24,6 +24,7 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - **A3** · [Linguagem de programação](./A3%20-%20Linguagem%20de%20Programacao.md)
 - **A4** · [Ambiente integrado de desenvolvimento](./A4%20-%20O%20que%20%C3%A9%20uma%20IDE.md)
 - **A5** · [Tradução e execução de programas](./A5%20-%20Compila%C3%A7%C3%A3o,%20intepreta%C3%A7%C3%A3o,%20c%C3%B3digo%20fonte,%20c%C3%B3digo%20objeto,%20m%C3%A1quina%20virtual.md)
+- **Prática** · [Lista de exercícios](./lista-de-exercicios.md)
 
 ## 🧭 Percurso sugerido
 
@@ -45,6 +46,6 @@ Ao final desta seção, o aluno deverá ser capaz de:
 
 <div align="center">
 
-📚 [Documentação](../README.md) &nbsp;·&nbsp; [Seção 2 · Introdução à linguagem Java](../secao-02-introducao-java/README.md) ➡️
+⬅️ [Seção 0 · Introdução ao curso](../secao-00-introducao-ao-curso/README.md) &nbsp;·&nbsp; 📚 [Documentação](../README.md) &nbsp;·&nbsp; [Seção 2 · Introdução à linguagem Java](../secao-02-introducao-java/README.md) ➡️
 
 </div>

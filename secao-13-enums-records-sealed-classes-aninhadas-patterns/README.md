@@ -13,6 +13,7 @@
 ## 📚 Material
 
 - [Guia gradual da seção](./A1%20-%20Guia%20gradual%20de%20tipos%20modernos%20e%20patterns.md)
+- [Lista de exercícios](./lista-de-exercicios.md)
 - [OCPJ21, capítulo 3 — Records e Enums](../ocpj21-book/ch03.md)
 - [OCPJ21, capítulo 1 — Nested Classes](../ocpj21-book/ch01.md#nested-classes)
 - [OCPJ21, capítulo 5 — Pattern Matching](../ocpj21-book/ch05.md#pattern-matching-in-switch-statements)

@@ -2,16 +2,16 @@
 
 <sub>📚 [Documentação](../README.md) › Seção 2</sub>
 
-| 🎓 Aulas do curso | 🎬 Aulas de referência | 🖥️ Slides |
-| :---: | :---: | :---: |
-| 8 a 20 | 13 a 25 | [abrir](./apresentacao.html) |
+| 🎓 Aulas do curso | 🎬 Aulas de referência |
+| :---: | :---: |
+| 8 a 20 | 13 a 25 |
 
 ## 🎯 Objetivos
 
 Ao final desta seção, o aluno deverá ser capaz de:
 
 - explicar o que é Java como linguagem e como plataforma;
-- situar o surgimento do Java e os problemas que ele veio resolver;
+- recontar os principais marcos da história do Java, do projeto Green e da linguagem Oak à aquisição da Sun pela Oracle;
 - diferenciar as edições Java ME, Java SE e Java EE;
 - distinguir JDK, JRE e JVM e identificar as ferramentas do JDK;
 - descrever o caminho do código-fonte até a execução, passando por bytecode e JIT;
@@ -30,7 +30,7 @@ Ao final desta seção, o aluno deverá ser capaz de:
 
 ## 📚 Conteúdos
 
-- **A1** · [Contextualização do Java](./A1%20-%20Contextualiza%C3%A7%C3%A3o%20do%20Java.md)
+- **A1** · [História e contextualização do Java](./A1%20-%20Contextualiza%C3%A7%C3%A3o%20do%20Java.md)
 - **A2** · [Plataforma Java SE](./A2%20-%20Plataforma%20Java%20SE.md)
 - **A3** · [Versões do Java](./A3%20-%20Versoes%20do%20Java.md)
 - **A4** · [Estrutura de uma aplicação Java](./A4%20-%20Estrutura%20do%20Java.md)
@@ -38,12 +38,13 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - **A6** · [Primeiro programa em Java](./A6%20-%20Primeiro%20programa%20em%20Java.md)
 - **A7** · [Sintaxe simplificada do Java 25](./A7%20-%20Sintaxe%20simplificada%20do%20Java%2025.md)
 - **A8** · [A certificação OCP Java SE 25 e esta seção](./A8%20-%20A%20certificacao%20OCP%20Java%20SE%2025.md)
+- **Prática** · [Lista de exercícios](./lista-de-exercicios.md)
 
 ## 🧭 Percurso sugerido
 
 | Conteúdo | Atividade sugerida |
 | --- | --- |
-| Contextualização e edições do Java | Retomar os problemas de ponteiros, portabilidade e custo apresentados no A1 |
+| História, contextualização e edições do Java | Percorrer a linha do tempo da Sun, do projeto Green, de Oak, da Web e da aquisição pela Oracle |
 | Plataforma Java SE | Diferenciar JDK, JRE e JVM com a tabela do A2 e percorrer o modelo de execução |
 | Versões e cadência de lançamentos | Usar o A3 para compreender LTS, JEPs e por que o curso adota o Java 25 |
 | Estrutura de uma aplicação | Percorrer os diagramas do A4, da classe até a aplicação, observando `package` e `module-info.java` |

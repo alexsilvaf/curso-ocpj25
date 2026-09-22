@@ -15,6 +15,7 @@
 ## 📚 Material
 
 - [Guia gradual da seção](./A1%20-%20Guia%20gradual%20de%20concorrencia.md)
+- [Lista de exercícios](./lista-de-exercicios.md)
 - Referência detalhada: [OCPJ21, capítulo 10](../ocpj21-book/ch10.md)
 
 ---
