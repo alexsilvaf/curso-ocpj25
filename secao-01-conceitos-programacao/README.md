@@ -17,6 +17,10 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - distinguir código-fonte, código intermediário, código objeto e código nativo;
 - comparar abordagens compiladas, interpretadas e híbridas.
 
+## 🖥️ Apresentação
+
+[apresentacao.html](./apresentacao.html) organiza os cinco blocos da seção em slides e reutiliza os diagramas dos materiais. Use <kbd>←</kbd>, <kbd>→</kbd> ou <kbd>Espaço</kbd> para navegar, <kbd>Esc</kbd> para ver todos os slides e <kbd>F</kbd> para usar tela cheia.
+
 ## 📚 Conteúdos
 
 - **A1** · [Algoritmo, automação e programa de computador](./A1%20-%20Algoritmo,%20Automatacao,%20Programa.md)
