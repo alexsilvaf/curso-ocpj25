@@ -2,9 +2,9 @@
 
 <sub>📚 [Documentação](../README.md) › Seção 2</sub>
 
-| 🎓 Aulas do curso | 🎬 Aulas de referência | ⏱️ Duração na grade | 🖥️ Slides |
-| :---: | :---: | :---: | :---: |
-| 8 a 20 | 13 a 25 | 40 min | [abrir](./apresentacao.html) |
+| 🎓 Aulas do curso | 🎬 Aulas de referência | 🖥️ Slides |
+| :---: | :---: | :---: |
+| 8 a 20 | 13 a 25 | [abrir](./apresentacao.html) |
 
 ## 🎯 Objetivos
 
@@ -39,16 +39,16 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - **A7** · [Sintaxe simplificada do Java 25](./A7%20-%20Sintaxe%20simplificada%20do%20Java%2025.md)
 - **A8** · [A certificação OCP Java SE 25 e esta seção](./A8%20-%20A%20certificacao%20OCP%20Java%20SE%2025.md)
 
-## 🗓️ Planejamento da aula
+## 🧭 Percurso sugerido
 
-| Tempo | Conteúdo | Condução sugerida |
-| :---: | --- | --- |
-| 0–10 min | Contextualização e edições do Java | Retomar os problemas de ponteiros, portabilidade e custo apresentados no A1 |
-| 10–20 min | Plataforma Java SE | Diferenciar JDK, JRE e JVM com a tabela do A2 e percorrer o modelo de execução |
-| 20–30 min | Versões e cadência de lançamentos | Usar o A3 para explicar LTS, JEPs e por que o curso adota o Java 25 |
-| 30–40 min | Estrutura de uma aplicação | Percorrer os diagramas do A4, da classe até a aplicação, mostrando `package` e `module-info.java` |
-| 40–50 min | Ambiente e primeiro programa | Verificar a instalação com o A5 e escrever o programa do A6 ao vivo |
-| 50–60 min | Sintaxe simplificada do Java 25 | Reescrever o mesmo programa na forma compacta do A7 e discutir quando usar cada uma |
+| Conteúdo | Atividade sugerida |
+| --- | --- |
+| Contextualização e edições do Java | Retomar os problemas de ponteiros, portabilidade e custo apresentados no A1 |
+| Plataforma Java SE | Diferenciar JDK, JRE e JVM com a tabela do A2 e percorrer o modelo de execução |
+| Versões e cadência de lançamentos | Usar o A3 para compreender LTS, JEPs e por que o curso adota o Java 25 |
+| Estrutura de uma aplicação | Percorrer os diagramas do A4, da classe até a aplicação, observando `package` e `module-info.java` |
+| Ambiente e primeiro programa | Verificar a instalação com o A5 e escrever o programa do A6 |
+| Sintaxe simplificada do Java 25 | Reescrever o mesmo programa na forma compacta do A7 e comparar as duas formas |
 
 ## 📝 Observações
 

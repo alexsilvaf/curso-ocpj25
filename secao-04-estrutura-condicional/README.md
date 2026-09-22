@@ -2,9 +2,9 @@
 
 <sub>📚 [Documentação](../README.md) › Seção 4</sub>
 
-| 🎓 Aulas do curso | 🎬 Aulas de referência | ⏱️ Duração na grade | 🖥️ Slides |
-| :---: | :---: | :---: | :---: |
-| 33 a 43 | 38 a 48 | 54 min | [abrir](./apresentacao.html) |
+| 🎓 Aulas do curso | 🎬 Aulas de referência | 🖥️ Slides |
+| :---: | :---: | :---: |
+| 33 a 43 | 38 a 48 | [abrir](./apresentacao.html) |
 
 ## 🎯 Objetivos
 
@@ -39,28 +39,25 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - **A7** · [Escopo e inicialização](./A7%20-%20Escopo%20e%20inicializacao.md)
 - **A8** · [A certificação OCP Java SE 25 e esta seção](./A8%20-%20A%20certificacao%20OCP%20Java%20SE%2025.md)
 
-## 🗓️ Planejamento da aula
+## 🧭 Percurso sugerido
 
-| Tempo | Conteúdo | Condução sugerida |
-| :---: | --- | --- |
-| 0-10 min | Expressões comparativas | Avaliar comparações simples no `jshell` ou na IDE e guardar os resultados em variáveis `boolean` |
-| 10-22 min | Expressões lógicas | Construir as tabelas-verdade e demonstrar o curto-circuito com uma divisão protegida |
-| 22-40 min | `if`, `if-else` e `else if` | Montar gradualmente um programa de classificação de notas e fazer seu teste de mesa |
-| 40-48 min | Atribuição cumulativa | Transformar cálculos como `saldo = saldo - saque` em `saldo -= saque` e discutir a diferença de tipo |
-| 48-60 min | `switch-case` | Reescrever uma escolha de dia da semana, primeiro com `if-else` e depois com `switch` |
-| 60-68 min | Operador ternário | Substituir somente decisões simples que produzem um valor |
-| 68-82 min | Escopo e inicialização | Provocar erros de variável fora do bloco e de variável possivelmente não inicializada, depois corrigi-los |
-| 82-90 min | Fechamento e prática | Comparar as alternativas, fazer um teste de mesa final e encaminhar os exercícios do Estudante360 |
-
-> [!TIP]
-> A grade de referência soma aproximadamente 54 minutos. Em um encontro de 60 minutos, o corte natural é manter `switch`, ternário e atribuição cumulativa como leitura guiada, preservando mais tempo para `if-else`, expressões lógicas e teste de mesa.
+| Conteúdo | Atividade sugerida |
+| --- | --- |
+| Expressões comparativas | Avaliar comparações simples no `jshell` ou na IDE e guardar os resultados em variáveis `boolean` |
+| Expressões lógicas | Construir as tabelas-verdade e demonstrar o curto-circuito com uma divisão protegida |
+| `if`, `if-else` e `else if` | Montar gradualmente um programa de classificação de notas e fazer seu teste de mesa |
+| Atribuição cumulativa | Transformar cálculos como `saldo = saldo - saque` em `saldo -= saque` e discutir a diferença de tipo |
+| `switch-case` | Reescrever uma escolha de dia da semana, primeiro com `if-else` e depois com `switch` |
+| Operador ternário | Substituir somente decisões simples que produzem um valor |
+| Escopo e inicialização | Provocar erros de variável fora do bloco e de variável possivelmente não inicializada, depois corrigi-los |
+| Revisão e prática | Comparar as alternativas, fazer um teste de mesa final e resolver os exercícios do Estudante360 |
 
 ## 📝 Observações
 
 - A ordem dos materiais é intencional: uma condição simples aparece antes de combinações lógicas, e ambas aparecem antes do primeiro `if`.
 - Todos os exemplos usam apenas conteúdos das Seções 1 a 3 e o tópico que está sendo introduzido. Não são necessários arrays, coleções, métodos próprios, exceções nem orientação a objetos.
 - O material usa chaves mesmo quando o bloco tem uma única instrução. Isso reduz erros durante a aprendizagem e facilita a inclusão de novas linhas.
-- Cada um dos sete blocos da apresentação termina com um slide **Mão na massa**: cinco exercícios para fazer na IDE, na ordem em que o conteúdo foi apresentado. Vários pedem que o erro seja provocado de propósito antes da correção. Se o encontro estiver curto, eles funcionam como tarefa de casa.
+- Cada um dos sete blocos da apresentação termina com um slide **Mão na massa**: cinco exercícios para fazer na IDE, na ordem em que o conteúdo foi apresentado. Vários pedem que o erro seja provocado de propósito antes da correção e também podem ser realizados como atividade independente.
 - Três slides têm um **traçador**: ao clicar em um valor, o código acende só o caminho percorrido — o curto-circuito do `&&` (Bloco 2), a cadeia de `else if` (Bloco 3) e o *fall-through* do `switch` (Bloco 5). Vale pedir à turma que preveja o resultado antes do clique.
 - Operadores cumulativos, incremento e decremento e a comparação de valores `double` são apresentados aqui pela primeira vez; a Seção 3 mantém todas as atualizações na forma explícita.
 - A comparação de textos por conteúdo ainda não é necessária nos exemplos centrais. O material explica apenas por que `==` não deve ser usado para esse fim e adia o aprofundamento em objetos.

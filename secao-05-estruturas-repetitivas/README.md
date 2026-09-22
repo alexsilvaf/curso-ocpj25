@@ -2,9 +2,9 @@
 
 <sub>📚 [Documentação](../README.md) › Seção 5</sub>
 
-| 🎓 Aulas do curso | 🎬 Aulas de referência | ⏱️ Duração na grade | 🖥️ Slides |
-| :---: | :---: | :---: | :---: |
-| 44 a 57 | 49 a 62 | 1 h 10 min | — |
+| 🎓 Aulas do curso | 🎬 Aulas de referência | 🖥️ Slides |
+| :---: | :---: | :---: |
+| 44 a 57 | 49 a 62 | — |
 
 ## 🎯 Objetivos
 
@@ -33,20 +33,17 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - **A7** · [Escolhendo a estrutura de repetição](./A7%20-%20Escolhendo%20a%20estrutura%20de%20repeticao.md)
 - **A8** · [A certificação OCP Java SE 25 e esta seção](./A8%20-%20A%20certificacao%20OCP%20Java%20SE%2025.md)
 
-## 🗓️ Planejamento da aula
+## 🧭 Percurso sugerido
 
-| Tempo | Conteúdo | Condução sugerida |
-| :---: | --- | --- |
-| 0-12 min | Depurador do Eclipse | Criar um ponto de interrupção, usar Step Over e observar variáveis em um programa sequencial curto |
-| 12-30 min | Estrutura `while` | Construir uma contagem e depois uma leitura com sentinela, destacando a atualização da condição |
-| 30-42 min | Teste de mesa com `while` | Simular contador, acumulador e entrada em uma tabela de iterações |
-| 42-60 min | Estrutura `for` | Transformar uma repetição com contador de `while` para `for` e comparar as partes equivalentes |
-| 60-72 min | Teste de mesa com `for` | Trabalhar limites inclusivos e exclusivos, contagem regressiva e passos diferentes de 1 |
-| 72-82 min | Estrutura `do-while` | Construir um menu que aparece pelo menos uma vez e localizar o ponto e vírgula obrigatório |
-| 82-90 min | Escolha da estrutura e fechamento | Comparar os três laços, demonstrar `break` e `continue` e encaminhar os exercícios |
-
-> [!TIP]
-> A grade de referência soma aproximadamente 1 h 10 min. Em um encontro de 60 minutos, priorize `while`, `for` e seus testes de mesa. O depurador pode ser demonstrado junto com os testes, e `do-while` pode ficar como leitura acompanhada.
+| Conteúdo | Atividade sugerida |
+| --- | --- |
+| Depurador do Eclipse | Criar um ponto de interrupção, usar Step Over e observar variáveis em um programa sequencial curto |
+| Estrutura `while` | Construir uma contagem e depois uma leitura com sentinela, destacando a atualização da condição |
+| Teste de mesa com `while` | Simular contador, acumulador e entrada em uma tabela de iterações |
+| Estrutura `for` | Transformar uma repetição com contador de `while` para `for` e comparar as partes equivalentes |
+| Teste de mesa com `for` | Trabalhar limites inclusivos e exclusivos, contagem regressiva e passos diferentes de 1 |
+| Estrutura `do-while` | Construir um menu que aparece pelo menos uma vez e localizar o ponto e vírgula obrigatório |
+| Escolha da estrutura e revisão | Comparar os três laços, demonstrar `break` e `continue` e resolver os exercícios |
 
 ## 📝 Observações
 

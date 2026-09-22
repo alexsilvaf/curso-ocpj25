@@ -2,9 +2,9 @@
 
 <sub>📚 [Documentação](../README.md) › Seção 9</sub>
 
-| 🎓 Aulas do curso | 🎬 Aulas de referência | ⏱️ Duração na grade | 🖥️ Slides |
-| :---: | :---: | :---: | :---: |
-| continuação | a definir | a definir | — |
+| 🎓 Aulas do curso | 🎬 Aulas de referência | 🖥️ Slides |
+| :---: | :---: | :---: |
+| continuação | a definir | — |
 
 ## 🎯 Objetivos
 

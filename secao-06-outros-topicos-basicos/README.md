@@ -2,9 +2,9 @@
 
 <sub>📚 [Documentação](../README.md) › Seção 6</sub>
 
-| 🎓 Aulas do curso | 🎬 Aulas de referência | ⏱️ Duração na grade | 🖥️ Slides |
-| :---: | :---: | :---: | :---: |
-| 58 a 63 | 63 a 68 | 49 min | — |
+| 🎓 Aulas do curso | 🎬 Aulas de referência | 🖥️ Slides |
+| :---: | :---: | :---: |
+| 58 a 63 | 63 a 68 | — |
 
 ## 🎯 Objetivos
 
@@ -32,20 +32,17 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - **A7** · [Prática integrada](./A7%20-%20Pratica%20integrada.md)
 - **A8** · [A certificação OCP Java SE 25 e esta seção](./A8%20-%20A%20certificacao%20OCP%20Java%20SE%2025.md)
 
-## 🗓️ Planejamento da aula
+## 🧭 Percurso sugerido
 
-| Tempo | Conteúdo | Condução sugerida |
-| :---: | --- | --- |
-| 0-8 min | Identificadores e convenções | Classificar nomes válidos e inválidos antes de revisar `camelCase`, `PascalCase` e constantes |
-| 8-22 min | Operadores bitwise | Representar valores pequenos em binário e calcular `&`, `|`, `^`, `~` e deslocamentos |
-| 22-40 min | Métodos de `String` | Explorar índices, buscas, comparação por conteúdo, transformação e imutabilidade |
-| 40-45 min | Comentários | Comparar `//`, `/* */` e `/** */`, incluindo os limites de aninhamento |
-| 45-67 min | Métodos | Extrair cálculos já conhecidos para métodos `static` com parâmetros e retorno |
-| 67-80 min | Passagem de valores | Alterar parâmetros locais e observar que a variável do chamador não muda |
-| 80-90 min | Prática e OCPJ25 | Montar o analisador de texto e resolver questões curtas de previsão de saída |
-
-> [!TIP]
-> A grade de referência soma aproximadamente 49 minutos. O planejamento estendido reserva tempo para prática e para a ligação com a OCPJ25. Em um encontro de 60 minutos, a prática integrada pode ficar como atividade posterior.
+| Conteúdo | Atividade sugerida |
+| --- | --- |
+| Identificadores e convenções | Classificar nomes válidos e inválidos antes de revisar `camelCase`, `PascalCase` e constantes |
+| Operadores bitwise | Representar valores pequenos em binário e calcular `&`, `|`, `^`, `~` e deslocamentos |
+| Métodos de `String` | Explorar índices, buscas, comparação por conteúdo, transformação e imutabilidade |
+| Comentários | Comparar `//`, `/* */` e `/** */`, incluindo os limites de aninhamento |
+| Métodos | Extrair cálculos já conhecidos para métodos `static` com parâmetros e retorno |
+| Passagem de valores | Alterar parâmetros locais e observar que a variável do chamador não muda |
+| Prática e OCPJ25 | Montar o analisador de texto e resolver questões curtas de previsão de saída |
 
 ## 📝 Observações
 

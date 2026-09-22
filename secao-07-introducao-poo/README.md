@@ -2,9 +2,9 @@
 
 <sub>📚 [Documentação](../README.md) › Seção 7</sub>
 
-| 🎓 Aulas do curso | 🎬 Aulas de referência | ⏱️ Duração na grade | 🖥️ Slides |
-| :---: | :---: | :---: | :---: |
-| 64 a 75 | 69 a 80 | 1 h 29 min | — |
+| 🎓 Aulas do curso | 🎬 Aulas de referência | 🖥️ Slides |
+| :---: | :---: | :---: |
+| 64 a 75 | 69 a 80 | — |
 
 ## 🎯 Objetivos
 

@@ -2,9 +2,9 @@
 
 <sub>📚 [Documentação](../README.md) › Seção 1</sub>
 
-| 🎓 Aulas do curso | 🎬 Aulas de referência | ⏱️ Duração na grade | 🖥️ Slides |
-| :---: | :---: | :---: | :---: |
-| 1 a 7 | 6 a 12 | 24 min | — |
+| 🎓 Aulas do curso | 🎬 Aulas de referência | 🖥️ Slides |
+| :---: | :---: | :---: |
+| 1 a 7 | 6 a 12 | — |
 
 ## 🎯 Objetivos
 
@@ -25,16 +25,16 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - **A4** · [Ambiente integrado de desenvolvimento](./A4%20-%20O%20que%20%C3%A9%20uma%20IDE.md)
 - **A5** · [Tradução e execução de programas](./A5%20-%20Compila%C3%A7%C3%A3o,%20intepreta%C3%A7%C3%A3o,%20c%C3%B3digo%20fonte,%20c%C3%B3digo%20objeto,%20m%C3%A1quina%20virtual.md)
 
-## 🗓️ Planejamento da aula
+## 🧭 Percurso sugerido
 
-| Tempo | Conteúdo | Condução sugerida |
-| :---: | --- | --- |
-| 0–10 min | Algoritmo, automação e programa de computador | Apresentar os conceitos do A1 usando o exemplo da tarefa cotidiana |
-| 10–15 min | Panorama das ferramentas | Usar o A2 como mapa do que vem a seguir: linguagem, editor/IDE, tradutor e ambiente de execução |
-| 15–25 min | Linguagem de programação e tipos de erro | Relacionar léxica, sintaxe e semântica aos exemplos do A3 |
-| 25–30 min | Ambiente integrado de desenvolvimento | Mostrar com o A4 o que uma IDE agrega e por que ela não é obrigatória |
-| 30–50 min | Formas de tradução e execução | Percorrer os diagramas do A5 e comparar compilação, interpretação e abordagem híbrida |
-| 50–60 min | Revisão e exercícios | Usar o diagrama comparativo, responder dúvidas e realizar uma atividade curta de classificação |
+| Conteúdo | Atividade sugerida |
+| --- | --- |
+| Algoritmo, automação e programa de computador | Estudar os conceitos do A1 usando o exemplo da tarefa cotidiana |
+| Panorama das ferramentas | Usar o A2 como mapa do que vem a seguir: linguagem, editor/IDE, tradutor e ambiente de execução |
+| Linguagem de programação e tipos de erro | Relacionar léxica, sintaxe e semântica aos exemplos do A3 |
+| Ambiente integrado de desenvolvimento | Identificar com o A4 o que uma IDE agrega e por que ela não é obrigatória |
+| Formas de tradução e execução | Percorrer os diagramas do A5 e comparar compilação, interpretação e abordagem híbrida |
+| Revisão e exercícios | Usar o diagrama comparativo e realizar uma atividade de classificação |
 
 ## 📝 Observações
 

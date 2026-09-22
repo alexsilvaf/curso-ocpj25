@@ -44,7 +44,7 @@ Esta pasta concentra o conteúdo didático e o planejamento das seções do curs
 ## 📂 Organização
 
 - Cada diretório `secao-XX` representa uma seção do curso.
-- O `README.md` de cada seção reúne objetivos, conteúdos e planejamento da aula.
+- O `README.md` de cada seção reúne objetivos, conteúdos e um percurso sugerido sem estimativa de duração.
 - Os arquivos `A1`, `A2`, `A3` e seguintes são o próprio material didático utilizado durante a aula.
 - Diagramas e imagens ficam no mesmo diretório do documento que os utiliza.
 - Os exercícios e as atividades avaliativas são disponibilizados no Estudante360 e não são mantidos neste repositório.
@@ -54,7 +54,6 @@ Esta pasta concentra o conteúdo didático e o planejamento das seções do curs
 - Novas seções devem seguir o padrão `secao-XX-nome-da-secao`.
 - Os materiais devem seguir o padrão `AX - Título da aula.md`.
 - Os links para imagens e diagramas devem usar caminhos relativos.
-- O planejamento deve considerar a duração real do encontro, e não a quantidade de vídeos ou aulas de referência.
 
 <a name="cobertura-ocpj25"></a>
 
