@@ -78,10 +78,6 @@
     position: relative; padding-left: 42px; margin-bottom: 22px; line-height: 1.35;
     opacity: 1;
   }
-  .fragment { opacity: 0; transition: opacity .35s ease, transform .35s ease; }
-  .fragment.visible { opacity: 1; }
-  ul.points li.fragment { transform: translateX(-10px); }
-  ul.points li.fragment.visible { transform: translateX(0); }
   ul.points li::before {
     content: "▸"; position: absolute; left: 0; top: 0; color: var(--java-orange); font-size: 28px;
   }
@@ -1913,16 +1909,8 @@ System.out.printf(<span class="str">"Novo salario: %.2f%n"</span>, novoSalario);
   var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
   var total = slides.length;
   var current = 0;
-  var fragIndex = 0;
-
-  function fragmentsOf(i) {
-    return Array.prototype.slice.call(slides[i].querySelectorAll('.fragment'));
-  }
-
   function render() {
     slides.forEach(function (s, i) { s.classList.toggle('active', i === current); });
-    var frags = fragmentsOf(current);
-    frags.forEach(function (f, i) { f.classList.toggle('visible', i < fragIndex); });
 
     document.getElementById('hudSection').textContent = slides[current].getAttribute('data-section') || '';
     document.getElementById('hudCount').textContent = (current + 1) + ' / ' + total;
@@ -1931,21 +1919,17 @@ System.out.printf(<span class="str">"Novo salario: %.2f%n"</span>, novoSalario);
     history.replaceState(null, '', '#/' + (current + 1));
   }
 
-  function goTo(i, resetFrag) {
+  function goTo(i) {
     current = Math.max(0, Math.min(total - 1, i));
-    fragIndex = resetFrag === 'end' ? fragmentsOf(current).length : 0;
     render();
   }
 
   function next() {
-    var frags = fragmentsOf(current);
-    if (fragIndex < frags.length) { fragIndex++; render(); return; }
-    if (current < total - 1) goTo(current + 1, 'start');
+    if (current < total - 1) goTo(current + 1);
   }
 
   function prev() {
-    if (fragIndex > 0) { fragIndex--; render(); return; }
-    if (current > 0) goTo(current - 1, 'end');
+    if (current > 0) goTo(current - 1);
   }
 
   function buildOverview() {
@@ -1957,7 +1941,7 @@ System.out.printf(<span class="str">"Novo salario: %.2f%n"</span>, novoSalario);
       card.innerHTML = '<div class="oc-num">' + (i + 1) + ' · ' + (s.getAttribute('data-section') || '') + '</div>' +
                         '<div class="oc-title">' + (title ? title.textContent : '') + '</div>';
       card.addEventListener('click', function () {
-        goTo(i, 'start');
+        goTo(i);
         toggleOverview(false);
       });
       grid.appendChild(card);
@@ -1983,8 +1967,8 @@ System.out.printf(<span class="str">"Novo salario: %.2f%n"</span>, novoSalario);
     if (document.getElementById('overview').classList.contains('active')) return;
     if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); next(); }
     else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
-    else if (e.key === 'Home') { goTo(0, 'start'); }
-    else if (e.key === 'End') { goTo(total - 1, 'start'); }
+    else if (e.key === 'Home') { goTo(0); }
+    else if (e.key === 'End') { goTo(total - 1); }
     else if (e.key === 'f' || e.key === 'F') {
       if (!document.fullscreenElement) document.documentElement.requestFullscreen();
       else document.exitFullscreen();
@@ -1997,7 +1981,7 @@ System.out.printf(<span class="str">"Novo salario: %.2f%n"</span>, novoSalario);
   scaleStage();
 
   var hash = window.location.hash.match(/#\/(\d+)/);
-  if (hash) goTo(parseInt(hash[1], 10) - 1, 'start'); else render();
+  if (hash) goTo(parseInt(hash[1], 10) - 1); else render();
 })();
 </script>
 </body>
