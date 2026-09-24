@@ -22,6 +22,10 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - reconhecer laços infinitos e corrigi-los;
 - usar `break` e `continue` em exemplos simples e controlados.
 
+## 🖥️ Apresentação
+
+[apresentacao.html](./apresentacao.html) reúne os oito blocos da seção em slides expositivos e reutiliza os diagramas de fluxo dos materiais. Cada comando de avanço abre o slide seguinte; use <kbd>←</kbd>, <kbd>→</kbd> ou <kbd>Espaço</kbd> para navegar, <kbd>Esc</kbd> para a visão geral e <kbd>F</kbd> para tela cheia.
+
 ## 📚 Conteúdos
 
 - **A1** · [Depuração no Eclipse](./A1%20-%20Depuracao%20no%20Eclipse.md)

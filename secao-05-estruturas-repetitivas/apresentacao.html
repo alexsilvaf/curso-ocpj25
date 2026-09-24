@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seção 5 — Estruturas repetitivas</title>
+<style>
+  :root {
+    --red-deep: #2f0908;
+    --red-dark: #8f1712;
+    --red: #df2b24;
+    --orange: #f79520;
+    --ink: #202020;
+    --muted: #555;
+    --paper: #fff;
+    --soft: #f8f5f3;
+    --line: #e8ded8;
+    --green: #18794e;
+    --blue: #1769aa;
+  }
+  * { box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+  body { background: #170c0b; color: var(--ink); font-family: Inter, "Segoe UI", Arial, sans-serif; }
+  button { font: inherit; }
+  code, pre { font-family: Consolas, "Cascadia Code", monospace; }
+  code { color: var(--red-dark); }
+
+  #viewport { position: fixed; inset: 0; display: grid; place-items: center; }
+  #stage {
+    position: relative; width: 1600px; height: 900px; overflow: hidden;
+    background: var(--paper); border-radius: 10px;
+    box-shadow: 0 24px 80px rgba(0,0,0,.42); transform-origin: center;
+  }
+  #stage::before {
+    content: ""; position: absolute; z-index: 20; left: 0; right: 0; top: 0; height: 9px;
+    background: linear-gradient(90deg, var(--red), var(--orange));
+  }
+  .slide {
+    position: absolute; inset: 0; display: none; padding: 70px 100px 86px;
+    background: var(--paper);
+  }
+  .slide.active { display: flex; flex-direction: column; }
+  .eyebrow { margin: 0 0 12px; color: var(--red); font-size: 24px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+  h1 { margin: 0; font-size: 67px; line-height: 1.05; letter-spacing: -.035em; }
+  h2 { margin: 0 0 34px; max-width: 1320px; font-size: 50px; line-height: 1.08; letter-spacing: -.025em; }
+  h3 { margin: 0 0 10px; color: var(--red-dark); font-size: 27px; }
+  p { margin: 0 0 20px; font-size: 28px; line-height: 1.42; }
+  .lead { max-width: 1320px; font-size: 35px; line-height: 1.42; color: #444; }
+  .small { font-size: 22px; }
+  .muted { color: var(--muted); }
+  .accent { color: var(--red); }
+  .orange { color: var(--orange); }
+  .green { color: var(--green); }
+  .center { text-align: center; }
+  .grow { flex: 1; }
+
+  .slide--title, .slide--divider, .slide--end {
+    justify-content: center; color: white;
+    background: linear-gradient(140deg, var(--red-deep), var(--red-dark) 52%, var(--red));
+  }
+  .slide--title .eyebrow, .slide--divider .eyebrow, .slide--end .eyebrow { color: #ffbd52; }
+  .slide--title p, .slide--divider p, .slide--end p { color: #f8dedb; }
+  .slide--title h1 { max-width: 1160px; font-size: 78px; }
+  .slide--divider h1 { max-width: 1250px; }
+  .section-number { position: absolute; right: 100px; top: 90px; color: rgba(255,255,255,.12); font-size: 190px; font-weight: 900; }
+
+  .grid { display: grid; gap: 24px; }
+  .grid.two { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .grid.three { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .grid.four { grid-template-columns: repeat(4, minmax(0,1fr)); }
+  .card { padding: 24px 28px; border: 2px solid var(--line); border-radius: 14px; background: var(--soft); }
+  .card p { margin: 0; font-size: 24px; }
+  .card strong { color: var(--red-dark); }
+  .callout { margin-top: 26px; padding: 20px 26px; border-left: 7px solid var(--orange); border-radius: 8px; background: #fff4e5; color: #74440b; font-size: 27px; line-height: 1.35; }
+  .callout.red { border-color: var(--red); background: #fdf0ef; color: #741a16; }
+  .callout.green { border-color: var(--green); background: #edf8f2; color: #155c3d; }
+
+  ul.points { list-style: none; margin: 4px 0 0; padding: 0; }
+  ul.points li { position: relative; margin: 0 0 18px; padding-left: 42px; font-size: 28px; line-height: 1.34; }
+  ul.points li::before { content: "▸"; position: absolute; left: 0; color: var(--orange); font-weight: 900; }
+  ul.points.compact li { margin-bottom: 11px; font-size: 24px; }
+
+  pre { margin: 0; padding: 23px 27px; overflow: hidden; border-radius: 12px; background: #181818; color: #f5f5f5; font-size: 24px; line-height: 1.38; tab-size: 4; }
+  pre .kw { color: #ff8c82; }
+  pre .num { color: #ffd166; }
+  pre .comment { color: #9cb39f; }
+  .code-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 28px; align-items: start; }
+
+  table { width: 100%; border-collapse: collapse; overflow: hidden; border: 2px solid var(--line); border-radius: 12px; font-size: 23px; }
+  th, td { padding: 13px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { background: #f6efeb; color: var(--red-dark); font-size: 20px; letter-spacing: .03em; text-transform: uppercase; }
+  tr:last-child td { border-bottom: 0; }
+  .tight th, .tight td { padding: 9px 13px; font-size: 20px; }
+  .true { color: var(--green); font-weight: 800; }
+  .false { color: var(--red); font-weight: 800; }
+
+  .flow { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 20px 0; }
+  .flow .step { min-width: 190px; padding: 22px 18px; border: 2px solid var(--line); border-radius: 14px; background: var(--soft); text-align: center; font-size: 23px; font-weight: 750; }
+  .flow .arrow { color: var(--orange); font-size: 38px; font-weight: 900; }
+  .flow .loop { border-color: var(--red); background: #fdf0ef; }
+  .diagram { display: block; max-width: 720px; max-height: 510px; margin: 0 auto; }
+  .pill { display: inline-block; padding: 8px 14px; border-radius: 999px; background: #fdf0ef; color: var(--red-dark); font-size: 21px; font-weight: 800; }
+  .compare { display: grid; grid-template-columns: 1fr 80px 1fr; gap: 18px; align-items: center; }
+  .compare .versus { color: var(--orange); font-size: 36px; font-weight: 900; text-align: center; }
+  .anatomy { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 18px; }
+  .anatomy div { padding: 22px; border-top: 7px solid var(--red); border-radius: 10px; background: var(--soft); font-size: 23px; }
+  .anatomy div:nth-child(2) { border-color: var(--orange); }
+  .anatomy div:nth-child(3) { border-color: var(--green); }
+
+  .compact h2 { margin-bottom: 25px; font-size: 45px; }
+  .compact p, .compact ul.points li { font-size: 24px; }
+  .compact pre { font-size: 21px; }
+  .compact-2 pre { font-size: 19px; line-height: 1.3; }
+
+  #hud { position: fixed; z-index: 50; left: 0; right: 0; bottom: 0; height: 48px; display: flex; align-items: center; padding: 0 22px; color: rgba(255,255,255,.88); background: rgba(23,12,11,.94); font-size: 14px; }
+  #hudSection { flex: 1; }
+  #hudCount { font-variant-numeric: tabular-nums; }
+  #progress { position: fixed; z-index: 60; left: 0; right: 0; bottom: 48px; height: 4px; background: rgba(255,255,255,.12); }
+  #progressFill { height: 100%; background: linear-gradient(90deg,var(--red),var(--orange)); }
+  .nav { position: fixed; z-index: 70; right: 18px; bottom: 61px; display: flex; gap: 8px; }
+  .nav button { width: 42px; height: 38px; border: 1px solid rgba(255,255,255,.25); border-radius: 8px; color: white; background: rgba(23,12,11,.84); cursor: pointer; }
+  .nav button:hover { background: var(--red-dark); }
+
+  #overview { position: fixed; z-index: 100; inset: 0; display: none; overflow: auto; padding: 28px; background: rgba(15,8,7,.97); }
+  #overview.open { display: grid; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); gap: 18px; align-content: start; }
+  .thumb { padding: 18px; border: 2px solid #4b3734; border-radius: 12px; color: white; background: #291816; cursor: pointer; text-align: left; }
+  .thumb:hover { border-color: var(--orange); }
+  .thumb strong { display: block; margin-bottom: 8px; color: #ffbd52; }
+  .thumb span { font-size: 15px; line-height: 1.3; }
+</style>
+</head>
+<body>
+<div id="viewport">
+<main id="stage">
+  <section class="slide slide--title" data-section="Abertura">
+    <p class="eyebrow">Java · Seção 5</p>
+    <h1>Estruturas repetitivas</h1>
+    <p class="lead">Executar, observar, repetir — até que uma condição determine o fim.</p>
+  </section>
+
+  <section class="slide" data-section="Abertura">
+    <p class="eyebrow">O próximo passo</p>
+    <h2>Decidir uma vez já não é suficiente</h2>
+    <div class="grid three grow">
+      <div class="card"><h3>Seção 3</h3><p>O programa executava instruções em sequência.</p></div>
+      <div class="card"><h3>Seção 4</h3><p>O programa passou a escolher caminhos.</p></div>
+      <div class="card"><h3>Seção 5</h3><p>O programa poderá voltar e executar um bloco novamente.</p></div>
+    </div>
+    <div class="callout">Toda repetição precisa responder a duas perguntas: <b>quando continuar?</b> e <b>o que muda para que ela termine?</b></div>
+  </section>
+
+  <section class="slide compact" data-section="Abertura">
+    <p class="eyebrow">Mapa da seção</p>
+    <h2>Oito blocos em progressão</h2>
+    <div class="grid four">
+      <div class="card"><h3>1 · Depuração</h3><p>Observar a execução.</p></div>
+      <div class="card"><h3>2 · while</h3><p>Repetir por condição.</p></div>
+      <div class="card"><h3>3 · Mesa</h3><p>Simular o <code>while</code>.</p></div>
+      <div class="card"><h3>4 · for</h3><p>Organizar um contador.</p></div>
+      <div class="card"><h3>5 · Mesa</h3><p>Simular o <code>for</code>.</p></div>
+      <div class="card"><h3>6 · do-while</h3><p>Executar antes de testar.</p></div>
+      <div class="card"><h3>7 · Escolha</h3><p>Comparar e controlar laços.</p></div>
+      <div class="card"><h3>8 · OCP</h3><p>Consolidar regras da prova.</p></div>
+    </div>
+  </section>
+
+  <section class="slide slide--divider" data-section="Bloco 1">
+    <span class="section-number">01</span><p class="eyebrow">Bloco 1</p><h1>Depuração no Eclipse</h1>
+    <p class="lead">Trocar suposições por evidências.</p>
+  </section>
+
+  <section class="slide" data-section="Bloco 1 · Ideia">
+    <p class="eyebrow">Depurar</p>
+    <h2>Executar o programa de forma controlada</h2>
+    <div class="grid two">
+      <div class="card"><h3>O depurador mostra</h3><ul class="points compact"><li>a próxima linha a executar;</li><li>os valores atuais das variáveis;</li><li>o caminho seguido pelo fluxo.</li></ul></div>
+      <div class="card"><h3>O depurador não faz</h3><ul class="points compact"><li>não corrige o código;</li><li>não decide o resultado esperado;</li><li>não substitui a leitura do programa.</li></ul></div>
+    </div>
+    <div class="callout green">O objetivo é encontrar a <b>primeira divergência</b> entre o comportamento previsto e o observado.</div>
+  </section>
+
+  <section class="slide" data-section="Bloco 1 · Breakpoint">
+    <p class="eyebrow">Ponto de interrupção</p>
+    <h2>O programa pausa antes da linha marcada</h2>
+    <div class="code-grid">
+      <pre><span class="kw">int</span> a = <span class="num">10</span>;
+<span class="kw">int</span> b = <span class="num">3</span>;
+<span class="kw">int</span> quociente = a / b;
+<span class="kw">int</span> resto = a % b;</pre>
+      <div>
+        <ul class="points"><li>Marque a linha na margem do editor.</li><li>Execute com <b>Debug As → Java Application</b>.</li><li>A linha destacada é a <b>próxima</b> instrução.</li></ul>
+        <div class="callout red">Se a execução parou sobre <code>int a = 10;</code>, a atribuição ainda não aconteceu.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 1 · Comandos">
+    <p class="eyebrow">Controles principais</p>
+    <h2>Avance apenas o necessário</h2>
+    <table>
+      <thead><tr><th>Ação</th><th>Atalho comum</th><th>Efeito</th></tr></thead>
+      <tbody>
+        <tr><td><b>Step Over</b></td><td><code>F6</code></td><td>Executa a linha e para na próxima do mesmo método.</td></tr>
+        <tr><td><b>Step Into</b></td><td><code>F5</code></td><td>Entra no método chamado.</td></tr>
+        <tr><td><b>Step Return</b></td><td><code>F7</code></td><td>Termina o método atual e volta ao chamador.</td></tr>
+        <tr><td><b>Resume</b></td><td><code>F8</code></td><td>Continua até outro breakpoint ou até o fim.</td></tr>
+        <tr><td><b>Terminate</b></td><td>■</td><td>Encerra a execução.</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">Nesta etapa do curso, <b>Step Over</b> é o comando mais importante.</div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 1 · Variables">
+    <p class="eyebrow">Aba Variables</p>
+    <h2>Compare cada valor com a previsão</h2>
+    <table>
+      <thead><tr><th>Depois de executar</th><th>Valores observáveis</th></tr></thead>
+      <tbody>
+        <tr><td><code>int a = 10;</code></td><td><code>a = 10</code></td></tr>
+        <tr><td><code>int b = 3;</code></td><td><code>a = 10</code>, <code>b = 3</code></td></tr>
+        <tr><td><code>int quociente = a / b;</code></td><td><code>quociente = 3</code></td></tr>
+        <tr><td><code>int resto = a % b;</code></td><td><code>resto = 1</code></td></tr>
+        <tr><td>condição do <code>if</code></td><td>o fluxo segue para o bloco do <code>else</code></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 1 · Repetição">
+    <p class="eyebrow">Depurando um laço</p>
+    <h2>A condição é visitada mais vezes que o corpo</h2>
+    <div class="code-grid">
+      <pre><span class="kw">int</span> contador = <span class="num">1</span>;
+<span class="kw">int</span> soma = <span class="num">0</span>;
+
+<span class="kw">while</span> (contador &lt;= <span class="num">3</span>) {
+    soma += contador;
+    contador++;
+}</pre>
+      <table class="tight">
+        <thead><tr><th>Condição</th><th>contador</th><th>soma</th><th>resultado</th></tr></thead>
+        <tbody><tr><td>1ª</td><td>1</td><td>0</td><td class="true">true</td></tr><tr><td>2ª</td><td>2</td><td>1</td><td class="true">true</td></tr><tr><td>3ª</td><td>3</td><td>3</td><td class="true">true</td></tr><tr><td>4ª</td><td>4</td><td>6</td><td class="false">false</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="slide" data-section="Bloco 1 · Investigação">
+    <p class="eyebrow">Roteiro de investigação</p>
+    <h2>Pare na primeira diferença</h2>
+    <div class="flow">
+      <div class="step">1<br>Prever</div><div class="arrow">→</div>
+      <div class="step">2<br>Marcar</div><div class="arrow">→</div>
+      <div class="step">3<br>Observar</div><div class="arrow">→</div>
+      <div class="step">4<br>Comparar</div><div class="arrow">→</div>
+      <div class="step loop">5<br>Corrigir</div>
+    </div>
+    <div class="callout red">A última linha errada pode ser apenas consequência. A primeira divergência costuma revelar a causa.</div>
+  </section>
+
+  <section class="slide slide--divider" data-section="Bloco 2">
+    <span class="section-number">02</span><p class="eyebrow">Bloco 2</p><h1>Estrutura repetitiva <code>while</code></h1>
+    <p class="lead">Repetir enquanto uma condição for verdadeira.</p>
+  </section>
+
+  <section class="slide" data-section="Bloco 2 · Fluxo">
+    <p class="eyebrow">Fluxo do while</p>
+    <h2>A condição vem antes do corpo</h2>
+    <div class="grid two grow">
+      <img class="diagram" src="./fluxo-while.svg" alt="Fluxo de uma estrutura while">
+      <div>
+        <pre><span class="kw">while</span> (condicao) {
+    <span class="comment">// instruções repetidas</span>
+}</pre>
+        <ul class="points"><li>Se a condição for <code>false</code>, o laço termina.</li><li>Se for <code>true</code>, o corpo executa.</li><li>Depois do corpo, o fluxo volta à condição.</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-section="Bloco 2 · Zero vezes">
+    <p class="eyebrow">Pré-teste</p>
+    <h2>Um <code>while</code> pode executar zero vezes</h2>
+    <div class="code-grid">
+      <pre><span class="kw">int</span> numero = -<span class="num">1</span>;
+
+<span class="kw">while</span> (numero &gt; <span class="num">0</span>) {
+    System.out.println(numero);
+}</pre>
+      <div class="card"><h3>Primeira avaliação</h3><p><code>-1 &gt; 0</code> produz <span class="false">false</span>.</p><p style="margin-top:20px">O corpo não executa e nada é impresso.</p></div>
+    </div>
+  </section>
+
+  <section class="slide" data-section="Bloco 2 · Contador">
+    <p class="eyebrow">Repetição controlada</p>
+    <h2>Inicialização, condição e atualização</h2>
+    <pre><span class="kw">int</span> contador = <span class="num">1</span>;
+
+<span class="kw">while</span> (contador &lt;= <span class="num">5</span>) {
+    System.out.println(contador);
+    contador++;
+}</pre>
+    <div class="anatomy"><div><b>Inicialização</b><br><code>contador = 1</code></div><div><b>Condição</b><br><code>contador &lt;= 5</code></div><div><b>Atualização</b><br><code>contador++</code></div></div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 2 · Acumulador">
+    <p class="eyebrow">Papéis diferentes</p>
+    <h2>O contador controla; o acumulador guarda</h2>
+    <div class="code-grid">
+      <pre><span class="kw">int</span> numero = <span class="num">1</span>;
+<span class="kw">int</span> soma = <span class="num">0</span>;
+
+<span class="kw">while</span> (numero &lt;= <span class="num">5</span>) {
+    soma += numero;
+    numero++;
+}</pre>
+      <table class="tight"><thead><tr><th>numero usado</th><th>soma depois</th></tr></thead><tbody><tr><td>1</td><td>1</td></tr><tr><td>2</td><td>3</td></tr><tr><td>3</td><td>6</td></tr><tr><td>4</td><td>10</td></tr><tr><td>5</td><td>15</td></tr></tbody></table>
+    </div>
+    <div class="callout">Uma soma começa em <code>0</code>, o elemento neutro da adição.</div>
+  </section>
+
+  <section class="slide compact compact-2" data-section="Bloco 2 · Sentinela">
+    <p class="eyebrow">Quantidade desconhecida</p>
+    <h2>Um valor especial pode sinalizar o fim</h2>
+    <div class="code-grid">
+      <pre><span class="kw">int</span> soma = <span class="num">0</span>;
+
+System.out.print(<span class="comment">"Positivo ou zero para parar: "</span>);
+<span class="kw">int</span> numero = sc.nextInt();
+
+<span class="kw">while</span> (numero &gt; <span class="num">0</span>) {
+    soma += numero;
+    System.out.print(<span class="comment">"Outro valor: "</span>);
+    numero = sc.nextInt();
+}
+
+System.out.println(<span class="comment">"Soma: "</span> + soma);</pre>
+      <div><span class="pill">sentinela: 0</span><ul class="points compact" style="margin-top:22px"><li>A primeira leitura ocorre antes do laço.</li><li>A próxima leitura ocorre dentro do corpo.</li><li>O zero encerra, mas não entra na soma.</li></ul></div>
+    </div>
+  </section>
+
+  <section class="slide compact compact-2" data-section="Bloco 2 · Validação">
+    <p class="eyebrow">Insistir enquanto inválido</p>
+    <h2>O <code>while</code> também valida entradas</h2>
+    <div class="code-grid">
+      <pre>System.out.print(<span class="comment">"Nota de 0 a 10: "</span>);
+<span class="kw">double</span> nota = sc.nextDouble();
+
+<span class="kw">while</span> (nota &lt; <span class="num">0.0</span> || nota &gt; <span class="num">10.0</span>) {
+    System.out.print(<span class="comment">"Nota invalida: "</span>);
+    nota = sc.nextDouble();
+}
+
+System.out.println(<span class="comment">"Nota: "</span> + nota);</pre>
+      <div class="card"><h3>A condição descreve o erro</h3><p>Enquanto a nota estiver fora do intervalo, uma nova leitura será feita.</p><p style="margin-top:20px">Quando ela se tornar válida, o laço termina.</p></div>
+    </div>
+  </section>
+
+  <section class="slide" data-section="Bloco 2 · Regressiva">
+    <p class="eyebrow">Direção da atualização</p>
+    <h2>A condição precisa combinar com o movimento</h2>
+    <div class="compare">
+      <div class="card"><h3 class="green">Coerente</h3><pre><span class="kw">int</span> x = <span class="num">5</span>;
+<span class="kw">while</span> (x &gt;= <span class="num">1</span>) {
+    System.out.println(x);
+    x--;
+}</pre></div>
+      <div class="versus">×</div>
+      <div class="card"><h3>Não termina</h3><pre><span class="kw">int</span> x = <span class="num">5</span>;
+<span class="kw">while</span> (x &lt;= <span class="num">5</span>) {
+    System.out.println(x);
+    x--;
+}</pre></div>
+    </div>
+  </section>
+
+  <section class="slide" data-section="Bloco 2 · Infinito">
+    <p class="eyebrow">Laço infinito</p>
+    <h2>A condição nunca se torna falsa</h2>
+    <div class="grid two">
+      <pre><span class="kw">int</span> x = <span class="num">1</span>;
+
+<span class="kw">while</span> (x &lt;= <span class="num">5</span>) {
+    System.out.println(x);
+    <span class="comment">// faltou atualizar x</span>
+}</pre>
+      <div class="card"><h3>Verifique</h3><ul class="points compact"><li>a variável da condição muda?</li><li>muda na direção do fim?</li><li>o limite pode ser alcançado?</li><li>uma nova entrada é realmente lida?</li></ul></div>
+    </div>
+    <div class="callout red">No Eclipse, use <b>Terminate</b> para encerrar uma execução presa.</div>
+  </section>
+
+  <section class="slide" data-section="Bloco 2 · Limites">
+    <p class="eyebrow">Off-by-one</p>
+    <h2>Um operador decide se o limite entra</h2>
+    <div class="grid two">
+      <div class="card"><h3><code>x &lt; 5</code></h3><p>Valores usados: <b>1, 2, 3, 4</b></p><p>Quatro execuções.</p></div>
+      <div class="card"><h3><code>x &lt;= 5</code></h3><p>Valores usados: <b>1, 2, 3, 4, 5</b></p><p>Cinco execuções.</p></div>
+    </div>
+    <div class="callout">Confira sempre o primeiro valor, o último esperado e o primeiro que deve encerrar o laço.</div>
+  </section>
+
+  <section class="slide slide--divider" data-section="Bloco 3">
+    <span class="section-number">03</span><p class="eyebrow">Bloco 3</p><h1>Teste de mesa com <code>while</code></h1>
+    <p class="lead">Registrar cada passagem pela condição e pelo corpo.</p>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 3 · Ordem">
+    <p class="eyebrow">Simulação fiel</p>
+    <h2>Siga a mesma ordem da máquina</h2>
+    <div class="flow">
+      <div class="step">Valores<br>iniciais</div><div class="arrow">→</div>
+      <div class="step">Avaliar<br>condição</div><div class="arrow">→</div>
+      <div class="step">Executar<br>corpo</div><div class="arrow">→</div>
+      <div class="step">Atualizar<br>variáveis</div><div class="arrow">↺</div>
+    </div>
+    <ul class="points"><li>Crie uma linha por chegada à condição ou por iteração e mantenha esse padrão.</li><li>Inclua a última avaliação, aquela que produz <code>false</code>.</li></ul>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 3 · Tabela">
+    <p class="eyebrow">Exemplo completo</p>
+    <h2>Quatro corpos, cinco condições</h2>
+    <div class="code-grid">
+      <pre><span class="kw">int</span> x = <span class="num">1</span>;
+<span class="kw">int</span> soma = <span class="num">0</span>;
+
+<span class="kw">while</span> (x &lt;= <span class="num">4</span>) {
+    soma += x;
+    x++;
+}</pre>
+      <table class="tight"><thead><tr><th>condição</th><th>x</th><th>soma</th><th>x &lt;= 4</th></tr></thead><tbody><tr><td>1ª</td><td>1</td><td>0</td><td class="true">true</td></tr><tr><td>2ª</td><td>2</td><td>1</td><td class="true">true</td></tr><tr><td>3ª</td><td>3</td><td>3</td><td class="true">true</td></tr><tr><td>4ª</td><td>4</td><td>6</td><td class="true">true</td></tr><tr><td>5ª</td><td>5</td><td>10</td><td class="false">false</td></tr></tbody></table>
+    </div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 3 · Ordem interna">
+    <p class="eyebrow">Momento do valor</p>
+    <h2>Incrementar antes ou depois muda a saída</h2>
+    <div class="compare">
+      <div><pre><span class="kw">while</span> (x &lt;= <span class="num">3</span>) {
+    System.out.println(x);
+    x++;
+}</pre><div class="callout green">Saída: <b>1 2 3</b></div></div>
+      <div class="versus">≠</div>
+      <div><pre><span class="kw">while</span> (x &lt;= <span class="num">3</span>) {
+    x++;
+    System.out.println(x);
+}</pre><div class="callout red">Saída: <b>2 3 4</b></div></div>
+    </div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 3 · Condição interna">
+    <p class="eyebrow">Contagem seletiva</p>
+    <h2>Nem toda variável muda em toda iteração</h2>
+    <div class="code-grid">
+      <pre><span class="kw">int</span> numero = <span class="num">1</span>;
+<span class="kw">int</span> pares = <span class="num">0</span>;
+
+<span class="kw">while</span> (numero &lt;= <span class="num">6</span>) {
+    <span class="kw">if</span> (numero % <span class="num">2</span> == <span class="num">0</span>) {
+        pares++;
+    }
+    numero++;
+}</pre>
+      <table class="tight"><thead><tr><th>numero</th><th>par?</th><th>pares</th></tr></thead><tbody><tr><td>1</td><td>não</td><td>0</td></tr><tr><td>2</td><td>sim</td><td>1</td></tr><tr><td>3</td><td>não</td><td>1</td></tr><tr><td>4</td><td>sim</td><td>2</td></tr><tr><td>5</td><td>não</td><td>2</td></tr><tr><td>6</td><td>sim</td><td>3</td></tr></tbody></table>
+    </div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 3 · Média">
+    <p class="eyebrow">Sentinela e média</p>
+    <h2>Soma e quantidade precisam caminhar juntas</h2>
+    <pre><span class="kw">int</span> soma = <span class="num">0</span>, quantidade = <span class="num">0</span>;
+<span class="kw">int</span> numero = sc.nextInt();
+
+<span class="kw">while</span> (numero != <span class="num">0</span>) {
+    soma += numero;
+    quantidade++;
+    numero = sc.nextInt();
+}
+
+<span class="kw">if</span> (quantidade &gt; <span class="num">0</span>) {
+    <span class="kw">double</span> media = (<span class="kw">double</span>) soma / quantidade;
+}</pre>
+    <div class="callout red">O <code>if</code> evita divisão por zero quando a primeira entrada já é a sentinela.</div>
+  </section>
+
+  <section class="slide" data-section="Bloco 3 · Erro">
+    <p class="eyebrow">A tabela revela o erro</p>
+    <h2>Atribuir não é acumular</h2>
+    <div class="compare">
+      <div class="card"><h3>Substitui</h3><pre>soma = x;</pre><p style="margin-top:18px">Para <code>x = 1, 2, 3</code>, a soma termina em <b>3</b>.</p></div>
+      <div class="versus">→</div>
+      <div class="card"><h3>Acumula</h3><pre>soma += x;</pre><p style="margin-top:18px">O valor anterior é preservado: <b>1 + 2 + 3 = 6</b>.</p></div>
+    </div>
+  </section>
+
+  <section class="slide slide--divider" data-section="Bloco 4">
+    <span class="section-number">04</span><p class="eyebrow">Bloco 4</p><h1>Estrutura repetitiva <code>for</code></h1>
+    <p class="lead">Reunir o controle do contador em um só lugar.</p>
+  </section>
+
+  <section class="slide" data-section="Bloco 4 · Anatomia">
+    <p class="eyebrow">Cabeçalho do for</p>
+    <h2>Três partes separadas por ponto e vírgula</h2>
+    <pre><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">5</span>; i++) {
+    System.out.println(i);
+}</pre>
+    <div class="anatomy"><div><b>Inicialização</b><br>uma única vez</div><div><b>Condição</b><br>antes de cada corpo</div><div><b>Atualização</b><br>depois de cada corpo</div></div>
+  </section>
+
+  <section class="slide" data-section="Bloco 4 · Ordem">
+    <p class="eyebrow">Fluxo exato</p>
+    <h2>A inicialização não se repete</h2>
+    <div class="flow">
+      <div class="step">Inicializar<br><span class="small">1 vez</span></div><div class="arrow">→</div>
+      <div class="step">Testar<br>condição</div><div class="arrow">→</div>
+      <div class="step">Executar<br>corpo</div><div class="arrow">→</div>
+      <div class="step loop">Atualizar<br>contador</div><div class="arrow">↺</div>
+    </div>
+    <div class="callout">Quando a condição for falsa, o fluxo sai do laço sem executar corpo nem atualização.</div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 4 · Equivalência">
+    <p class="eyebrow">Mesma lógica</p>
+    <h2>O <code>for</code> organiza um <code>while</code> com contador</h2>
+    <div class="compare">
+      <pre><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">5</span>; i++) {
+    System.out.println(i);
+}</pre>
+      <div class="versus">≡</div>
+      <pre><span class="kw">int</span> i = <span class="num">1</span>;
+
+<span class="kw">while</span> (i &lt;= <span class="num">5</span>) {
+    System.out.println(i);
+    i++;
+}</pre>
+    </div>
+  </section>
+
+  <section class="slide" data-section="Bloco 4 · Uso">
+    <p class="eyebrow">Quando usar</p>
+    <h2>O <code>for</code> torna a contagem explícita</h2>
+    <div class="grid two">
+      <div class="card"><h3>Natural com for</h3><ul class="points compact"><li>repetir dez vezes;</li><li>contar de 1 a 100;</li><li>avançar de 2 em 2;</li><li>fazer contagem regressiva.</li></ul></div>
+      <div class="card"><h3>Natural com while</h3><ul class="points compact"><li>ler até receber uma sentinela;</li><li>insistir enquanto inválido;</li><li>repetir sem saber a quantidade;</li><li>depender de uma condição geral.</li></ul></div>
+    </div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 4 · Limites">
+    <p class="eyebrow">Inclusivo e exclusivo</p>
+    <h2>Quatro cabeçalhos parecidos, quatro contagens</h2>
+    <table>
+      <thead><tr><th>Cabeçalho</th><th>Valores usados</th><th>Repetições</th></tr></thead>
+      <tbody><tr><td><code>i = 1; i &lt;= 5; i++</code></td><td>1, 2, 3, 4, 5</td><td>5</td></tr><tr><td><code>i = 1; i &lt; 5; i++</code></td><td>1, 2, 3, 4</td><td>4</td></tr><tr><td><code>i = 0; i &lt; 5; i++</code></td><td>0, 1, 2, 3, 4</td><td>5</td></tr><tr><td><code>i = 0; i &lt;= 5; i++</code></td><td>0, 1, 2, 3, 4, 5</td><td>6</td></tr></tbody>
+    </table>
+  </section>
+
+  <section class="slide" data-section="Bloco 4 · Passos">
+    <p class="eyebrow">Atualizações diferentes</p>
+    <h2>O passo não precisa ser <code>1</code></h2>
+    <div class="grid two">
+      <div class="card"><h3>De 2 em 2</h3><pre><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">0</span>; i &lt;= <span class="num">10</span>; i += <span class="num">2</span>) {
+    System.out.println(i);
+}</pre></div>
+      <div class="card"><h3>Regressiva</h3><pre><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">5</span>; i &gt;= <span class="num">1</span>; i--) {
+    System.out.println(i);
+}</pre></div>
+    </div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 4 · Escopo">
+    <p class="eyebrow">Contador e resultado</p>
+    <h2>Declare cada variável no escopo necessário</h2>
+    <pre><span class="kw">int</span> soma = <span class="num">0</span>;
+
+<span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">5</span>; i++) {
+    soma += i;
+}
+
+System.out.println(soma);      <span class="comment">// 15</span>
+<span class="comment">// System.out.println(i);  // i não existe aqui</span></pre>
+    <div class="grid two" style="margin-top:24px"><div class="card"><h3><code>soma</code></h3><p>É usada depois do laço, então foi declarada antes.</p></div><div class="card"><h3><code>i</code></h3><p>Controla apenas o laço, então foi declarada no cabeçalho.</p></div></div>
+  </section>
+
+  <section class="slide compact compact-2" data-section="Bloco 4 · Quantidade conhecida">
+    <p class="eyebrow">Leitura controlada</p>
+    <h2>Uma quantidade conhecida dispensa sentinela</h2>
+    <pre>System.out.print(<span class="comment">"Quantidade de notas: "</span>);
+<span class="kw">int</span> quantidade = sc.nextInt();
+<span class="kw">double</span> soma = <span class="num">0.0</span>;
+
+<span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= quantidade; i++) {
+    System.out.print(<span class="comment">"Nota "</span> + i + <span class="comment">": "</span>);
+    <span class="kw">double</span> nota = sc.nextDouble();
+    soma += nota;
+}
+
+<span class="kw">if</span> (quantidade &gt; <span class="num">0</span>) {
+    System.out.printf(<span class="comment">"Media: %.2f%n"</span>, soma / quantidade);
+}</pre>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 4 · Partes opcionais">
+    <p class="eyebrow">Sintaxe flexível</p>
+    <h2>As expressões podem faltar; os separadores, não</h2>
+    <div class="grid three">
+      <div class="card"><h3>Sem inicialização</h3><pre><span class="kw">int</span> i = <span class="num">0</span>;
+<span class="kw">for</span> (; i &lt; <span class="num">3</span>; i++) { }</pre></div>
+      <div class="card"><h3>Sem atualização</h3><pre><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">0</span>; i &lt; <span class="num">3</span>;) {
+    i++;
+}</pre></div>
+      <div class="card"><h3>Sem condição</h3><pre><span class="kw">for</span> (;;) {
+    <span class="comment">// laço infinito</span>
+}</pre></div>
+    </div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 4 · Duas variáveis">
+    <p class="eyebrow">Mais de uma expressão</p>
+    <h2>Inicialização e atualização aceitam listas compatíveis</h2>
+    <pre><span class="kw">for</span> (<span class="kw">int</span> a = <span class="num">1</span>, b = <span class="num">5</span>; a &lt;= b; a++, b--) {
+    System.out.println(a + <span class="comment">" "</span> + b);
+}</pre>
+    <table style="margin-top:24px"><thead><tr><th>Iteração</th><th>a</th><th>b</th><th>Saída</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>5</td><td><code>1 5</code></td></tr><tr><td>2</td><td>2</td><td>4</td><td><code>2 4</code></td></tr><tr><td>3</td><td>3</td><td>3</td><td><code>3 3</code></td></tr></tbody></table>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 4 · Aninhamento">
+    <p class="eyebrow">Laços aninhados</p>
+    <h2>O laço interno completa para cada volta do externo</h2>
+    <div class="code-grid">
+      <pre><span class="kw">for</span> (<span class="kw">int</span> linha = <span class="num">1</span>; linha &lt;= <span class="num">2</span>; linha++) {
+    <span class="kw">for</span> (<span class="kw">int</span> coluna = <span class="num">1</span>; coluna &lt;= <span class="num">3</span>; coluna++) {
+        System.out.println(linha + <span class="comment">" "</span> + coluna);
+    }
+}</pre>
+      <div class="card"><h3>Ordem da saída</h3><p><code>1 1</code> · <code>1 2</code> · <code>1 3</code></p><p><code>2 1</code> · <code>2 2</code> · <code>2 3</code></p><div class="callout">2 × 3 = <b>6</b> execuções do corpo interno.</div></div>
+    </div>
+  </section>
+
+  <section class="slide slide--divider" data-section="Bloco 5">
+    <span class="section-number">05</span><p class="eyebrow">Bloco 5</p><h1>Teste de mesa com <code>for</code></h1>
+    <p class="lead">Não esquecer a atualização entre o corpo e a próxima condição.</p>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 5 · Tabela">
+    <p class="eyebrow">Etapas do for</p>
+    <h2>A atualização ocupa seu próprio momento</h2>
+    <table class="tight">
+      <thead><tr><th>Etapa</th><th>i</th><th>soma</th><th>i &lt;= 4</th><th>Ação</th></tr></thead>
+      <tbody><tr><td>inicialização</td><td>1</td><td>0</td><td>—</td><td>prepara</td></tr><tr><td>1ª condição</td><td>1</td><td>0</td><td class="true">true</td><td>soma recebe 1</td></tr><tr><td>atualização</td><td>2</td><td>1</td><td>—</td><td><code>i++</code></td></tr><tr><td>2ª condição</td><td>2</td><td>1</td><td class="true">true</td><td>soma recebe 3</td></tr><tr><td>atualização</td><td>3</td><td>3</td><td>—</td><td><code>i++</code></td></tr><tr><td>3ª condição</td><td>3</td><td>3</td><td class="true">true</td><td>soma recebe 6</td></tr><tr><td>4ª condição</td><td>4</td><td>6</td><td class="true">true</td><td>soma recebe 10</td></tr><tr><td>5ª condição</td><td>5</td><td>10</td><td class="false">false</td><td>encerra</td></tr></tbody>
+    </table>
+  </section>
+
+  <section class="slide" data-section="Bloco 5 · Quantidade">
+    <p class="eyebrow">Previsão rápida</p>
+    <h2>Conte os valores que chegam ao corpo</h2>
+    <div class="grid two">
+      <div class="card"><h3>Passo positivo</h3><p>Começa em 2, usa <code>i &lt;= 8</code> e soma 2.</p><p><b>2, 4, 6, 8 → 4 repetições</b></p></div>
+      <div class="card"><h3>Passo negativo</h3><p>Começa em 5, usa <code>i &gt;= 1</code> e subtrai 1.</p><p><b>5, 4, 3, 2, 1 → 5 repetições</b></p></div>
+    </div>
+    <div class="callout">A atualização ocorre depois do corpo; o valor que torna a condição falsa não é usado.</div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 5 · Condição interna">
+    <p class="eyebrow">Combinando estruturas</p>
+    <h2>O <code>for</code> percorre; o <code>if</code> seleciona</h2>
+    <div class="code-grid">
+      <pre><span class="kw">int</span> somaPares = <span class="num">0</span>;
+
+<span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">6</span>; i++) {
+    <span class="kw">if</span> (i % <span class="num">2</span> == <span class="num">0</span>) {
+        somaPares += i;
+    }
+}</pre>
+      <table class="tight"><thead><tr><th>i</th><th>par?</th><th>soma</th></tr></thead><tbody><tr><td>1</td><td>não</td><td>0</td></tr><tr><td>2</td><td>sim</td><td>2</td></tr><tr><td>3</td><td>não</td><td>2</td></tr><tr><td>4</td><td>sim</td><td>6</td></tr><tr><td>5</td><td>não</td><td>6</td></tr><tr><td>6</td><td>sim</td><td>12</td></tr></tbody></table>
+    </div>
+  </section>
+
+  <section class="slide" data-section="Bloco 5 · Diagnóstico">
+    <p class="eyebrow">Erros típicos</p>
+    <h2>Leia o sintoma e revise a parte correspondente</h2>
+    <table>
+      <thead><tr><th>Sintoma</th><th>Verificação</th></tr></thead>
+      <tbody><tr><td>uma repetição a menos</td><td>o limite deveria incluir o último valor?</td></tr><tr><td>uma repetição a mais</td><td>o início ou o limite incluiu um valor extra?</td></tr><tr><td>laço infinito</td><td>a atualização aproxima o contador do fim?</td></tr><tr><td>contador inesperado</td><td>ele também está sendo alterado no corpo?</td></tr><tr><td>soma errada</td><td>o acumulador começou em zero e usa <code>+=</code>?</td></tr></tbody>
+    </table>
+  </section>
+
+  <section class="slide slide--divider" data-section="Bloco 6">
+    <span class="section-number">06</span><p class="eyebrow">Bloco 6</p><h1>Estrutura repetitiva <code>do-while</code></h1>
+    <p class="lead">Executar o corpo antes da primeira condição.</p>
+  </section>
+
+  <section class="slide" data-section="Bloco 6 · Fluxo">
+    <p class="eyebrow">Pós-teste</p>
+    <h2>O corpo executa pelo menos uma vez</h2>
+    <div class="grid two grow">
+      <img class="diagram" src="./fluxo-do-while.svg" alt="Fluxo de uma estrutura do-while">
+      <div><pre><span class="kw">do</span> {
+    <span class="comment">// instruções repetidas</span>
+} <span class="kw">while</span> (condicao);</pre><div class="callout red">O ponto e vírgula depois da condição é obrigatório.</div></div>
+    </div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 6 · Comparação">
+    <p class="eyebrow">Pré-teste × pós-teste</p>
+    <h2>A posição da condição muda o mínimo de execuções</h2>
+    <div class="compare">
+      <div class="card"><h3>while</h3><pre><span class="kw">while</span> (x &lt; <span class="num">5</span>) {
+    System.out.println(x);
+}</pre><p style="margin-top:16px">Com <code>x = 10</code>: <b>zero vezes</b>.</p></div>
+      <div class="versus">×</div>
+      <div class="card"><h3>do-while</h3><pre><span class="kw">do</span> {
+    System.out.println(x);
+} <span class="kw">while</span> (x &lt; <span class="num">5</span>);</pre><p style="margin-top:16px">Com <code>x = 10</code>: <b>uma vez</b>.</p></div>
+    </div>
+  </section>
+
+  <section class="slide compact compact-2" data-section="Bloco 6 · Menu">
+    <p class="eyebrow">Uso natural</p>
+    <h2>O menu precisa aparecer antes da escolha</h2>
+    <pre><span class="kw">int</span> opcao;
+
+<span class="kw">do</span> {
+    System.out.println(<span class="comment">"1 - Consultar"</span>);
+    System.out.println(<span class="comment">"0 - Sair"</span>);
+    opcao = sc.nextInt();
+
+    <span class="kw">switch</span> (opcao) {
+        <span class="kw">case</span> <span class="num">1</span> -&gt; System.out.println(<span class="comment">"Consulta"</span>);
+        <span class="kw">case</span> <span class="num">0</span> -&gt; System.out.println(<span class="comment">"Fim"</span>);
+        <span class="kw">default</span> -&gt; System.out.println(<span class="comment">"Opcao invalida"</span>);
+    }
+} <span class="kw">while</span> (opcao != <span class="num">0</span>);</pre>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 6 · Validação">
+    <p class="eyebrow">Primeira leitura no corpo</p>
+    <h2>O <code>do-while</code> evita duplicar a leitura</h2>
+    <pre><span class="kw">double</span> nota;
+
+<span class="kw">do</span> {
+    System.out.print(<span class="comment">"Nota de 0 a 10: "</span>);
+    nota = sc.nextDouble();
+} <span class="kw">while</span> (nota &lt; <span class="num">0.0</span> || nota &gt; <span class="num">10.0</span>);
+
+System.out.println(<span class="comment">"Nota registrada: "</span> + nota);</pre>
+    <div class="callout green">A variável é declarada antes do laço porque também participa da condição.</div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 6 · Semicolon">
+    <p class="eyebrow">Dois pontos e vírgulas</p>
+    <h2>Um é obrigatório; o outro cria um laço vazio</h2>
+    <div class="grid two">
+      <div class="card"><h3 class="green">Correto</h3><pre><span class="kw">do</span> {
+    x++;
+} <span class="kw">while</span> (x &lt; <span class="num">3</span>);</pre><p style="margin-top:15px">O <code>;</code> encerra a estrutura.</p></div>
+      <div class="card"><h3>Outro significado</h3><pre><span class="kw">while</span> (x &lt; <span class="num">3</span>); {
+    x++;
+}</pre><p style="margin-top:15px">O primeiro <code>;</code> é o corpo vazio do <code>while</code>.</p></div>
+    </div>
+  </section>
+
+  <section class="slide slide--divider" data-section="Bloco 7">
+    <span class="section-number">07</span><p class="eyebrow">Bloco 7</p><h1>Escolha e controle dos laços</h1>
+    <p class="lead"><code>while</code>, <code>for</code>, <code>do-while</code>, <code>break</code> e <code>continue</code>.</p>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 7 · Comparação">
+    <p class="eyebrow">Comparação direta</p>
+    <h2>A intenção do problema orienta a escolha</h2>
+    <table>
+      <thead><tr><th>Estrutura</th><th>Teste</th><th>Mínimo</th><th>Uso natural</th></tr></thead>
+      <tbody><tr><td><code>while</code></td><td>antes</td><td>0</td><td>quantidade desconhecida, sentinela ou validação</td></tr><tr><td><code>for</code></td><td>antes</td><td>0</td><td>contador e quantidade conhecida</td></tr><tr><td><code>do-while</code></td><td>depois</td><td>1</td><td>menu ou ação anterior ao primeiro teste</td></tr></tbody>
+    </table>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 7 · break">
+    <p class="eyebrow">Interrupção</p>
+    <h2><code>break</code> encerra o laço mais interno</h2>
+    <div class="code-grid">
+      <pre><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">10</span>; i++) {
+    <span class="kw">if</span> (i == <span class="num">4</span>) {
+        <span class="kw">break</span>;
+    }
+    System.out.print(i + <span class="comment">" "</span>);
+}</pre>
+      <div class="card"><h3>Saída</h3><p><code>1 2 3</code></p><p style="margin-top:20px">Quando <code>i == 4</code>, o fluxo sai do <code>for</code>. A impressão daquela iteração não ocorre.</p></div>
+    </div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 7 · continue">
+    <p class="eyebrow">Pular uma iteração</p>
+    <h2><code>continue</code> ignora o restante do corpo atual</h2>
+    <div class="code-grid">
+      <pre><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">5</span>; i++) {
+    <span class="kw">if</span> (i == <span class="num">3</span>) {
+        <span class="kw">continue</span>;
+    }
+    System.out.print(i + <span class="comment">" "</span>);
+}</pre>
+      <div class="card"><h3>Saída</h3><p><code>1 2 4 5</code></p><p style="margin-top:20px">No <code>for</code>, o fluxo ainda passa pela atualização <code>i++</code> antes da próxima condição.</p></div>
+    </div>
+  </section>
+
+  <section class="slide" data-section="Bloco 7 · continue no while">
+    <p class="eyebrow">Ponto de atenção</p>
+    <h2>No <code>while</code>, atualize antes de continuar</h2>
+    <div class="compare">
+      <div class="card"><h3>Preso em 3</h3><pre><span class="kw">if</span> (i == <span class="num">3</span>) {
+    <span class="kw">continue</span>;
+}
+i++;</pre></div>
+      <div class="versus">→</div>
+      <div class="card"><h3>Progride</h3><pre><span class="kw">if</span> (i == <span class="num">3</span>) {
+    i++;
+    <span class="kw">continue</span>;
+}
+i++;</pre></div>
+    </div>
+    <div class="callout red">O <code>continue</code> volta diretamente à condição do <code>while</code>; qualquer atualização abaixo dele é pulada.</div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 7 · Aninhamento">
+    <p class="eyebrow">Laços aninhados</p>
+    <h2>Um <code>break</code> simples encerra apenas o laço interno</h2>
+    <div class="code-grid">
+      <pre><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">3</span>; i++) {
+    <span class="kw">for</span> (<span class="kw">int</span> j = <span class="num">1</span>; j &lt;= <span class="num">3</span>; j++) {
+        <span class="kw">if</span> (j == <span class="num">2</span>) {
+            <span class="kw">break</span>;
+        }
+        System.out.print(i + <span class="comment">""</span> + j + <span class="comment">" "</span>);
+    }
+}</pre>
+      <div class="card"><h3>Saída</h3><p><code>11 21 31</code></p><p style="margin-top:20px">O laço de <code>j</code> para em 2, mas o laço de <code>i</code> continua.</p></div>
+    </div>
+  </section>
+
+  <section class="slide" data-section="Bloco 7 · Decisão">
+    <p class="eyebrow">Guia de decisão</p>
+    <h2>Escolha a estrutura que explica melhor a intenção</h2>
+    <div class="grid three">
+      <div class="card"><h3>Quantidade conhecida?</h3><p><b>Sim:</b> comece avaliando um <code>for</code>.</p></div>
+      <div class="card"><h3>Pode executar zero vezes?</h3><p><b>Sim:</b> use pré-teste com <code>while</code> ou <code>for</code>.</p></div>
+      <div class="card"><h3>Precisa executar primeiro?</h3><p><b>Sim:</b> considere <code>do-while</code>.</p></div>
+    </div>
+    <div class="callout">Estruturas podem ser equivalentes. Prefira a que deixa o controle mais fácil de ler.</div>
+  </section>
+
+  <section class="slide slide--divider" data-section="Bloco 8">
+    <span class="section-number">08</span><p class="eyebrow">Bloco 8</p><h1>Estruturas repetitivas na OCP Java SE 25</h1>
+    <p class="lead">A prova exige simular a ordem exata da execução.</p>
+  </section>
+
+  <section class="slide" data-section="Bloco 8 · Cobertura">
+    <p class="eyebrow">Implementing Program Flow Control</p>
+    <h2>O núcleo cobrado nesta seção</h2>
+    <div class="grid three">
+      <div class="card"><h3>Estruturas</h3><p><code>while</code>, <code>do-while</code> e <code>for</code> tradicional.</p></div>
+      <div class="card"><h3>Controle</h3><p>Laços aninhados, <code>break</code> e <code>continue</code>.</p></div>
+      <div class="card"><h3>Variáveis</h3><p>Escopo e inicialização dos controles e resultados.</p></div>
+    </div>
+    <div class="callout">O <code>for-each</code> será estudado depois dos arrays, quando seu pré-requisito já tiver sido apresentado.</div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 8 · Corpo vazio">
+    <p class="eyebrow">Armadilha de leitura</p>
+    <h2>Um ponto e vírgula pode ser todo o corpo</h2>
+    <pre><span class="kw">int</span> x = <span class="num">1</span>;
+
+<span class="kw">while</span> (x &lt;= <span class="num">3</span>); {
+    x++;
+}</pre>
+    <div class="grid two" style="margin-top:24px"><div class="card"><h3>Corpo do while</h3><p>É a instrução vazia <code>;</code>.</p></div><div class="card"><h3>Bloco seguinte</h3><p>Não pertence ao laço e nunca é alcançado, porque <code>x</code> não muda.</p></div></div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 8 · Inicialização">
+    <p class="eyebrow">Inicialização definida</p>
+    <h2>Um <code>while</code> talvez nunca atribua o valor</h2>
+    <pre><span class="kw">boolean</span> executar = <span class="kw">false</span>;
+<span class="kw">int</span> resultado;
+
+<span class="kw">while</span> (executar) {
+    resultado = <span class="num">10</span>;
+}
+
+System.out.println(resultado); <span class="comment">// não compila</span></pre>
+    <div class="callout red">Como o corpo pode executar zero vezes, o compilador não garante que <code>resultado</code> recebeu um valor.</div>
+  </section>
+
+  <section class="slide compact" data-section="Bloco 8 · Escopo">
+    <p class="eyebrow">Escopo do contador</p>
+    <h2>O local da declaração decide o que existe depois</h2>
+    <div class="compare">
+      <div class="card"><h3>Limitado ao for</h3><pre><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">0</span>; i &lt; <span class="num">3</span>; i++) { }
+<span class="comment">// i não existe</span></pre></div>
+      <div class="versus">×</div>
+      <div class="card"><h3>Continua em escopo</h3><pre><span class="kw">int</span> i = <span class="num">0</span>;
+<span class="kw">for</span> (; i &lt; <span class="num">3</span>; ) { i++; }
+System.out.println(i); <span class="comment">// 3</span></pre></div>
+    </div>
+  </section>
+
+  <section class="slide" data-section="Revisão">
+    <p class="eyebrow">Modelo mental</p>
+    <h2>Para prever um laço, acompanhe quatro coisas</h2>
+    <div class="grid four">
+      <div class="card center"><h3>1</h3><p>valor inicial</p></div>
+      <div class="card center"><h3>2</h3><p>condição atual</p></div>
+      <div class="card center"><h3>3</h3><p>ordem do corpo</p></div>
+      <div class="card center"><h3>4</h3><p>atualização</p></div>
+    </div>
+    <div class="callout green">O depurador observa essas etapas no programa; o teste de mesa as reproduz no papel.</div>
+  </section>
+
+  <section class="slide" data-section="Revisão">
+    <p class="eyebrow">Ao final da seção</p>
+    <h2>O que você já é capaz de fazer</h2>
+    <div class="grid two">
+      <ul class="points"><li>depurar linha a linha;</li><li>construir e simular <code>while</code>;</li><li>usar contadores e acumuladores;</li><li>trabalhar com sentinelas.</li></ul>
+      <ul class="points"><li>organizar contagens com <code>for</code>;</li><li>usar <code>do-while</code> quando necessário;</li><li>controlar laços com <code>break</code> e <code>continue</code>;</li><li>reconhecer armadilhas de escopo e fluxo.</li></ul>
+    </div>
+  </section>
+
+  <section class="slide slide--end" data-section="Fim">
+    <p class="eyebrow">Seção 6</p>
+    <h1>Outros tópicos básicos sobre Java</h1>
+    <p class="lead">Consolidar detalhes da linguagem antes de criar os primeiros objetos.</p>
+  </section>
+</main>
+</div>
+
+<div id="progress"><div id="progressFill"></div></div>
+<div id="hud"><span id="hudSection"></span><span id="hudCount"></span></div>
+<div class="nav"><button id="prevButton" title="Slide anterior">←</button><button id="overviewButton" title="Visão geral">▦</button><button id="nextButton" title="Próximo slide">→</button></div>
+<div id="overview"></div>
+
+<script>
+(function () {
+  var stage = document.getElementById('stage');
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total = slides.length;
+  var current = 0;
+
+  function render() {
+    slides.forEach(function (slide, index) { slide.classList.toggle('active', index === current); });
+    document.getElementById('hudSection').textContent = slides[current].getAttribute('data-section') || '';
+    document.getElementById('hudCount').textContent = (current + 1) + ' / ' + total;
+    document.getElementById('progressFill').style.width = ((current + 1) / total * 100) + '%';
+    history.replaceState(null, '', '#/' + (current + 1));
+  }
+
+  function goTo(index) {
+    current = Math.max(0, Math.min(total - 1, index));
+    render();
+  }
+
+  function next() { if (current < total - 1) goTo(current + 1); }
+  function previous() { if (current > 0) goTo(current - 1); }
+
+  function scale() {
+    var availableWidth = window.innerWidth;
+    var availableHeight = window.innerHeight - 52;
+    var factor = Math.min(availableWidth / 1600, availableHeight / 900);
+    stage.style.transform = 'scale(' + factor + ')';
+  }
+
+  function toggleOverview(force) {
+    var overview = document.getElementById('overview');
+    var open = typeof force === 'boolean' ? force : !overview.classList.contains('open');
+    overview.classList.toggle('open', open);
+  }
+
+  function buildOverview() {
+    var overview = document.getElementById('overview');
+    slides.forEach(function (slide, index) {
+      var card = document.createElement('button');
+      var heading = slide.querySelector('h1, h2');
+      card.className = 'thumb';
+      card.innerHTML = '<strong>' + (index + 1) + ' · ' + (slide.getAttribute('data-section') || '') + '</strong><span>' + (heading ? heading.textContent : '') + '</span>';
+      card.addEventListener('click', function () { goTo(index); toggleOverview(false); });
+      overview.appendChild(card);
+    });
+  }
+
+  document.getElementById('prevButton').addEventListener('click', previous);
+  document.getElementById('nextButton').addEventListener('click', next);
+  document.getElementById('overviewButton').addEventListener('click', function () { toggleOverview(); });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'ArrowRight' || event.key === ' ' || event.key === 'PageDown') { event.preventDefault(); next(); }
+    else if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); previous(); }
+    else if (event.key === 'Home') goTo(0);
+    else if (event.key === 'End') goTo(total - 1);
+    else if (event.key === 'Escape') toggleOverview();
+    else if (event.key.toLowerCase() === 'f') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+  window.addEventListener('resize', scale);
+
+  buildOverview();
+  scale();
+  var hash = location.hash.match(/^#\/(\d+)$/);
+  if (hash) goTo(parseInt(hash[1], 10) - 1); else render();
+})();
+</script>
+</body>
+</html>
