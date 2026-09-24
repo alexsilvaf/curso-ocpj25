@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Seção 7 — Introdução à POO</title><link rel="stylesheet" href="../assets/apresentacoes/tema.css"></head><body><div id="viewport"><main id="stage">
+<section class="slide title" data-section="Abertura"><p class="eyebrow">Java · Seção 7</p><h1>Introdução à Programação Orientada a Objetos</h1><p class="lead">Reunir estado e comportamento em modelos que representam o problema.</p></section>
+<section class="slide" data-section="Abertura"><p class="eyebrow">Mudança de modelo</p><h2>Dos dados espalhados para objetos com responsabilidade</h2><div class="grid three"><div class="card"><h3>Antes</h3><p>Variáveis e funções separadas.</p></div><div class="card"><h3>Agora</h3><p>Classes descrevem estado e comportamento.</p></div><div class="card"><h3>Resultado</h3><p>Cada objeto cuida de seus próprios dados.</p></div></div></section>
+<section class="slide compact" data-section="Abertura"><p class="eyebrow">Mapa</p><h2>Oito blocos em progressão</h2><div class="grid four"><div class="card"><h3>1 · Problema</h3><p>Modelo espalhado</p></div><div class="card"><h3>2 · Fundamentos</h3><p>Classe e objeto</p></div><div class="card"><h3>3 · Comportamento</h3><p>Método de instância</p></div><div class="card"><h3>4 · Memória</h3><p>Referências e GC</p></div><div class="card"><h3>5 · Object</h3><p><code>toString</code></p></div><div class="card"><h3>6 · Estoque</h3><p>Exemplo integrado</p></div><div class="card"><h3>7 · static</h3><p>Classe × instância</p></div><div class="card"><h3>8 · OCP</h3><p>Leitura de código</p></div></div></section>
+
+<section class="slide divider" data-section="Bloco 1"><span class="section-number">01</span><p class="eyebrow">Bloco 1</p><h1>O problema sem orientação a objetos</h1><p class="lead">A solução funciona, mas o modelo fica espalhado.</p></section>
+<section class="slide compact" data-section="Bloco 1 · Triângulos"><p class="eyebrow">Dois triângulos</p><h2>Seis variáveis para representar duas entidades</h2><pre><b>double</b> xA, xB, xC;
+<b>double</b> yA, yB, yC;
+
+<b>double</b> p = (xA + xB + xC) / 2.0;
+<b>double</b> areaX = Math.sqrt(p * (p-xA) * (p-xB) * (p-xC));
+
+p = (yA + yB + yC) / 2.0;
+<b>double</b> areaY = Math.sqrt(p * (p-yA) * (p-yB) * (p-yC));</pre></section>
+<section class="slide" data-section="Bloco 1 · Fragilidade"><p class="eyebrow">O custo da repetição</p><h2>Dados relacionados não estão agrupados</h2><div class="grid three"><div class="card"><h3>Nomes</h3><p>As letras precisam indicar a qual triângulo cada lado pertence.</p></div><div class="card"><h3>Cálculo</h3><p>A mesma fórmula aparece mais de uma vez.</p></div><div class="card"><h3>Evolução</h3><p>Adicionar objetos aumenta variáveis e duplicação.</p></div></div><div class="callout">A POO começa como uma resposta de modelagem, não como uma nova fórmula.</div></section>
+
+<section class="slide divider" data-section="Bloco 2"><span class="section-number">02</span><p class="eyebrow">Bloco 2</p><h1>Classes, objetos e atributos</h1><p class="lead">A classe define; cada objeto materializa um estado.</p></section>
+<section class="slide" data-section="Bloco 2 · Classe"><p class="eyebrow">Molde</p><h2>Uma classe declara os campos do modelo</h2><pre><b>public class</b> Triangle {
+    <b>double</b> a;
+    <b>double</b> b;
+    <b>double</b> c;
+}</pre><div class="callout">A declaração não cria automaticamente um triângulo. Ela define como objetos desse tipo serão estruturados.</div></section>
+<section class="slide" data-section="Bloco 2 · Objetos"><p class="eyebrow">Instâncias</p><h2><code>new</code> cria objetos distintos</h2><pre>Triangle x = <b>new</b> Triangle();
+Triangle y = <b>new</b> Triangle();</pre><div class="grid two" style="margin-top:25px"><div class="card center"><h3>Objeto x</h3><p><code>a</code>, <code>b</code>, <code>c</code> próprios</p></div><div class="card center"><h3>Objeto y</h3><p><code>a</code>, <code>b</code>, <code>c</code> próprios</p></div></div></section>
+<section class="slide" data-section="Bloco 2 · Referência"><p class="eyebrow">Variável de referência</p><h2>A variável não contém o objeto inteiro</h2><div class="memory"><div class="box center"><h3>Stack</h3><p><code>x</code><br>referência</p></div><div class="arrow">→</div><div class="box heap center"><h3>Heap</h3><p>objeto <code>Triangle</code><br><code>a · b · c</code></p></div></div></section>
+<section class="slide compact" data-section="Bloco 2 · Campos"><p class="eyebrow">Operador ponto</p><h2>A referência permite acessar os campos do objeto</h2><pre>x.a = 3.0;
+x.b = 4.0;
+x.c = 5.0;
+
+y.a = 7.5;
+y.b = 4.5;
+y.c = 4.02;</pre><div class="callout green">Alterar <code>x.a</code> não altera <code>y.a</code>: cada objeto possui seu próprio estado.</div></section>
+<section class="slide compact" data-section="Bloco 2 · Padrões"><p class="eyebrow">Valores iniciais</p><h2>Campos recebem valores padrão automaticamente</h2><table><thead><tr><th>Tipo de campo</th><th>Valor padrão</th></tr></thead><tbody><tr><td>inteiros</td><td><code>0</code></td></tr><tr><td>ponto flutuante</td><td><code>0.0</code></td></tr><tr><td><code>boolean</code></td><td><code>false</code></td></tr><tr><td><code>char</code></td><td><code>'\u0000'</code></td></tr><tr><td>referência</td><td><code>null</code></td></tr></tbody></table><div class="callout red">Variáveis locais não recebem esses valores automaticamente.</div></section>
+<section class="slide" data-section="Bloco 2 · Arquivo"><p class="eyebrow">Organização</p><h2>Uma classe pública de topo determina o nome do arquivo</h2><div class="grid two"><div class="card center"><h3><code>public class Triangle</code></h3><p>arquivo <code>Triangle.java</code></p></div><div class="card center"><h3><code>public class Program</code></h3><p>arquivo <code>Program.java</code></p></div></div></section>
+
+<section class="slide divider" data-section="Bloco 3"><span class="section-number">03</span><p class="eyebrow">Bloco 3</p><h1>Métodos de instância</h1><p class="lead">O comportamento passa a viver junto dos dados.</p></section>
+<section class="slide compact" data-section="Bloco 3 · Área"><p class="eyebrow">Responsabilidade</p><h2>O triângulo conhece os lados usados em seu cálculo</h2><pre><b>public class</b> Triangle {
+    <b>double</b> a, b, c;
+
+    <b>double</b> area() {
+        <b>double</b> p = (a + b + c) / 2.0;
+        <b>return</b> Math.sqrt(p * (p-a) * (p-b) * (p-c));
+    }
+}</pre></section>
+<section class="slide" data-section="Bloco 3 · Chamada"><p class="eyebrow">Objeto receptor</p><h2>Cada chamada usa o estado do objeto antes do ponto</h2><div class="grid two"><div class="card"><h3><code>x.area()</code></h3><p>usa <code>x.a</code>, <code>x.b</code> e <code>x.c</code></p></div><div class="card"><h3><code>y.area()</code></h3><p>usa <code>y.a</code>, <code>y.b</code> e <code>y.c</code></p></div></div></section>
+<section class="slide" data-section="Bloco 3 · Campo e parâmetro"><p class="eyebrow">Origem do dado</p><h2>Campo pertence ao objeto; parâmetro chega pela chamada</h2><div class="compare"><div class="card"><h3>Campo</h3><p>Representa o estado persistente da instância.</p><pre><b>double</b> price;</pre></div><div class="versus">×</div><div class="card"><h3>Parâmetro</h3><p>É um valor local recebido pelo método.</p><pre><b>void</b> addProducts(<b>int</b> quantity)</pre></div></div></section>
+<section class="slide compact" data-section="Bloco 3 · Instância e static"><p class="eyebrow">Contexto</p><h2>Método de instância e método <code>static</code></h2><table><thead><tr><th>Tipo</th><th>Chamada típica</th><th>Acesso direto</th></tr></thead><tbody><tr><td>instância</td><td><code>product.totalValue()</code></td><td>campos daquele objeto</td></tr><tr><td><code>static</code></td><td><code>Math.sqrt(valor)</code></td><td>membros estáticos da classe</td></tr></tbody></table></section>
+
+<section class="slide divider" data-section="Bloco 4"><span class="section-number">04</span><p class="eyebrow">Bloco 4</p><h1>Referências, stack, heap e coleta de lixo</h1><p class="lead">Um modelo conceitual para prever identidade e alcance.</p></section>
+<section class="slide" data-section="Bloco 4 · Memória"><p class="eyebrow">Modelo conceitual</p><h2>Variáveis locais e objetos ocupam papéis diferentes</h2><div class="memory"><div class="box"><h3>Stack</h3><p>chamadas de métodos, parâmetros e variáveis locais</p></div><div class="arrow">↔</div><div class="box heap"><h3>Heap</h3><p>objetos criados e seus campos</p></div></div><div class="callout">O modelo ajuda a raciocinar; detalhes físicos de implementação da JVM podem variar.</div></section>
+<section class="slide compact" data-section="Bloco 4 · Alias"><p class="eyebrow">Duas referências</p><h2>Atribuir uma referência não copia o objeto</h2><pre>Product p1 = <b>new</b> Product();
+p1.name = <i>"TV"</i>;
+
+Product p2 = p1;
+p2.name = <i>"Monitor"</i>;
+
+System.out.println(p1.name); <i>// Monitor</i></pre><div class="callout red"><code>p1</code> e <code>p2</code> apontam para o mesmo objeto.</div></section>
+<section class="slide" data-section="Bloco 4 · Reatribuição"><p class="eyebrow">Trocar o alvo</p><h2>Reatribuir a variável não altera o objeto anterior</h2><div class="flow"><div class="step"><code>p1</code> → objeto A</div><div class="arrow">→</div><div class="step"><code>p1 = new Product()</code></div><div class="arrow">→</div><div class="step"><code>p1</code> → objeto B</div></div><div class="callout">O objeto A continua existindo enquanto alguma referência alcançável ainda apontar para ele.</div></section>
+<section class="slide" data-section="Bloco 4 · null"><p class="eyebrow">Referência especial</p><h2><code>null</code> significa “não aponta para objeto”</h2><pre>Product product = <b>null</b>;
+<i>// product.name causa NullPointerException</i></pre><div class="grid two" style="margin-top:24px"><div class="card"><p>Comparar com <code>null</code> é permitido.</p></div><div class="card"><p>Acessar campo ou método exige um objeto.</p></div></div></section>
+<section class="slide" data-section="Bloco 4 · GC"><p class="eyebrow">Coleta de lixo</p><h2>Um objeto se torna elegível quando deixa de ser alcançável</h2><ul class="points"><li>Elegível não significa removido imediatamente.</li><li>Não há garantia do instante em que o coletor executará.</li><li>A JVM decide quando recuperar a memória.</li><li><code>System.gc()</code> é apenas uma solicitação.</li></ul></section>
+<section class="slide compact" data-section="Bloco 4 · Passagem"><p class="eyebrow">Passagem por valor</p><h2>Com objetos, a cópia contém o valor da referência</h2><pre><b>static void</b> renomear(Product p) {
+    p.name = <i>"Novo"</i>;       <i>// altera o objeto compartilhado</i>
+    p = <b>new</b> Product();     <i>// altera somente a cópia local</i>
+}</pre><div class="callout">Java continua passando por valor. O valor copiado é uma referência ao mesmo objeto.</div></section>
+
+<section class="slide divider" data-section="Bloco 5"><span class="section-number">05</span><p class="eyebrow">Bloco 5</p><h1><code>Object</code> e <code>toString</code></h1><p class="lead">Uma representação textual útil para cada objeto.</p></section>
+<section class="slide" data-section="Bloco 5 · Padrão"><p class="eyebrow">Representação herdada</p><h2>Toda classe deriva de <code>Object</code></h2><pre>Product product = <b>new</b> Product();
+System.out.println(product);</pre><div class="callout">Sem sobrescrita, a forma padrão costuma combinar nome da classe e um código hexadecimal pouco útil para o domínio.</div></section>
+<section class="slide compact" data-section="Bloco 5 · Sobrescrita"><p class="eyebrow">Representação útil</p><h2>Sobrescrever <code>toString</code> descreve o estado relevante</h2><pre><b>@Override
+public</b> String toString() {
+    <b>return</b> name
+            + <i>", $ "</i> + String.format(<i>"%.2f"</i>, price)
+            + <i>", "</i> + quantity
+            + <i>" units, Total: $ "</i>
+            + String.format(<i>"%.2f"</i>, totalValue());
+}</pre></section>
+<section class="slide" data-section="Bloco 5 · Uso"><p class="eyebrow">Conversão implícita</p><h2>Imprimir ou concatenar chama a representação textual</h2><div class="grid two"><div class="card"><pre>System.out.println(product);</pre><p>usa <code>product.toString()</code></p></div><div class="card"><pre>String texto = <i>"Dados: "</i> + product;</pre><p>também solicita texto</p></div></div><div class="callout green"><code>toString</code> observa o objeto; não deve alterar seu estado.</div></section>
+
+<section class="slide divider" data-section="Bloco 6"><span class="section-number">06</span><p class="eyebrow">Bloco 6</p><h1>Estoque de produtos</h1><p class="lead">Estado e comportamento reunidos em uma classe.</p></section>
+<section class="slide compact" data-section="Bloco 6 · Product"><p class="eyebrow">Classe de domínio</p><h2>O produto conhece seu estoque</h2><pre><b>public class</b> Product {
+    String name;
+    <b>double</b> price;
+    <b>int</b> quantity;
+
+    <b>double</b> totalValueInStock() { <b>return</b> price * quantity; }
+    <b>void</b> addProducts(<b>int</b> quantity) { <b>this</b>.quantity += quantity; }
+    <b>void</b> removeProducts(<b>int</b> quantity) { <b>this</b>.quantity -= quantity; }
+}</pre><div class="callout">Aqui <code>this</code> apenas distingue o campo do parâmetro; seu estudo completo vem na Seção 8.</div></section>
+<section class="slide" data-section="Bloco 6 · Programa"><p class="eyebrow">Programa principal</p><h2>Entrada e saída ficam fora da regra do produto</h2><div class="grid three"><div class="card"><h3>Program</h3><p>lê dados com <code>Scanner</code></p></div><div class="card"><h3>Product</h3><p>mantém estado e calcula</p></div><div class="card"><h3>Program</h3><p>mostra o resultado</p></div></div></section>
+<section class="slide" data-section="Bloco 6 · Fragilidade"><p class="eyebrow">Limite atual</p><h2>Campos ainda podem receber qualquer valor diretamente</h2><pre>product.quantity = -100;</pre><div class="callout red">A classe já agrupa dados e comportamento, mas ainda não protege suas regras. Encapsulamento vem na Seção 8.</div></section>
+
+<section class="slide divider" data-section="Bloco 7"><span class="section-number">07</span><p class="eyebrow">Bloco 7</p><h1>Membros estáticos e de instância</h1><p class="lead">Estado de cada objeto versus estado compartilhado pela classe.</p></section>
+<section class="slide" data-section="Bloco 7 · Estado"><p class="eyebrow">Instância</p><h2>Cada objeto possui sua própria cópia dos campos de instância</h2><div class="grid three"><div class="card center"><h3>Product A</h3><p><code>name = "TV"</code><br><code>quantity = 2</code></p></div><div class="card center"><h3>Product B</h3><p><code>name = "Phone"</code><br><code>quantity = 5</code></p></div><div class="card center"><h3>Método</h3><p><code>totalValue()</code> usa o receptor</p></div></div></section>
+<section class="slide compact" data-section="Bloco 7 · Compartilhado"><p class="eyebrow">static</p><h2>Um membro estático pertence à classe</h2><pre><b>public class</b> Product {
+    <b>static int</b> createdCount;
+    <b>static final double</b> TAX_RATE = 0.10;
+
+    String name;
+}</pre><div class="grid two" style="margin-top:22px"><div class="card"><p><code>Product.createdCount</code> é compartilhado.</p></div><div class="card"><p><code>product.name</code> pertence à instância.</p></div></div></section>
+<section class="slide" data-section="Bloco 7 · Contexto"><p class="eyebrow">Contexto estático</p><h2>Sem objeto receptor, não há campo de instância implícito</h2><pre><b>static void</b> mostrar() {
+    System.out.println(createdCount); <i>// permitido</i>
+    <i>// System.out.println(name);     // não compila</i>
+}</pre><div class="callout">Um método <code>static</code> pode usar uma instância recebida ou criada explicitamente, mas não possui <code>this</code>.</div></section>
+<section class="slide" data-section="Bloco 7 · Escolha"><p class="eyebrow">Como decidir</p><h2>Pergunte a quem o dado ou comportamento pertence</h2><div class="grid two"><div class="card"><h3>Instância</h3><p>Varia de objeto para objeto ou depende do estado daquele objeto.</p></div><div class="card"><h3>static</h3><p>É compartilhado, constante da classe ou não depende de instância.</p></div></div></section>
+
+<section class="slide divider" data-section="Bloco 8"><span class="section-number">08</span><p class="eyebrow">Bloco 8</p><h1>Introdução à POO na OCP Java SE 25</h1><p class="lead">Prever referências, estado, alcance e acesso estático.</p></section>
+<section class="slide compact" data-section="Bloco 8 · Consolidação"><p class="eyebrow">Pontos de prova</p><h2>O que precisa estar claro</h2><div class="grid two"><ul class="points compact"><li>campos recebem valores padrão;</li><li>variáveis locais precisam ser inicializadas;</li><li><code>new</code> cria um objeto;</li><li>atribuição de referência não copia o objeto;</li><li><code>null</code> não referencia objeto.</li></ul><ul class="points compact"><li>Java passa referências por valor;</li><li>elegibilidade não garante coleta imediata;</li><li>membro de instância depende de objeto;</li><li>contexto estático não possui <code>this</code>;</li><li><code>toString</code> fornece representação textual.</li></ul></div></section>
+<section class="slide" data-section="Bloco 8 · Referências"><p class="eyebrow">Leitura de código</p><h2>Identidade do objeto e identidade da variável são diferentes</h2><pre>Product a = <b>new</b> Product();
+Product b = a;
+a = <b>new</b> Product();</pre><div class="grid three" style="margin-top:23px"><div class="card"><p>Primeiro objeto continua alcançável por <code>b</code>.</p></div><div class="card"><p><code>a</code> passa a apontar para outro objeto.</p></div><div class="card"><p>Nenhum objeto foi copiado.</p></div></div></section>
+<section class="slide" data-section="Bloco 8 · Depois"><p class="eyebrow">Progressão</p><h2>O que continua para as próximas seções</h2><div class="grid three"><div class="card"><h3>Seção 8</h3><p>construtores, <code>this</code>, sobrecarga e encapsulamento</p></div><div class="card"><h3>Seção 9</h3><p>arrays, <code>for-each</code>, <code>var</code> e varargs</p></div><div class="card"><h3>Seção 10</h3><p>herança, sobrescrita e polimorfismo</p></div></div></section>
+<section class="slide" data-section="Revisão"><p class="eyebrow">Ao final da seção</p><h2>O primeiro modelo orientado a objetos está completo</h2><div class="grid four"><div class="card center"><h3>Classe</h3><p>define</p></div><div class="card center"><h3>Objeto</h3><p>materializa</p></div><div class="card center"><h3>Referência</h3><p>alcança</p></div><div class="card center"><h3>Método</h3><p>comporta</p></div></div></section>
+<section class="slide end" data-section="Fim"><p class="eyebrow">Seção 8</p><h1>Construtores, <code>this</code>, sobrecarga e encapsulamento</h1><p class="lead">Criar objetos válidos e proteger suas regras.</p></section>
+</main></div><div id="progress"><div id="progressFill"></div></div><div id="hud"><span id="hudSection"></span><span id="hudCount"></span></div><div class="nav"><button id="prevButton">←</button><button id="overviewButton">▦</button><button id="nextButton">→</button></div><div id="overview"></div><script src="../assets/apresentacoes/navegacao.js"></script></body></html>

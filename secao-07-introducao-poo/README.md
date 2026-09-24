@@ -18,6 +18,10 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - comparar membros de instância e membros estáticos;
 - usar `toString` para obter uma representação textual de um objeto.
 
+## 🖥️ Apresentação
+
+[apresentacao.html](./apresentacao.html) reúne os oito blocos da seção em slides expositivos, incluindo o modelo conceitual de stack, heap, referências e coleta de lixo. Cada comando de avanço abre o slide seguinte; use <kbd>←</kbd>, <kbd>→</kbd> ou <kbd>Espaço</kbd> para navegar, <kbd>Esc</kbd> para a visão geral e <kbd>F</kbd> para tela cheia.
+
 ## 📚 Conteúdos
 
 - **A1** · [O problema dos triângulos sem orientação a objetos](./A1%20-%20O%20problema%20dos%20triangulos%20sem%20orientacao%20a%20objetos.md)
