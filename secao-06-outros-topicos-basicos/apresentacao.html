@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Seção 6 — Outros tópicos básicos sobre Java</title>
+<style>
+:root{--deep:#2f0908;--dark:#8f1712;--red:#df2b24;--orange:#f79520;--ink:#202020;--soft:#f8f5f3;--line:#e8ded8;--green:#18794e}*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden}body{background:#170c0b;color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif}button{font:inherit}code,pre{font-family:Consolas,"Cascadia Code",monospace}code{color:var(--dark)}#viewport{position:fixed;inset:0;display:grid;place-items:center}#stage{position:relative;width:1600px;height:900px;overflow:hidden;background:#fff;border-radius:10px;box-shadow:0 24px 80px #0007;transform-origin:center}#stage:before{content:"";position:absolute;z-index:20;left:0;right:0;top:0;height:9px;background:linear-gradient(90deg,var(--red),var(--orange))}.slide{position:absolute;inset:0;display:none;padding:70px 100px 86px;background:#fff}.slide.active{display:flex;flex-direction:column}.eyebrow{margin:0 0 12px;color:var(--red);font-size:24px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}h1{margin:0;font-size:67px;line-height:1.05;letter-spacing:-.035em}h2{margin:0 0 32px;font-size:49px;line-height:1.08;letter-spacing:-.025em}h3{margin:0 0 10px;color:var(--dark);font-size:27px}p{margin:0 0 20px;font-size:27px;line-height:1.4}.lead{max-width:1320px;font-size:35px;color:#f8dedb}.title,.divider,.end{justify-content:center;color:#fff;background:linear-gradient(140deg,var(--deep),var(--dark) 52%,var(--red))}.title .eyebrow,.divider .eyebrow,.end .eyebrow{color:#ffbd52}.title h1{max-width:1250px;font-size:76px}.section-number{position:absolute;right:100px;top:90px;color:#fff2;font-size:190px;font-weight:900}.grid{display:grid;gap:24px}.two{grid-template-columns:repeat(2,minmax(0,1fr))}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.four{grid-template-columns:repeat(4,minmax(0,1fr))}.card{padding:24px 28px;border:2px solid var(--line);border-radius:14px;background:var(--soft)}.card p{margin:0;font-size:23px}.callout{margin-top:24px;padding:18px 24px;border-left:7px solid var(--orange);border-radius:8px;background:#fff4e5;color:#74440b;font-size:25px;line-height:1.35}.callout.red{border-color:var(--red);background:#fdf0ef;color:#741a16}.callout.green{border-color:var(--green);background:#edf8f2;color:#155c3d}ul.points{list-style:none;margin:4px 0 0;padding:0}ul.points li{position:relative;margin:0 0 17px;padding-left:40px;font-size:27px;line-height:1.32}ul.points li:before{content:"▸";position:absolute;left:0;color:var(--orange);font-weight:900}ul.compact li{margin-bottom:10px;font-size:23px}pre{margin:0;padding:22px 26px;overflow:hidden;border-radius:12px;background:#181818;color:#f5f5f5;font-size:22px;line-height:1.36}pre b{color:#ff8c82}pre i{color:#9cb39f;font-style:normal}.code-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:28px;align-items:start}table{width:100%;border-collapse:collapse;border:2px solid var(--line);font-size:22px}th,td{padding:12px 15px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f6efeb;color:var(--dark);font-size:19px;text-transform:uppercase}tr:last-child td{border-bottom:0}.compare{display:grid;grid-template-columns:1fr 70px 1fr;gap:18px;align-items:center}.versus{color:var(--orange);font-size:36px;font-weight:900;text-align:center}.flow{display:flex;align-items:center;justify-content:center;gap:14px;margin:24px 0}.step{min-width:200px;padding:20px;border:2px solid var(--line);border-radius:14px;background:var(--soft);text-align:center;font-size:23px;font-weight:750}.arrow{color:var(--orange);font-size:38px;font-weight:900}.bits{font-family:Consolas,monospace;font-size:30px;letter-spacing:.1em;text-align:center}.compact h2{margin-bottom:23px;font-size:44px}.compact p,.compact ul.points li{font-size:23px}.compact pre{font-size:19px}.center{text-align:center}.yes{color:var(--green);font-weight:800}.no{color:var(--red);font-weight:800}#hud{position:fixed;z-index:50;left:0;right:0;bottom:0;height:48px;display:flex;align-items:center;padding:0 22px;color:#ffffffe0;background:#170c0bf0;font-size:14px}#hudSection{flex:1}#progress{position:fixed;z-index:60;left:0;right:0;bottom:48px;height:4px;background:#ffffff1f}#progressFill{height:100%;background:linear-gradient(90deg,var(--red),var(--orange))}.nav{position:fixed;z-index:70;right:18px;bottom:61px;display:flex;gap:8px}.nav button{width:42px;height:38px;border:1px solid #ffffff40;border-radius:8px;color:#fff;background:#170c0bd6;cursor:pointer}#overview{position:fixed;z-index:100;inset:0;display:none;overflow:auto;padding:28px;background:#0f0807f7}#overview.open{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;align-content:start}.thumb{padding:18px;border:2px solid #4b3734;border-radius:12px;color:#fff;background:#291816;cursor:pointer;text-align:left}.thumb strong{display:block;margin-bottom:8px;color:#ffbd52}.thumb span{font-size:15px}
+</style></head><body><div id="viewport"><main id="stage">
+<section class="slide title" data-section="Abertura"><p class="eyebrow">Java · Seção 6</p><h1>Outros tópicos básicos sobre Java</h1><p class="lead">Nomes, bits, textos, comentários e os primeiros métodos próprios.</p></section>
+<section class="slide" data-section="Abertura"><p class="eyebrow">Uma ponte</p><h2>Consolidar a linguagem antes dos objetos</h2><div class="grid three"><div class="card"><h3>Já sabemos</h3><p>Variáveis, expressões, decisões e repetições.</p></div><div class="card"><h3>Agora</h3><p>Organizamos operações e trabalhamos melhor com texto.</p></div><div class="card"><h3>Depois</h3><p>Classes, objetos, referências, memória e encapsulamento.</p></div></div><div class="callout">Os métodos usam <code>static</code> apenas para serem chamados por <code>main</code>. O significado completo vem na Seção 7.</div></section>
+<section class="slide compact" data-section="Abertura"><p class="eyebrow">Mapa</p><h2>Oito blocos em progressão</h2><div class="grid four"><div class="card"><h3>1 · Nomes</h3><p>Identificadores</p></div><div class="card"><h3>2 · Bits</h3><p>Operadores bitwise</p></div><div class="card"><h3>3 · String</h3><p>Operações com texto</p></div><div class="card"><h3>4 · Comentários</h3><p>Decisões documentadas</p></div><div class="card"><h3>5 · Métodos</h3><p>Declaração e chamada</p></div><div class="card"><h3>6 · Valores</h3><p>Parâmetros e retorno</p></div><div class="card"><h3>7 · Integração</h3><p>Conteúdos combinados</p></div><div class="card"><h3>8 · OCP</h3><p>Regras da prova</p></div></div></section>
+
+<section class="slide divider" data-section="Bloco 1"><span class="section-number">01</span><p class="eyebrow">Bloco 1</p><h1>Restrições e convenções para nomes</h1><p class="lead">O compilador impõe regras; a comunidade adota convenções.</p></section>
+<section class="slide compact" data-section="Bloco 1 · Regras"><p class="eyebrow">Identificadores</p><h2>O que pode e o que não pode formar um nome</h2><div class="grid two"><div class="card"><h3 class="yes">Pode conter</h3><ul class="points compact"><li>letras;</li><li>algarismos depois do início;</li><li><code>_</code> dentro de nomes maiores;</li><li><code>$</code>, embora seja desaconselhado.</li></ul></div><div class="card"><h3 class="no">Não pode</h3><ul class="points compact"><li>começar com algarismo;</li><li>ser palavra reservada;</li><li>ser apenas <code>_</code>;</li><li>conter espaço, hífen ou sinais.</li></ul></div></div></section>
+<section class="slide compact" data-section="Bloco 1 · Exemplos"><p class="eyebrow">Compilação</p><h2>Nomes válidos e inválidos</h2><div class="compare"><div><h3 class="yes">Compilam</h3><pre><b>int</b> idade = 20;
+<b>int</b> nota2 = 8;
+<b>int</b> _indice = 0;
+<b>int</b> valor$temporario = 10;</pre></div><div class="versus">×</div><div><h3 class="no">Não compilam</h3><pre><i>// int 2nota = 8;</i>
+<i>// int valor-total = 5;</i>
+<i>// int class = 1;</i>
+<i>// int _ = 3;</i></pre></div></div></section>
+<section class="slide" data-section="Bloco 1 · Caixa"><p class="eyebrow">Case-sensitive</p><h2>Maiúsculas e minúsculas distinguem nomes</h2><div class="code-grid"><pre><b>int</b> total = 10;
+<b>int</b> Total = 20;
+
+System.out.println(total); <i>// 10</i>
+System.out.println(Total); <i>// 20</i></pre><div class="card"><h3>Válido, mas confuso</h3><p>São variáveis diferentes, embora distingui-las apenas pela capitalização dificulte a leitura.</p></div></div><div class="callout"><code>true</code>, <code>false</code> e <code>null</code> também não podem ser identificadores.</div></section>
+<section class="slide compact" data-section="Bloco 1 · Convenções"><p class="eyebrow">Convenções</p><h2>O formato antecipa a função do nome</h2><table><thead><tr><th>Elemento</th><th>Convenção</th><th>Exemplo</th></tr></thead><tbody><tr><td>variável</td><td><code>camelCase</code></td><td><code>precoFinal</code></td></tr><tr><td>método</td><td><code>camelCase</code>, geralmente verbo</td><td><code>calcularMedia</code></td></tr><tr><td>classe</td><td><code>PascalCase</code></td><td><code>ContaBancaria</code></td></tr><tr><td>constante</td><td>maiúsculas com <code>_</code></td><td><code>LIMITE_MAXIMO</code></td></tr><tr><td>pacote</td><td>minúsculas</td><td><code>br.com.curso</code></td></tr></tbody></table></section>
+
+<section class="slide divider" data-section="Bloco 2"><span class="section-number">02</span><p class="eyebrow">Bloco 2</p><h1>Operadores bitwise</h1><p class="lead">Operações aplicadas à representação binária dos inteiros.</p></section>
+<section class="slide" data-section="Bloco 2 · Binário"><p class="eyebrow">Base 2</p><h2>O prefixo <code>0b</code> identifica um literal binário</h2><div class="grid two"><div class="card center"><p class="bits">0b1100</p><h3>12 em decimal</h3></div><div class="card center"><p class="bits">0b1010</p><h3>10 em decimal</h3></div></div><pre style="margin-top:28px"><b>int</b> a = 0b1100;
+<b>int</b> b = 0b1010;</pre></section>
+<section class="slide compact" data-section="Bloco 2 · Operadores"><p class="eyebrow">Bit a bit</p><h2><code>&amp;</code>, <code>|</code> e <code>^</code> comparam posições correspondentes</h2><table><thead><tr><th>a</th><th>b</th><th>a &amp; b</th><th>a | b</th><th>a ^ b</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr><tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td></tr><tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td></tr></tbody></table></section>
+<section class="slide compact" data-section="Bloco 2 · Resultado"><p class="eyebrow">12 e 10</p><h2>Três operações, três resultados</h2><div class="grid three"><div class="card"><pre>  1100
+&amp; 1010
+  ----
+  1000</pre><p class="center"><b>8</b></p></div><div class="card"><pre>  1100
+| 1010
+  ----
+  1110</pre><p class="center"><b>14</b></p></div><div class="card"><pre>  1100
+^ 1010
+  ----
+  0110</pre><p class="center"><b>6</b></p></div></div></section>
+<section class="slide" data-section="Bloco 2 · Complemento"><p class="eyebrow">Complemento</p><h2><code>~</code> inverte todos os bits</h2><pre><b>int</b> x = 5;
+System.out.println(~x); <i>// -6</i></pre><div class="grid two" style="margin-top:26px"><div class="card"><p>Relação útil: <code>~x == -x - 1</code>.</p></div><div class="card"><p>Um <code>int</code> possui 32 bits, inclusive os usados para o sinal.</p></div></div></section>
+<section class="slide compact" data-section="Bloco 2 · Deslocamentos"><p class="eyebrow">Deslocamentos</p><h2>Esquerda, direita com sinal e direita com zeros</h2><table><thead><tr><th>Operador</th><th>Efeito</th></tr></thead><tbody><tr><td><code>&lt;&lt;</code></td><td>desloca à esquerda, preenchendo zeros à direita</td></tr><tr><td><code>&gt;&gt;</code></td><td>desloca à direita, preservando o sinal</td></tr><tr><td><code>&gt;&gt;&gt;</code></td><td>desloca à direita, preenchendo zeros à esquerda</td></tr></tbody></table><div class="callout"><code>12 &lt;&lt; 1</code> vale 24; <code>12 &gt;&gt; 1</code> vale 6. Para negativos, <code>&gt;&gt;</code> e <code>&gt;&gt;&gt;</code> diferem.</div></section>
+<section class="slide compact" data-section="Bloco 2 · boolean"><p class="eyebrow">Também com boolean</p><h2><code>&amp;</code> e <code>|</code> avaliam os dois operandos</h2><div class="compare"><div class="card"><h3>Sem curto-circuito</h3><pre><b>false</b> &amp; (x++ &gt; 0)</pre><p><code>x</code> é incrementado.</p></div><div class="versus">×</div><div class="card"><h3>Com curto-circuito</h3><pre><b>false</b> &amp;&amp; (x++ &gt; 0)</pre><p><code>x</code> não muda.</p></div></div><div class="callout">Precedência: deslocamentos → <code>&amp;</code> → <code>^</code> → <code>|</code>. Use parênteses quando misturar grupos.</div></section>
+
+<section class="slide divider" data-section="Bloco 3"><span class="section-number">03</span><p class="eyebrow">Bloco 3</p><h1>Funções interessantes para <code>String</code></h1><p class="lead">Consultar, comparar e transformar textos.</p></section>
+<section class="slide" data-section="Bloco 3 · Índices"><p class="eyebrow">Posições</p><h2>Índices começam em zero</h2><div class="grid four"><div class="card center"><h1>J</h1><p>índice 0</p></div><div class="card center"><h1>a</h1><p>índice 1</p></div><div class="card center"><h1>v</h1><p>índice 2</p></div><div class="card center"><h1>a</h1><p>índice 3</p></div></div><div class="callout">Para <code>"Java"</code>, <code>length()</code> vale 4 e o último índice é <code>length() - 1</code>, ou 3.</div></section>
+<section class="slide" data-section="Bloco 3 · substring"><p class="eyebrow">Extraindo partes</p><h2>O início entra; o fim não entra</h2><pre>String texto = <i>"programacao"</i>;
+
+texto.substring(3);    <i>// "gramacao"</i>
+texto.substring(0, 4); <i>// "prog"</i></pre><div class="callout"><code>substring(0, 4)</code> usa os índices 0, 1, 2 e 3.</div></section>
+<section class="slide compact" data-section="Bloco 3 · Busca"><p class="eyebrow">Buscando conteúdo</p><h2>Presença, posição, início e fim</h2><pre>String email = <i>"aluno@exemplo.com"</i>;
+
+email.contains(<i>"@"</i>);          <i>// true</i>
+email.startsWith(<i>"aluno"</i>);   <i>// true</i>
+email.endsWith(<i>".com"</i>);      <i>// true</i>
+email.indexOf('@');              <i>// 5</i>
+email.indexOf(<i>"inexistente"</i>); <i>// -1</i></pre></section>
+<section class="slide" data-section="Bloco 3 · Comparação"><p class="eyebrow">Conteúdo</p><h2>Compare textos com <code>equals</code></h2><div class="code-grid"><pre>String resposta = <i>"sim"</i>;
+
+resposta.equals(<i>"sim"</i>);           <i>// true</i>
+resposta.equals(<i>"SIM"</i>);           <i>// false</i>
+resposta.equalsIgnoreCase(<i>"SIM"</i>); <i>// true</i></pre><div class="card"><h3>Regra prática</h3><p><code>==</code> não é adequado para comparar conteúdo de <code>String</code>. Referências serão explicadas depois dos objetos.</p></div></div></section>
+<section class="slide compact" data-section="Bloco 3 · Transformações"><p class="eyebrow">Produzindo outro texto</p><h2>Transformações frequentes</h2><pre>String original = <i>"  Curso Java  "</i>;
+
+original.toUpperCase();            <i>// "  CURSO JAVA  "</i>
+original.toLowerCase();            <i>// "  curso java  "</i>
+original.strip();                  <i>// "Curso Java"</i>
+original.replace(<i>"Java"</i>, <i>"JDK"</i>); <i>// "  Curso JDK  "</i>
+<i>""</i>.isEmpty();                     <i>// true</i>
+<i>"   "</i>.isBlank();                  <i>// true</i></pre></section>
+<section class="slide" data-section="Bloco 3 · Imutabilidade"><p class="eyebrow">String é imutável</p><h2>O método não altera o texto existente</h2><div class="compare"><div><pre>String nome = <i>"  Ana  "</i>;
+nome.strip();
+System.out.println(nome);</pre><div class="callout red">Ainda contém espaços.</div></div><div class="versus">→</div><div><pre>String nome = <i>"  Ana  "</i>;
+nome = nome.strip();
+System.out.println(nome);</pre><div class="callout green">Agora imprime Ana.</div></div></div></section>
+<section class="slide compact" data-section="Bloco 3 · Percurso"><p class="eyebrow">String e repetição</p><h2>Percorra apenas índices válidos</h2><pre>String palavra = <i>"Java"</i>;
+
+<b>for</b> (<b>int</b> i = 0; i &lt; palavra.length(); i++) {
+    System.out.println(palavra.charAt(i));
+}</pre><div class="callout">Arrays, <code>split()</code> e <code>toCharArray()</code> ficam para a seção de arrays.</div></section>
+
+<section class="slide divider" data-section="Bloco 4"><span class="section-number">04</span><p class="eyebrow">Bloco 4</p><h1>Comentários em Java</h1><p class="lead">Explicar decisões que o código não torna evidentes.</p></section>
+<section class="slide compact" data-section="Bloco 4 · Formatos"><p class="eyebrow">Três formatos</p><h2>Linha, bloco e documentação</h2><div class="grid three"><div class="card"><h3><code>//</code></h3><pre><i>// até a quebra</i>
+<b>double</b> taxa = 0.10;</pre></div><div class="card"><h3><code>/* ... */</code></h3><pre><i>/* comentário
+ * de bloco
+ */</i></pre></div><div class="card"><h3><code>/** ... */</code></h3><pre><i>/** Comentário
+ * para javadoc.
+ */</i></pre></div></div></section>
+<section class="slide" data-section="Bloco 4 · Qualidade"><p class="eyebrow">Limites e utilidade</p><h2>Comentários registram motivos, não narram a sintaxe</h2><div class="grid two"><div class="card"><h3>Leitura lexical</h3><p>Comentários de bloco não podem ser aninhados. Marcadores dentro de <code>String</code>, como numa URL, são apenas caracteres.</p></div><div class="card"><h3>Boa explicação</h3><pre><i>// Usa 2.0 para evitar divisão inteira.</i>
+<b>double</b> media = soma / 2.0;</pre></div></div><div class="callout red"><code>// Soma 1 a contador.</code> antes de <code>contador++</code> apenas repete o que já está visível.</div></section>
+
+<section class="slide divider" data-section="Bloco 5"><span class="section-number">05</span><p class="eyebrow">Bloco 5</p><h1>Métodos: declaração e chamada</h1><p class="lead">Dar nome a uma tarefa e executá-la quando necessário.</p></section>
+<section class="slide" data-section="Bloco 5 · Motivação"><p class="eyebrow">Do cálculo repetido</p><h2>Uma operação pode receber um nome</h2><div class="compare"><pre><b>double</b> media1 = (7.0 + 8.0) / 2.0;
+<b>double</b> media2 = (5.5 + 9.0) / 2.0;</pre><div class="versus">→</div><pre><b>static double</b> calcularMedia(
+        <b>double</b> a, <b>double</b> b) {
+    <b>return</b> (a + b) / 2.0;
+}</pre></div></section>
+<section class="slide compact" data-section="Bloco 5 · Anatomia"><p class="eyebrow">Declaração</p><h2>Cada trecho define uma parte do contrato</h2><pre><b>static double</b> calcularMedia(<b>double</b> primeira, <b>double</b> segunda) {
+    <b>return</b> (primeira + segunda) / 2.0;
+}</pre><table style="margin-top:20px"><thead><tr><th>Trecho</th><th>Função</th></tr></thead><tbody><tr><td><code>static</code></td><td>permite a chamada pelo <code>main</code> nesta etapa</td></tr><tr><td><code>double</code></td><td>tipo devolvido</td></tr><tr><td><code>calcularMedia</code></td><td>nome do método</td></tr><tr><td>parâmetros</td><td>valores recebidos, com tipo e nome</td></tr><tr><td><code>return</code></td><td>encerra e devolve o resultado</td></tr></tbody></table></section>
+<section class="slide" data-section="Bloco 5 · Chamada"><p class="eyebrow">Definir e executar</p><h2>Argumentos fornecem valores aos parâmetros</h2><div class="grid two"><div class="card"><h3>Declaração</h3><pre><b>static double</b> calcularMedia(
+        <b>double</b> primeira,
+        <b>double</b> segunda) { ... }</pre></div><div class="card"><h3>Chamada</h3><pre><b>double</b> resultado =
+    calcularMedia(7.0, 8.0);</pre></div></div></section>
+<section class="slide compact" data-section="Bloco 5 · Fluxo"><p class="eyebrow">Programa completo</p><h2>A execução sai do <code>main</code> e volta com um valor</h2><div class="code-grid"><pre><b>public class</b> CalculadoraMedia {
+  <b>public static void</b> main(String[] args) {
+    <b>double</b> media = calcularMedia(7.0, 8.0);
+    System.out.println(media);
+  }
+
+  <b>static double</b> calcularMedia(<b>double</b> a, <b>double</b> b) {
+    <b>return</b> (a + b) / 2.0;
+  }
+}</pre><div class="flow" style="flex-direction:column;margin:0"><div class="step">main chama</div><div class="arrow">↓</div><div class="step">método calcula 7,5</div><div class="arrow">↓</div><div class="step">return devolve</div></div></div></section>
+<section class="slide" data-section="Bloco 5 · void"><p class="eyebrow">Método sem valor</p><h2><code>void</code> representa uma ação</h2><div class="code-grid"><pre><b>static void</b> mostrarLinha() {
+    System.out.println(<i>"----------------"</i>);
+}
+
+mostrarLinha();</pre><div class="card"><h3>Não produz valor</h3><pre><i>// não compila</i>
+String linha = mostrarLinha();</pre></div></div></section>
+<section class="slide compact" data-section="Bloco 5 · Retorno"><p class="eyebrow">Todos os caminhos</p><h2>Um método não <code>void</code> precisa cumprir o tipo prometido</h2><div class="compare"><div><h3 class="no">Não compila</h3><pre><b>static int</b> sinal(<b>int</b> n) {
+  <b>if</b> (n &gt; 0) {
+    <b>return</b> 1;
+  }
+}</pre></div><div class="versus">→</div><div><h3 class="yes">Completo</h3><pre><b>static int</b> sinal(<b>int</b> n) {
+  <b>if</b> (n &gt; 0) {
+    <b>return</b> 1;
+  }
+  <b>return</b> -1;
+}</pre></div></div></section>
+<section class="slide" data-section="Bloco 5 · Limites"><p class="eyebrow">Nesta etapa</p><h2>O método fica na classe, mas fora de outro método</h2><ul class="points"><li>Pode aparecer antes ou depois do <code>main</code>.</li><li>Não pode ser declarado dentro de <code>main</code>.</li><li>Os exemplos usam <code>static</code> para permitir chamada direta.</li><li>Métodos de instância e membros de classe serão explicados na Seção 7.</li></ul></section>
+
+<section class="slide divider" data-section="Bloco 6"><span class="section-number">06</span><p class="eyebrow">Bloco 6</p><h1>Parâmetros, retorno e passagem de valores</h1><p class="lead">O parâmetro recebe uma cópia do valor fornecido.</p></section>
+<section class="slide compact" data-section="Bloco 6 · Cópia"><p class="eyebrow">Primitivo por valor</p><h2>Alterar o parâmetro não altera a variável do chamador</h2><div class="code-grid"><pre><b>int</b> numero = 10;
+dobrarLocalmente(numero);
+System.out.println(numero); <i>// 10</i>
+
+<b>static void</b> dobrarLocalmente(<b>int</b> valor) {
+    valor *= 2;
+    System.out.println(valor); <i>// 20</i>
+}</pre><div class="grid two"><div class="card center"><h3>numero</h3><p><b>10</b><br>no chamador</p></div><div class="card center"><h3>valor</h3><p><b>10 → 20</b><br>cópia local</p></div></div></div></section>
+<section class="slide" data-section="Bloco 6 · Resultado"><p class="eyebrow">Devolver e guardar</p><h2>O retorno leva o cálculo ao chamador</h2><div class="compare"><pre><b>static int</b> dobro(<b>int</b> valor) {
+    <b>return</b> valor * 2;
+}</pre><div class="versus">→</div><pre><b>int</b> numero = 10;
+numero = dobro(numero);
+System.out.println(numero); <i>// 20</i></pre></div></section>
+<section class="slide compact" data-section="Bloco 6 · String"><p class="eyebrow">String por valor</p><h2>Atribuir ao parâmetro local não substitui a variável original</h2><div class="compare"><pre><b>static void</b> normalizarLocalmente(String texto) {
+  texto = texto.strip().toUpperCase();
+}
+
+normalizarLocalmente(nome);
+<i>// nome não muda</i></pre><div class="versus">→</div><pre><b>static String</b> normalizar(String texto) {
+  <b>return</b> texto.strip().toUpperCase();
+}
+
+nome = normalizar(nome);
+<i>// resultado guardado</i></pre></div></section>
+<section class="slide compact" data-section="Bloco 6 · return"><p class="eyebrow">Retorno antecipado</p><h2><code>return</code> encerra o método naquele caminho</h2><pre><b>static String</b> classificar(<b>int</b> nota) {
+    <b>if</b> (nota &lt; 0 || nota &gt; 10) <b>return</b> <i>"invalida"</i>;
+    <b>if</b> (nota &gt;= 7) <b>return</b> <i>"aprovado"</i>;
+    <b>return</b> <i>"reprovado"</i>;
+}</pre><div class="callout red">Depois que um <code>return</code> executa, nenhuma instrução posterior daquele caminho é alcançada.</div></section>
+<section class="slide" data-section="Bloco 6 · Escopo"><p class="eyebrow">Escopo e composição</p><h2>O chamador recebe somente o valor devolvido</h2><div class="grid two"><div class="card"><h3>Escopo local</h3><p>Parâmetros e variáveis locais deixam de existir fora do método.</p></div><div class="card"><h3>Composição</h3><p><code>dobro(quadrado(3))</code> é lido de dentro para fora: 3 → 9 → 18.</p></div></div></section>
+
+<section class="slide divider" data-section="Bloco 7"><span class="section-number">07</span><p class="eyebrow">Bloco 7</p><h1>Integração dos conteúdos</h1><p class="lead">Métodos coordenam texto, decisões, laços e operadores.</p></section>
+<section class="slide" data-section="Bloco 7 · Analisador"><p class="eyebrow">Analisador de texto</p><h2>O <code>main</code> coordena; cada método resolve uma parte</h2><div class="grid four"><div class="card center"><h3>main</h3><p>entrada e saída</p></div><div class="card center"><h3>normalizar</h3><p>remove espaços</p></div><div class="card center"><h3>contarVogais</h3><p>percorre caracteres</p></div><div class="card center"><h3>contemJava</h3><p>produz boolean</p></div></div><div class="callout">Um <code>if</code> protege <code>charAt</code> quando o texto normalizado está vazio.</div></section>
+<section class="slide compact" data-section="Bloco 7 · Vogais"><p class="eyebrow">String + for + if</p><h2>Contar vogais sem arrays</h2><pre><b>static int</b> contarVogais(String texto) {
+  <b>int</b> quantidade = 0;
+  String minusculo = texto.toLowerCase();
+  <b>for</b> (<b>int</b> i = 0; i &lt; minusculo.length(); i++) {
+    <b>char</b> c = minusculo.charAt(i);
+    <b>if</b> (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+      quantidade++;
+    }
+  }
+  <b>return</b> quantidade;
+}</pre></section>
+<section class="slide compact" data-section="Bloco 7 · Permissões"><p class="eyebrow">Bits + método</p><h2>Cada bit pode representar uma permissão</h2><div class="code-grid"><pre><b>int</b> leitura = 0b0001;
+<b>int</b> escrita = 0b0010;
+<b>int</b> exclusao = 0b0100;
+
+<b>int</b> usuario = leitura | escrita;
+usuario |= exclusao;</pre><pre><b>static boolean</b> temPermissao(
+    <b>int</b> conjunto, <b>int</b> mascara) {
+  <b>return</b> (conjunto &amp; mascara) != 0;
+}</pre></div><div class="callout green"><code>|</code> liga bits; <code>&amp;</code> verifica o bit indicado pela máscara.</div></section>
+
+<section class="slide divider" data-section="Bloco 8"><span class="section-number">08</span><p class="eyebrow">Bloco 8</p><h1>Esta seção na OCP Java SE 25</h1><p class="lead">Regras pequenas aparecem combinadas em trechos curtos.</p></section>
+<section class="slide compact" data-section="Bloco 8 · Identificadores e bits"><p class="eyebrow">Pontos de prova</p><h2>Identificadores e operadores bitwise</h2><div class="grid two"><ul class="points compact"><li>Primeiro caractere não pode ser algarismo.</li><li>Reservadas e literais especiais não são nomes.</li><li><code>_</code> sozinho é reservado.</li><li>Convenção não interfere na compilação.</li></ul><ul class="points compact"><li><code>&amp;</code>, <code>|</code> e <code>^</code> aceitam inteiros e booleanos.</li><li><code>~</code> inverte todos os bits.</li><li><code>&gt;&gt;</code> preserva sinal; <code>&gt;&gt;&gt;</code> insere zeros.</li><li><code>&amp;</code> e <code>|</code> avaliam os dois lados.</li></ul></div></section>
+<section class="slide compact" data-section="Bloco 8 · String e métodos"><p class="eyebrow">Pontos de prova</p><h2><code>String</code> e métodos</h2><div class="grid two"><ul class="points compact"><li>Índices começam em zero.</li><li>Fim de <code>substring</code> é exclusivo.</li><li><code>indexOf</code> devolve <code>-1</code>.</li><li><code>String</code> é imutável.</li></ul><ul class="points compact"><li>Parâmetros têm tipo e nome.</li><li><code>void</code> não produz valor.</li><li>Todo caminho cumpre o retorno prometido.</li><li>Java passa argumentos por valor.</li></ul></div></section>
+<section class="slide compact" data-section="Bloco 8 · Depois"><p class="eyebrow">Progressão preservada</p><h2>Conteúdos deliberadamente posteriores</h2><table><thead><tr><th>Assunto</th><th>Momento</th></tr></thead><tbody><tr><td>objetos, referências, heap, stack e coleta de lixo</td><td>Seção 7 e aprofundamentos</td></tr><tr><td>sobrecarga e modificadores de acesso</td><td>Seção 8</td></tr><tr><td>arrays, varargs e <code>for-each</code></td><td>seção de arrays</td></tr><tr><td><code>StringBuilder</code>, pool e identidade</td><td>depois da introdução a objetos</td></tr><tr><td>wrappers, datas, exceções, coleções e demais APIs</td><td>seções futuras</td></tr></tbody></table></section>
+
+<section class="slide" data-section="Revisão"><p class="eyebrow">Ao final da seção</p><h2>As peças já trabalham em conjunto</h2><div class="grid four"><div class="card center"><h3>Nomes</h3><p>comunicam intenção</p></div><div class="card center"><h3>Operadores</h3><p>manipulam bits</p></div><div class="card center"><h3>String</h3><p>oferece operações</p></div><div class="card center"><h3>Métodos</h3><p>organizam tarefas</p></div></div><div class="callout green">Tudo foi construído com tipos, decisões e repetições já estudados.</div></section>
+<section class="slide end" data-section="Fim"><p class="eyebrow">Seção 7</p><h1>Introdução à Programação Orientada a Objetos</h1><p class="lead">Classes, objetos, referências, membros e memória entram em cena.</p></section>
+</main></div><div id="progress"><div id="progressFill"></div></div><div id="hud"><span id="hudSection"></span><span id="hudCount"></span></div><div class="nav"><button id="prevButton">←</button><button id="overviewButton">▦</button><button id="nextButton">→</button></div><div id="overview"></div>
+<script>
+(function(){var stage=document.getElementById('stage'),slides=[].slice.call(document.querySelectorAll('.slide')),total=slides.length,current=0;function render(){slides.forEach(function(s,i){s.classList.toggle('active',i===current)});hudSection.textContent=slides[current].dataset.section||'';hudCount.textContent=(current+1)+' / '+total;progressFill.style.width=((current+1)/total*100)+'%';history.replaceState(null,'','#/'+(current+1))}function go(i){current=Math.max(0,Math.min(total-1,i));render()}function next(){if(current<total-1)go(current+1)}function prev(){if(current>0)go(current-1)}function scale(){stage.style.transform='scale('+Math.min(innerWidth/1600,(innerHeight-52)/900)+')'}function overview(force){var o=document.getElementById('overview'),open=typeof force==='boolean'?force:!o.classList.contains('open');o.classList.toggle('open',open)}slides.forEach(function(s,i){var b=document.createElement('button'),h=s.querySelector('h1,h2');b.className='thumb';b.innerHTML='<strong>'+(i+1)+' · '+(s.dataset.section||'')+'</strong><span>'+(h?h.textContent:'')+'</span>';b.onclick=function(){go(i);overview(false)};document.getElementById('overview').appendChild(b)});prevButton.onclick=prev;nextButton.onclick=next;overviewButton.onclick=function(){overview()};document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();next()}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prev()}else if(e.key==='Home')go(0);else if(e.key==='End')go(total-1);else if(e.key==='Escape')overview();else if(e.key.toLowerCase()==='f'){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen()}});addEventListener('resize',scale);scale();var hash=location.hash.match(/^#\/(\d+)$/);if(hash)go(parseInt(hash[1],10)-1);else render()})();
+</script></body></html>

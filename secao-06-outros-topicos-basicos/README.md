@@ -21,6 +21,10 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - decompor um problema sequencial em métodos pequenos;
 - relacionar esses assuntos aos objetivos da OCP Java SE 25 sem antecipar orientação a objetos.
 
+## 🖥️ Apresentação
+
+[apresentacao.html](./apresentacao.html) reúne os oito blocos da seção em slides expositivos, preservando para seções posteriores os assuntos que dependem de objetos. Cada comando de avanço abre o slide seguinte; use <kbd>←</kbd>, <kbd>→</kbd> ou <kbd>Espaço</kbd> para navegar, <kbd>Esc</kbd> para a visão geral e <kbd>F</kbd> para tela cheia.
+
 ## 📚 Conteúdos
 
 - **A1** · [Restrições e convenções para nomes](./A1%20-%20Restricoes%20e%20convencoes%20para%20nomes.md)
