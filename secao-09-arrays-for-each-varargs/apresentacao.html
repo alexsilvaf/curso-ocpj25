@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Seção 9 — Arrays, for-each, var e varargs</title><link rel="stylesheet" href="../assets/apresentacoes/tema.css"></head><body><div id="viewport"><main id="stage">
+<section class="slide title" data-section="Abertura"><p class="eyebrow">Java · Seção 9</p><h1>Arrays, <code>for-each</code>, <code>var</code> e varargs</h1><p class="lead">Organizar, percorrer e receber vários valores do mesmo tipo.</p></section>
+<section class="slide compact" data-section="Abertura"><p class="eyebrow">Mapa</p><h2>Oito blocos em progressão</h2><div class="grid four"><div class="card"><h3>1 · Arrays</h3><p>criação e índices</p></div><div class="card"><h3>2 · Referências</h3><p>padrões e objetos</p></div><div class="card"><h3>3 · Percurso</h3><p><code>for</code> e <code>for-each</code></p></div><div class="card"><h3>4 · Dimensões</h3><p>matrizes e rótulos</p></div><div class="card"><h3>5 · Arrays</h3><p>ordenar e copiar</p></div><div class="card"><h3>6 · var e _</h3><p>inferência e descarte</p></div><div class="card"><h3>7 · Varargs</h3><p>texto e integração</p></div><div class="card"><h3>8 · OCP</h3><p>consolidação</p></div></div></section>
+<section class="slide divider" data-section="Bloco 1"><span class="section-number">01</span><p class="eyebrow">Bloco 1</p><h1>Introdução aos arrays</h1><p class="lead">Um objeto com tamanho fixo e elementos do mesmo tipo.</p></section>
+<section class="slide" data-section="Bloco 1 · Criação"><p class="eyebrow">Declarar e criar</p><h2>A referência e o objeto array são coisas diferentes</h2><pre><b>int</b>[] numeros;
+numeros = <b>new int</b>[5];
+
+<b>int</b>[] outros = <b>new int</b>[3];</pre><div class="callout">O tamanho é definido na criação e não muda depois.</div></section>
+<section class="slide" data-section="Bloco 1 · Índices"><p class="eyebrow">Posições</p><h2>Índices válidos vão de zero a <code>length - 1</code></h2><div class="grid four"><div class="card center"><h1>10</h1><p>índice 0</p></div><div class="card center"><h1>20</h1><p>índice 1</p></div><div class="card center"><h1>30</h1><p>índice 2</p></div><div class="card center"><h1>40</h1><p>índice 3</p></div></div><div class="callout red">Índice negativo ou igual a <code>length</code> causa <code>ArrayIndexOutOfBoundsException</code>.</div></section>
+<section class="slide compact" data-section="Bloco 1 · Inicializador"><p class="eyebrow">Forma abreviada</p><h2>Valores podem criar e preencher o array</h2><pre><b>int</b>[] numeros = {10, 20, 30, 40};
+String[] nomes = {<i>"Ana"</i>, <i>"Bia"</i>};</pre><div class="grid two" style="margin-top:22px"><div class="card"><p><code>numeros.length</code> vale 4.</p></div><div class="card"><p><code>length</code> é campo, sem parênteses.</p></div></div><div class="callout">Um inicializador isolado exige <code>new int[] { ... }</code>.</div></section>
+<section class="slide divider" data-section="Bloco 2"><span class="section-number">02</span><p class="eyebrow">Bloco 2</p><h1>Valores padrão e referências</h1><p class="lead">Arrays são objetos; seus elementos também possuem estado inicial.</p></section>
+<section class="slide compact" data-section="Bloco 2 · Padrões"><p class="eyebrow">Elementos</p><h2>Todo elemento recebe o valor padrão do tipo</h2><table><thead><tr><th>Tipo</th><th>Valor inicial</th></tr></thead><tbody><tr><td><code>int[]</code></td><td><code>0</code></td></tr><tr><td><code>double[]</code></td><td><code>0.0</code></td></tr><tr><td><code>boolean[]</code></td><td><code>false</code></td></tr><tr><td><code>char[]</code></td><td><code>'\u0000'</code></td></tr><tr><td><code>Product[]</code></td><td><code>null</code></td></tr></tbody></table></section>
+<section class="slide compact" data-section="Bloco 2 · Compartilhamento"><p class="eyebrow">Mesmo objeto</p><h2>Atribuir a referência não copia o array</h2><pre><b>int</b>[] a = {1, 2, 3};
+<b>int</b>[] b = a;
+b[0] = 99;
+System.out.println(a[0]); <i>// 99</i></pre><div class="callout red"><code>a</code> e <code>b</code> alcançam o mesmo objeto array no heap.</div></section>
+<section class="slide compact" data-section="Bloco 2 · Objetos"><p class="eyebrow">Array de referências</p><h2>Criar o array não cria os objetos dos elementos</h2><pre>Product[] products = <b>new</b> Product[3];
+<i>// três elementos null</i>
+
+products[0] = <b>new</b> Product(<i>"TV"</i>, 900.0);
+products[1] = <b>new</b> Product(<i>"Phone"</i>, 500.0);</pre><div class="callout">A referência do array e as referências guardadas em seus elementos são independentes.</div></section>
+<section class="slide divider" data-section="Bloco 3"><span class="section-number">03</span><p class="eyebrow">Bloco 3</p><h1>Percorrendo arrays</h1><p class="lead"><code>for</code> com índice ou <code>for-each</code> com elemento.</p></section>
+<section class="slide compact" data-section="Bloco 3 · Índice"><p class="eyebrow">Percurso indexado</p><h2>Use o índice quando a posição importa</h2><pre><b>for</b> (<b>int</b> i = 0; i &lt; numeros.length; i++) {
+    System.out.println(i + <i>" -> "</i> + numeros[i]);
+}</pre><div class="callout">O limite exclusivo combina naturalmente com índices de 0 a <code>length - 1</code>.</div></section>
+<section class="slide compact" data-section="Bloco 3 · for-each"><p class="eyebrow">Percurso pelos valores</p><h2><code>for-each</code> entrega uma cópia de cada elemento</h2><pre><b>int</b>[] numeros = {10, 20, 30};
+
+<b>for</b> (<b>int</b> numero : numeros) {
+    System.out.println(numero);
+}</pre><div class="callout red">Alterar <code>numero</code> não substitui o elemento do array.</div></section>
+<section class="slide" data-section="Bloco 3 · Escolha"><p class="eyebrow">Qual percurso usar</p><h2>A necessidade de posição orienta a escolha</h2><div class="grid two"><div class="card"><h3><code>for</code> tradicional</h3><p>índice, alteração de posição, percurso parcial ou reverso</p></div><div class="card"><h3><code>for-each</code></h3><p>ler todos os elementos do início ao fim</p></div></div></section>
+<section class="slide divider" data-section="Bloco 4"><span class="section-number">04</span><p class="eyebrow">Bloco 4</p><h1>Arrays multidimensionais e rótulos</h1><p class="lead">Um array pode guardar referências para outros arrays.</p></section>
+<section class="slide compact" data-section="Bloco 4 · Matriz"><p class="eyebrow">Duas dimensões</p><h2>Uma matriz regular possui linhas com o mesmo tamanho</h2><pre><b>int</b>[][] matriz = <b>new int</b>[2][3];
+System.out.println(matriz.length);    <i>// 2 linhas</i>
+System.out.println(matriz[0].length); <i>// 3 colunas</i></pre><div class="callout">Cada <code>matriz[i]</code> é uma referência para outro array.</div></section>
+<section class="slide compact" data-section="Bloco 4 · Irregular"><p class="eyebrow">Jagged array</p><h2>Linhas podem ter tamanhos diferentes ou estar nulas</h2><pre><b>int</b>[][] dados = <b>new int</b>[3][];
+dados[0] = <b>new int</b>[2];
+dados[1] = <b>new int</b>[5];
+<i>// dados[2] continua null</i></pre><div class="callout red"><code>dados[2].length</code> causa <code>NullPointerException</code>.</div></section>
+<section class="slide compact" data-section="Bloco 4 · Rótulo"><p class="eyebrow">Saída de laços aninhados</p><h2>Um rótulo permite controlar o laço externo</h2><pre>externo:
+<b>for</b> (<b>int</b> i = 0; i &lt; matriz.length; i++) {
+    <b>for</b> (<b>int</b> j = 0; j &lt; matriz[i].length; j++) {
+        <b>if</b> (matriz[i][j] == alvo) <b>break</b> externo;
+    }
+}</pre><div class="callout">Sem rótulo, <code>break</code> encerra apenas o laço mais interno.</div></section>
+<section class="slide divider" data-section="Bloco 5"><span class="section-number">05</span><p class="eyebrow">Bloco 5</p><h1>A classe <code>Arrays</code></h1><p class="lead">Exibir, ordenar, buscar, preencher, comparar e copiar.</p></section>
+<section class="slide compact" data-section="Bloco 5 · Operações"><p class="eyebrow">java.util.Arrays</p><h2>Operações frequentes</h2><pre><b>import</b> java.util.Arrays;
+
+Arrays.toString(numeros);
+Arrays.sort(numeros);
+Arrays.fill(numeros, 7);
+Arrays.equals(a, b);
+Arrays.copyOf(numeros, 5);
+Arrays.copyOfRange(numeros, 1, 3);</pre></section>
+<section class="slide" data-section="Bloco 5 · Busca"><p class="eyebrow">Busca binária</p><h2><code>binarySearch</code> pressupõe ordenação compatível</h2><pre>Arrays.sort(numeros);
+<b>int</b> indice = Arrays.binarySearch(numeros, 30);</pre><div class="grid two" style="margin-top:24px"><div class="card"><p>Encontrado: índice não negativo.</p></div><div class="card"><p>Ausente: valor negativo que codifica o ponto de inserção.</p></div></div></section>
+<section class="slide divider" data-section="Bloco 6"><span class="section-number">06</span><p class="eyebrow">Bloco 6</p><h1>Inferência local com <code>var</code> e variáveis sem nome</h1><p class="lead">O tipo continua existindo, mesmo quando não é escrito.</p></section>
+<section class="slide compact" data-section="Bloco 6 · var"><p class="eyebrow">Inferência</p><h2><code>var</code> recebe um tipo estático da expressão inicial</h2><pre><b>var</b> numeros = <b>new int</b>[] {1, 2, 3}; <i>// int[]</i>
+<b>var</b> nome = <i>"Java"</i>;                 <i>// String</i>
+
+<i>// var valor;        // sem inicializador</i>
+<i>// var nulo = null;  // tipo não inferível</i></pre><div class="callout">Só pode aparecer em variáveis locais com inicializador, inclusive controles de laços.</div></section>
+<section class="slide" data-section="Bloco 6 · _"><p class="eyebrow">Variável sem nome</p><h2><code>_</code> declara um valor que será ignorado</h2><pre><b>for</b> (String _ : nomes) {
+    quantidade++;
+}</pre><div class="callout red">A variável sem nome não pode ser lida. <code>var</code> infere um tipo; <code>_</code> descarta um nome.</div></section>
+<section class="slide divider" data-section="Bloco 7"><span class="section-number">07</span><p class="eyebrow">Bloco 7</p><h1>Varargs e texto em arrays</h1><p class="lead">Receber quantidade variável e transformar textos.</p></section>
+<section class="slide compact" data-section="Bloco 7 · Varargs"><p class="eyebrow">Parâmetro variável</p><h2>Dentro do método, varargs é um array</h2><pre><b>static int</b> somar(<b>int</b>... valores) {
+    <b>int</b> total = 0;
+    <b>for</b> (<b>int</b> valor : valores) total += valor;
+    <b>return</b> total;
+}
+
+somar();
+somar(1, 2, 3);
+somar(<b>new int</b>[] {4, 5});</pre></section>
+<section class="slide" data-section="Bloco 7 · Regras"><p class="eyebrow">Declaração</p><h2>Varargs precisa ser o último e só pode haver um</h2><div class="grid two"><div class="card"><pre><b>void</b> registrar(String nome, <b>int</b>... notas)</pre><p class="yes">válido</p></div><div class="card"><pre><b>void</b> registrar(<b>int</b>... notas, String nome)</pre><p class="no">inválido</p></div></div><div class="callout">Sobrecarga com array e varargs equivalentes produz a mesma assinatura.</div></section>
+<section class="slide compact" data-section="Bloco 7 · Texto"><p class="eyebrow">String para array</p><h2><code>split</code> separa partes; <code>toCharArray</code> separa caracteres</h2><pre>String linha = <i>"Ana,8.5,9.0"</i>;
+String[] partes = linha.split(<i>","</i>);
+
+<b>char</b>[] letras = <i>"Java"</i>.toCharArray();</pre><div class="callout">Agora essas operações aparecem porque arrays já foram apresentados.</div></section>
+<section class="slide divider" data-section="Bloco 8"><span class="section-number">08</span><p class="eyebrow">Bloco 8</p><h1>Esta seção na OCP Java SE 25</h1><p class="lead">Limites, referências, inferência, varargs e APIs.</p></section>
+<section class="slide compact" data-section="Bloco 8 · Consolidação"><p class="eyebrow">Pontos de prova</p><h2>O que precisa estar consolidado</h2><div class="grid two"><ul class="points compact"><li><code>length</code> é campo do array;</li><li>índices terminam em <code>length - 1</code>;</li><li>atribuição compartilha o array;</li><li>array de objetos começa com <code>null</code>;</li><li><code>for-each</code> copia o elemento.</li></ul><ul class="points compact"><li>matrizes podem ser irregulares;</li><li><code>binarySearch</code> exige ordenação;</li><li><code>var</code> precisa de inicializador;</li><li><code>_</code> não pode ser lido;</li><li>varargs é um array e fica por último.</li></ul></div></section>
+<section class="slide" data-section="Revisão"><p class="eyebrow">Ao final da seção</p><h2>Vários valores, um modelo previsível</h2><div class="flow"><div class="step">criar</div><div class="arrow">→</div><div class="step">acessar</div><div class="arrow">→</div><div class="step">percorrer</div><div class="arrow">→</div><div class="step">ordenar e copiar</div></div></section>
+<section class="slide end" data-section="Fim"><p class="eyebrow">Seção 10</p><h1>Herança, sobrescrita e polimorfismo</h1><p class="lead">Relacionar tipos e substituir comportamentos.</p></section>
+</main></div><div id="progress"><div id="progressFill"></div></div><div id="hud"><span id="hudSection"></span><span id="hudCount"></span></div><div class="nav"><button id="prevButton">←</button><button id="overviewButton">▦</button><button id="nextButton">→</button></div><div id="overview"></div><script src="../assets/apresentacoes/navegacao.js"></script></body></html>

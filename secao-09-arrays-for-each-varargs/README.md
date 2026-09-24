@@ -21,6 +21,10 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - declarar e chamar métodos com varargs;
 - integrar arrays com `split`, `toCharArray` e variáveis sem nome.
 
+## 🖥️ Apresentação
+
+[apresentacao.html](./apresentacao.html) reúne os oito blocos da seção em slides expositivos sobre arrays, percursos, matrizes, utilitários, inferência e varargs. Cada comando de avanço abre o slide seguinte; use <kbd>←</kbd>, <kbd>→</kbd> ou <kbd>Espaço</kbd> para navegar, <kbd>Esc</kbd> para a visão geral e <kbd>F</kbd> para tela cheia.
+
 ## 📚 Conteúdos
 
 - **A1** · [Introdução aos arrays](./A1%20-%20Introducao%20aos%20arrays.md)
