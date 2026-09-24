@@ -24,6 +24,10 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - usar upcasting, downcasting e pattern matching com `instanceof`;
 - processar objetos de subclasses diferentes por meio de uma superclasse comum.
 
+## 🖥️ Apresentação
+
+[apresentacao.html](./apresentacao.html) reúne os oito blocos da seção em slides expositivos sobre hierarquias, construção, sobrescrita, ocultação, polimorfismo e casting. Cada comando de avanço abre o slide seguinte; use <kbd>←</kbd>, <kbd>→</kbd> ou <kbd>Espaço</kbd> para navegar, <kbd>Esc</kbd> para a visão geral e <kbd>F</kbd> para tela cheia.
+
 ## 📚 Conteúdos
 
 - **A1** · [Herança e relação “é um”](./A1%20-%20Heranca%20e%20relacao%20e-um.md)
