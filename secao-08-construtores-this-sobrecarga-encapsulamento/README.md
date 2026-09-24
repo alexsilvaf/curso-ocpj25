@@ -20,6 +20,10 @@ Ao final desta seção, o aluno deverá ser capaz de:
 - distinguir `public`, `protected`, acesso de pacote e `private`;
 - reconhecer a regra de corpos flexíveis de construtores do Java 25 sem antecipar herança.
 
+## 🖥️ Apresentação
+
+[apresentacao.html](./apresentacao.html) reúne os oito blocos da seção em slides expositivos sobre construção, inicialização, sobrecarga, encapsulamento e acesso. Cada comando de avanço abre o slide seguinte; use <kbd>←</kbd>, <kbd>→</kbd> ou <kbd>Espaço</kbd> para navegar, <kbd>Esc</kbd> para a visão geral e <kbd>F</kbd> para tela cheia.
+
 ## 📚 Conteúdos
 
 - **A1** · [Construtores](./A1%20-%20Construtores.md)

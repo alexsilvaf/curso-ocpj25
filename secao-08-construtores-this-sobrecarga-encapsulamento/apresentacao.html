@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Seção 8 — Construtores, this, sobrecarga e encapsulamento</title><link rel="stylesheet" href="../assets/apresentacoes/tema.css"></head><body><div id="viewport"><main id="stage">
+<section class="slide title" data-section="Abertura"><p class="eyebrow">Java · Seção 8</p><h1>Construtores, <code>this</code>, sobrecarga e encapsulamento</h1><p class="lead">Criar objetos válidos e proteger suas regras.</p></section>
+<section class="slide compact" data-section="Abertura"><p class="eyebrow">Mapa</p><h2>Oito blocos em progressão</h2><div class="grid four"><div class="card"><h3>1 · Construtores</h3><p>Inicialização</p></div><div class="card"><h3>2 · this</h3><p>Instância atual</p></div><div class="card"><h3>3 · Sobrecarga</h3><p>Assinaturas</p></div><div class="card"><h3>4 · Ordem</h3><p>Inicialização</p></div><div class="card"><h3>5 · Encapsular</h3><p>Proteger regras</p></div><div class="card"><h3>6 · Acesso</h3><p>Visibilidade</p></div><div class="card"><h3>7 · Conta</h3><p>Integração</p></div><div class="card"><h3>8 · OCP</h3><p>Consolidação</p></div></div></section>
+<section class="slide divider" data-section="Bloco 1"><span class="section-number">01</span><p class="eyebrow">Bloco 1</p><h1>Construtores</h1><p class="lead">Inicializar o objeto no momento da criação.</p></section>
+<section class="slide" data-section="Bloco 1 · Declaração"><p class="eyebrow">Sintaxe</p><h2>Construtor tem o nome da classe e não declara retorno</h2><pre><b>public</b> Product(String name, <b>double</b> price, <b>int</b> quantity) {
+    <b>this</b>.name = name;
+    <b>this</b>.price = price;
+    <b>this</b>.quantity = quantity;
+}</pre><div class="callout red"><code>void Product(...)</code> seria um método, não um construtor.</div></section>
+<section class="slide" data-section="Bloco 1 · Chamada"><p class="eyebrow">Criação</p><h2><code>new</code> escolhe um construtor compatível</h2><pre>Product product = <b>new</b> Product(<i>"TV"</i>, 900.0, 2);</pre><div class="flow"><div class="step">alocar objeto</div><div class="arrow">→</div><div class="step">inicializar campos</div><div class="arrow">→</div><div class="step">devolver referência</div></div></section>
+<section class="slide compact" data-section="Bloco 1 · Padrão"><p class="eyebrow">Construtor padrão</p><h2>O compilador só fornece o construtor sem argumentos quando nenhum foi declarado</h2><div class="compare"><div class="card"><h3>Sem construtor escrito</h3><p><code>new Product()</code> compila pelo construtor fornecido.</p></div><div class="versus">×</div><div class="card"><h3>Algum construtor escrito</h3><p>O construtor padrão deixa de ser fornecido.</p></div></div><div class="callout">Campos ainda recebem valores padrão antes de o corpo do construtor executar.</div></section>
+<section class="slide divider" data-section="Bloco 2"><span class="section-number">02</span><p class="eyebrow">Bloco 2</p><h1>A palavra <code>this</code></h1><p class="lead">Referenciar a instância atual.</p></section>
+<section class="slide" data-section="Bloco 2 · Sombreamento"><p class="eyebrow">Nomes iguais</p><h2><code>this.campo</code> distingue o estado do parâmetro</h2><pre><b>public</b> Product(String name) {
+    <b>this</b>.name = name;
+}</pre><div class="grid two" style="margin-top:24px"><div class="card"><p><code>this.name</code>: campo da instância.</p></div><div class="card"><p><code>name</code>: parâmetro local.</p></div></div></section>
+<section class="slide" data-section="Bloco 2 · Uso"><p class="eyebrow">Instância atual</p><h2><code>this</code> também pode chamar ou passar o próprio objeto</h2><div class="grid two"><div class="card"><pre><b>this</b>.totalValue();</pre><p>chama outro método da instância</p></div><div class="card"><pre>registrar(<b>this</b>);</pre><p>passa a referência atual</p></div></div><div class="callout red"><code>this</code> não existe em contexto <code>static</code>.</div></section>
+<section class="slide divider" data-section="Bloco 3"><span class="section-number">03</span><p class="eyebrow">Bloco 3</p><h1>Sobrecarga e encadeamento</h1><p class="lead">Mesmo nome, listas de parâmetros diferentes.</p></section>
+<section class="slide compact" data-section="Bloco 3 · Assinatura"><p class="eyebrow">Sobrecarga</p><h2>Tipo, quantidade ou ordem dos parâmetros precisa mudar</h2><pre><b>static int</b> soma(<b>int</b> a, <b>int</b> b) { ... }
+<b>static double</b> soma(<b>double</b> a, <b>double</b> b) { ... }
+<b>static int</b> soma(<b>int</b> a, <b>int</b> b, <b>int</b> c) { ... }</pre><div class="callout red">Mudar apenas o retorno, o nome dos parâmetros ou o modificador de acesso não cria outra assinatura.</div></section>
+<section class="slide" data-section="Bloco 3 · Resolução"><p class="eyebrow">Escolha da chamada</p><h2>Java procura a assinatura mais específica aplicável</h2><div class="grid three"><div class="card"><h3>Correspondência exata</h3><p>preferida</p></div><div class="card"><h3>Ampliação primitiva</h3><p>pode ser usada</p></div><div class="card"><h3>Ambiguidade</h3><p>não compila</p></div></div></section>
+<section class="slide compact" data-section="Bloco 3 · this()"><p class="eyebrow">Construtores encadeados</p><h2><code>this(...)</code> reutiliza outro construtor da mesma classe</h2><pre><b>public</b> Product(String name, <b>double</b> price) {
+    <b>this</b>(name, price, 0);
+}
+
+<b>public</b> Product(String name, <b>double</b> price, <b>int</b> quantity) {
+    <b>this</b>.name = name;
+    <b>this</b>.price = price;
+    <b>this</b>.quantity = quantity;
+}</pre><div class="callout"><code>this(...)</code> precisa ser a primeira instrução explícita do construtor, salvo regras do corpo flexível do Java 25.</div></section>
+<section class="slide" data-section="Bloco 3 · Java 25"><p class="eyebrow">Java 25</p><h2>Corpo flexível permite validação antes da invocação explícita</h2><pre><b>public</b> Product(String name) {
+    <b>if</b> (name.isBlank()) <b>throw new</b> IllegalArgumentException();
+    <b>this</b>(name, 0.0, 0);
+}</pre><div class="callout">O trecho anterior a <code>this(...)</code> não pode acessar a instância antes de ela estar devidamente inicializada.</div></section>
+<section class="slide divider" data-section="Bloco 4"><span class="section-number">04</span><p class="eyebrow">Bloco 4</p><h1>Ordem de inicialização</h1><p class="lead">Classe uma vez; instância a cada objeto.</p></section>
+<section class="slide" data-section="Bloco 4 · Etapas"><p class="eyebrow">Ordem observável</p><h2>Quatro etapas principais</h2><div class="flow"><div class="step">campos estáticos e blocos estáticos</div><div class="arrow">→</div><div class="step">campos de instância</div><div class="arrow">→</div><div class="step">blocos de instância</div><div class="arrow">→</div><div class="step">construtor</div></div></section>
+<section class="slide compact" data-section="Bloco 4 · Texto"><p class="eyebrow">Ordem textual</p><h2>Inicializadores do mesmo grupo executam na ordem em que aparecem</h2><pre><b>static int</b> a = imprimir(<i>"campo static"</i>);
+<b>static</b> { imprimir(<i>"bloco static"</i>); }
+
+<b>int</b> b = imprimir(<i>"campo de instancia"</i>);
+{ imprimir(<i>"bloco de instancia"</i>); }
+
+Product() { imprimir(<i>"construtor"</i>); }</pre></section>
+<section class="slide divider" data-section="Bloco 5"><span class="section-number">05</span><p class="eyebrow">Bloco 5</p><h1>Encapsulamento, getters e setters</h1><p class="lead">Controlar como o estado pode ser consultado e alterado.</p></section>
+<section class="slide" data-section="Bloco 5 · private"><p class="eyebrow">Campos privados</p><h2>A classe protege sua representação interna</h2><pre><b>private</b> String name;
+<b>private double</b> balance;</pre><div class="callout">Código externo não altera o campo diretamente; precisa usar operações oferecidas pela classe.</div></section>
+<section class="slide compact" data-section="Bloco 5 · Acesso"><p class="eyebrow">Consulta e alteração</p><h2>Getter expõe um valor; setter pode validar</h2><pre><b>public</b> String getName() { <b>return</b> name; }
+
+<b>public void</b> setName(String name) {
+    <b>if</b> (name == <b>null</b> || name.isBlank()) {
+        <b>throw new</b> IllegalArgumentException(<i>"Nome invalido"</i>);
+    }
+    <b>this</b>.name = name;
+}</pre><div class="callout green">Encapsular é preservar invariantes, não apenas gerar métodos.</div></section>
+<section class="slide" data-section="Bloco 5 · Sem setter"><p class="eyebrow">API intencional</p><h2>Nem todo campo precisa de setter</h2><div class="grid three"><div class="card"><h3>Saldo</h3><p>muda por depósito e saque</p></div><div class="card"><h3>Número</h3><p>pode ser imutável com <code>final</code></p></div><div class="card"><h3>Derivado</h3><p>pode ter getter calculado, sem campo</p></div></div></section>
+<section class="slide divider" data-section="Bloco 6"><span class="section-number">06</span><p class="eyebrow">Bloco 6</p><h1>Modificadores de acesso</h1><p class="lead">Definir quem pode enxergar cada membro.</p></section>
+<section class="slide compact" data-section="Bloco 6 · Níveis"><p class="eyebrow">Quatro níveis</p><h2>Visibilidade de membros</h2><table><thead><tr><th>Modificador</th><th>Mesma classe</th><th>Mesmo pacote</th><th>Subclasse</th><th>Qualquer lugar</th></tr></thead><tbody><tr><td><code>private</code></td><td>sim</td><td>não</td><td>não</td><td>não</td></tr><tr><td>package-private</td><td>sim</td><td>sim</td><td>não fora do pacote</td><td>não</td></tr><tr><td><code>protected</code></td><td>sim</td><td>sim</td><td>sim</td><td>não</td></tr><tr><td><code>public</code></td><td>sim</td><td>sim</td><td>sim</td><td>sim</td></tr></tbody></table></section>
+<section class="slide" data-section="Bloco 6 · Topo"><p class="eyebrow">Classes de topo</p><h2>Uma classe de topo usa <code>public</code> ou acesso de pacote</h2><div class="compare"><pre><b>public class</b> Product { }</pre><div class="versus">ou</div><pre><b>class</b> ProductHelper { }</pre></div><div class="callout red"><code>private</code> e <code>protected</code> não são permitidos em classes de topo.</div></section>
+<section class="slide" data-section="Bloco 6 · Eclipse"><p class="eyebrow">Geração pela IDE</p><h2>Código gerado ainda exige decisão de projeto</h2><ul class="points"><li>Escolha quais campos entram no construtor.</li><li>Não gere setters para campos que não devem mudar livremente.</li><li>Revise nomes, validações e visibilidade.</li><li>Ferramentas aceleram a escrita; não definem invariantes.</li></ul></section>
+<section class="slide divider" data-section="Bloco 7"><span class="section-number">07</span><p class="eyebrow">Bloco 7</p><h1>Prática integrada: conta bancária</h1><p class="lead">Construtores, encapsulamento e operações de domínio.</p></section>
+<section class="slide compact" data-section="Bloco 7 · Conta"><p class="eyebrow">Estado protegido</p><h2>Uma conta nasce válida e controla o saldo</h2><pre><b>public class</b> BankAccount {
+    <b>private final int</b> number;
+    <b>private</b> String holder;
+    <b>private double</b> balance;
+    <b>private static final double</b> WITHDRAW_FEE = 5.0;
+
+    <b>public</b> BankAccount(<b>int</b> number, String holder) {
+        <b>this</b>(number, holder, 0.0);
+    }
+}</pre></section>
+<section class="slide" data-section="Bloco 7 · Decisões"><p class="eyebrow">Decisões de projeto</p><h2>Cada escolha protege uma regra</h2><div class="grid four"><div class="card"><h3><code>final</code></h3><p>número não muda</p></div><div class="card"><h3>sem setter</h3><p>saldo não é livre</p></div><div class="card"><h3><code>static final</code></h3><p>taxa compartilhada</p></div><div class="card"><h3><code>this(...)</code></h3><p>construtores reutilizam</p></div></div></section>
+<section class="slide divider" data-section="Bloco 8"><span class="section-number">08</span><p class="eyebrow">Bloco 8</p><h1>Esta seção na OCP Java SE 25</h1><p class="lead">Assinaturas, ordem, acesso e estado válido.</p></section>
+<section class="slide compact" data-section="Bloco 8 · Consolidação"><p class="eyebrow">Pontos de prova</p><h2>O que precisa estar consolidado</h2><div class="grid two"><ul class="points compact"><li>construtor não declara retorno;</li><li>declarar construtor remove o padrão implícito;</li><li><code>this</code> não existe em contexto estático;</li><li>sobrecarga muda a lista de parâmetros;</li><li><code>this(...)</code> encadeia construtores.</li></ul><ul class="points compact"><li>ordem textual de inicializadores importa;</li><li>campos <code>final</code> recebem valor uma vez;</li><li>acesso de pacote não usa palavra-chave;</li><li>classe de topo não pode ser <code>private</code>;</li><li>Java 25 admite corpo flexível com restrições.</li></ul></div></section>
+<section class="slide" data-section="Revisão"><p class="eyebrow">Ao final da seção</p><h2>O objeto nasce válido e permanece protegido</h2><div class="flow"><div class="step">construtor inicializa</div><div class="arrow">→</div><div class="step">private protege</div><div class="arrow">→</div><div class="step">métodos validam</div><div class="arrow">→</div><div class="step">API comunica</div></div></section>
+<section class="slide end" data-section="Fim"><p class="eyebrow">Seção 9</p><h1>Arrays, <code>for-each</code>, <code>var</code> e varargs</h1><p class="lead">Organizar vários valores do mesmo tipo.</p></section>
+</main></div><div id="progress"><div id="progressFill"></div></div><div id="hud"><span id="hudSection"></span><span id="hudCount"></span></div><div class="nav"><button id="prevButton">←</button><button id="overviewButton">▦</button><button id="nextButton">→</button></div><div id="overview"></div><script src="../assets/apresentacoes/navegacao.js"></script></body></html>
